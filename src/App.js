@@ -40,7 +40,7 @@ function App() {
                 </label>
                 <div className="text-sm">
                   <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                    Forgoten password?
+                    Forgoten passwordsss?
                   </a>
                 </div>
               </div>
