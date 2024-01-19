@@ -149,3 +149,64 @@ color:#fff
 
 }
  }
+
+ @media  screen and (min-width: 601px) {
+ 
+  .carouselContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    width:40%;
+    margin-left:150px;
+  
+  }
+  .carouselHeader{
+font-size: 42px;
+font-weight: 300;
+margin-bottom:8px;
+padding-bottom: 15px;
+line-height:1.2;
+color:#fff
+
+
+  }
+  .carouselBody{
+margin-bottom:13px;
+padding-bottom: 30px;
+font-size: 18px;
+text-align:left;
+color:#fff
+
+  }
+   }
+   @media  screen and (min-width: 950px) {
+ 
+    .carouselContent{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: start;
+      width:40%;
+      margin-left:200px;
+    
+    }
+    .carouselHeader{
+  font-size: 42px;
+  font-weight: 300;
+  margin-bottom:8px;
+  padding-bottom: 15px;
+  line-height:1.2;
+  color:#fff
+  
+  
+    }
+    .carouselBody{
+  margin-bottom:16px;
+  padding-bottom: 39px;
+  font-size: 21px;
+  text-align:left;
+  color:#fff
+  
+    }
+     }
