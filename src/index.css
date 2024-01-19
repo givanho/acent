@@ -76,12 +76,24 @@
   p.nunito:hover{
     color: #0056b3;
   }
+
+  .carouselContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    width:40%;
+    margin-left:200px;
+  
+  }
   .carouselHeader{
 font-size: 51px;
 font-weight: 300;
 margin-bottom:8px;
 padding-bottom: 19px;
-line-height:1.2
+line-height:1.2;
+color:#fff
+
 
   }
   .carouselBody{
@@ -89,21 +101,51 @@ margin-bottom:16px;
 padding-bottom: 35px;
 font-size: 21px;
 text-align:left;
+color:#fff
 
   }
- .text-width{
-  width:40%;
-  
- }
+  .carouselButton{
+    background-color:#1a81c5;
+    box-shadow: 0 3px 5px 0 rgba(90, 39, 179, 0.3);
+    border-radius: 5px 5px 5px 0px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    border: 1px solid #1a81c5;
+  }
+  .carouselButton:hover{
+    background-color: #423c8c;
+    border: 1px solid #1a81c5;
+  }
  
-.arrowguide{
-  margin-left:200px
-}
+
 @media only screen and (max-width: 600px) {
-  .text-width{
-    width:100%;
+ 
+.carouselContent{
+  display: flex;
+  flex-direction: column;
+    justify-content: center;
+  align-items: center;
+  width:80%;
+  margin:auto;
+  
+
 }
-.arrowguide{
-  margin-left:50px
+.carouselHeader{
+font-size: 32px;
+font-weight: 300;
+margin-bottom:8px;
+padding-bottom: 10px;
+line-height:1.2;
+color:#fff;
+text-align:center
+
+}
+.carouselBody{
+margin-bottom:8px;
+padding-bottom: 20px;
+font-size: 16px;
+text-align:center;
+color:#fff
+
 }
  }

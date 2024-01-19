@@ -35,7 +35,7 @@ export default function RootLayout() {
 
               {/* </button>
           </div> */}
-
+{/* 
               <div>
                 <div className="flex ">
                   <div className="px-6 ">
@@ -81,15 +81,15 @@ export default function RootLayout() {
                 </div>
              
                 
-              </div>   
-              <div>
+              </div>    */}
+              {/* <div>
 <button className=" px-4 py-2.5  text-white nunito  signbut mr-4"  >
     logIn
 </button>
 <button className="px-4 py-2.5  text-white nunito  signbut">
     Get Started
 </button>
-                </div>
+                </div> */}
             </nav>
           </div>
         </nav>
