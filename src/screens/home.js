@@ -73,29 +73,27 @@ const Home = () => {
       className="h-full w-full object-fill"
     />
     </div>
-    <div className="absolute inset-0 grid h-full w-full place-items-center">
-      <div className="w-3/4 text-center md:w-2/4 ">
+    <div className="absolute inset-0  h-full   arrowguide  flex items-center ">
+      <div className="text-width text-left ">
         <Typography
           variant="h1"
           color="white"
-          className="mb-4 text-3xl md:text-4xl lg:text-5xl font-nunito"
+          className="mb-14 text-2xl md:text-4xl lg:text-6xl flex justify-start carouselHeader dmSerif"
         >
           Advanced Trading Strategies
         </Typography>
         <Typography
-          variant="lead"
+          // variant="lead"
           color="white"
-          className="mb-12 opacity-80 font-comforter"
+          className="mb-12 opacity-100 carouselBody nunito flex justify-start"
         >
          Our algorithms are backed by extensive research and data analysis, offering advanced trading strategies for digital assets, stocks, crypto, and forex. Stay ahead of the markets with Ascent Investment Limited.
         </Typography>
-        <div className="flex justify-center gap-2">
+        <div className="flex justify-start gap-2">
           <Button size="lg" color="white">
-            Sign Up
+            SIGN UP
           </Button>
-          <Button size="lg" color="white" variant="text">
-            Gallery
-          </Button>
+          
         </div>
       </div>
     </div>
@@ -107,32 +105,28 @@ const Home = () => {
         className="h-full w-full object-cover"
       />
       </div>
-         <div className="absolute inset-0 grid h-full w-full items-center bg-black/75">
-           <div className="w-3/4 pl-12 md:w-2/4 md:pl-20 lg:pl-32">
+         <div className="absolute inset-0  h-full w-full arrowguide flex items-center bg-black/75">
+           <div className="text-width text-left">
              <Typography
                variant="h1"
                color="white"
-               className="mb-4 text-3xl md:text-4xl lg:text-5xl font-comforter"
+               className="mb-14 text-3xl md:text-4xl lg:text-5xl dmSerif carouselHeader"
              >
-               The Beauty of Nature
+               
+              Secure and Reliable
              </Typography>
              <Typography
-               variant="lead"
+              //  variant="lead"
                color="white"
-               className="mb-12 opacity-80 font-comforter"
+               className="mb-12 opacity-100 nunito carouselBody"
              >
-               It is not so much for its beauty that the forest makes a claim
-               upon men&apos;s hearts, as for that subtle something, that quality
-               of air that emanation from old trees, that so wonderfully changes
-               and renews a weary spirit.
+               Your security is our top priority. Ascent Investment Limited implements robust security measures, including encryption technologies and multi-factor authentication, to protecint your personal information and investment funds.
              </Typography>
              <div className="flex gap-2">
                <Button size="lg" color="white">
-                 Explore
+                 LEARN MORE
                </Button>
-               <Button size="lg" color="white" variant="text">
-                 Gallery
-               </Button>
+               
              </div>
            </div>
          </div>
@@ -144,32 +138,27 @@ const Home = () => {
         className="h-full w-full object-cover"
       />
       </div>
-         <div className="absolute inset-0 grid h-full w-full items-end bg-black/75">
-           <div className="w-3/4 pl-12 pb-12 md:w-2/4 md:pl-20 md:pb-20 lg:pl-32 lg:pb-32">
+         <div className="absolute inset-0  h-full w-full arrowguide flex items-center bg-black/75">
+           <div className="text-width text-left">
              <Typography
                variant="h1"
                color="white"
-               className="mb-4 text-3xl md:text-4xl lg:text-5xl"
+               className="mb-14 text-3xl md:text-4xl lg:text-5xl dmSerif carouselHeader"
              >
-               The Beauty of Nature
+               User-Friendly Platform
              </Typography>
              <Typography
-               variant="lead"
+              //  variant="lead"
                color="white"
-               className="mb-12 opacity-80 font-black"
+               className="mb-12 opacity-100 nunito carouselBody"
              >
-               It is not so much for its beauty that the forest makes a claim
-               upon men&apos;s hearts, as for that subtle something, that quality
-               of air that emanation from old trees, that so wonderfully changes
-               and renews a weary spirit.
+               Experience a seamless trading journey with our intuitive and easy-to-use platform. Access a wide range of trading instruments, advanced tools, and features to optimize your trading strategies. Join Ascent Investment Limited today.
              </Typography>
              <div className="flex gap-2">
                <Button size="lg" color="white">
-                 Explore
+                 SIGN UP NOW
                </Button>
-               <Button size="lg" color="white" variant="text">
-                 Gallery
-               </Button>
+              
              </div>
            </div>
          </div>
