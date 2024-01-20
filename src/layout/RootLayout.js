@@ -1,8 +1,10 @@
 import {  useState, useEffect } from 'react'
 
 import { Outlet, NavLink, Link } from "react-router-dom";
-
+import { IoDiamond } from "react-icons/io5";
+import { FaUser } from "react-icons/fa6";
 import logo from "../assets/logo.png";
+
 
 export default function RootLayout() {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -85,6 +87,7 @@ export default function RootLayout() {
         <div className="bar"></div>
         <div className="bar"></div>
       </div>
+
       <div className='deskSign hidden sm:block'>
 <button className=" px-4 py-2.5  text-white nunito  signbut mr-4"  >
     logIn
@@ -92,7 +95,12 @@ export default function RootLayout() {
 <button className="px-4 py-2.5  text-white nunito  signbut">
     Get Started
 </button>
-                </div> 
+    </div> 
+<div>
+<FaUser />
+<IoDiamond />
+</div>
+
     </div>
   </nav>
         {/* <nav> */}
