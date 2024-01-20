@@ -220,7 +220,6 @@ p.linking:hover {
 }
 .second-section-text{
   width:40%;
-  padding-block:82px;
   
 }
 .section-text-crumb{
@@ -246,7 +245,10 @@ p.linking:hover {
 }
 .second-section-image{
   width:40%;
-  padding-block:82px;
+  
+}
+.section-wrapper{
+  padding-block:90px
 }
 
 
@@ -275,6 +277,7 @@ p.linking:hover {
     text-align: center;
     color: #fff;
   }
+  
 }
 
 @media screen and (min-width: 601px) {
@@ -373,6 +376,18 @@ p.linking:hover {
   .deskSign {
     display: none;
   }
+  .section-wrapper{
+    display:flex;
+    flex-direction:column;
+   }
+   .second-section-text{
+    width:80%
+
+   }
+   .second-section-image{
+    width:80%
+
+   }
 }
 @media screen and (min-width: 769px) and (max-width: 844px) {
   .navbar-container {
@@ -386,5 +401,12 @@ p.linking:hover {
   }
   .signbut {
     width: 90px;
+  }
+  
+  .section-text-header{
+    font-size:32px
+  }
+  .section-text-content{
+    font-size:15px
   }
 }

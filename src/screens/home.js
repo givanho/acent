@@ -167,7 +167,8 @@ const Home = () => {
     <TradingWidget/>
     <Gold />
 </div>
-<div className='second-section w-full flex row-auto items-center justify-center h-full' style={{backgroundColor:"#ece9ff"}}>
+<div className='second-section w-full flex  items-center justify-center ' style={{backgroundColor:"#ece9ff", height:"100%"}}>
+<div className='section-wrapper flex   items-center justify-center'>
 <div className='second-section-text
  '>
 <p className='section-text-crumb nunito'>
@@ -189,10 +190,12 @@ with our Gold and Silver IRA, Real estate and Algo Trade Limited.
      </button>
 </div>
 <div className='second-section-image '>
-<img
+<img className='w-full'
         src={surfer} alt="surfing"
         
       />
+
+</div>
 </div>
 </div>
 </div>
