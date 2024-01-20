@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import TradingWidget from '../widgets/trading-widget'
 import Gold from '../widgets/gold'
-import { Carousel, Typography, Button, IconButton } from "@material-tailwind/react";
+import { Carousel, IconButton } from "@material-tailwind/react";
 import firstSlide from '../assets/carousel1.jpg'
 import secondSlide from '../assets/carousel2.jpg'
 import thirdSlide from '../assets/carousel3.jpg'
@@ -85,28 +85,7 @@ const Home = () => {
      SIGN UP
      </button>
      
-      {/* <div className="text-width text-center lg:text-left ">
-        <Typography
-          variant="h1"
-          color="white"
-          className="mb-14 text-2xl md:text-4xl lg:text-6xl flex text-center lg:text-left md:text-left carouselHeader dmSerif"
-        >
-          Advanced Trading Strategies
-        </Typography>
-        <Typography
-          // variant="lead"
-          color="white"
-          className="mb-12 opacity-100 carouselBody nunito flex justify-start text-center lg-text-left"
-        >
-         Our algorithms are backed by extensive research and data analysis, offering advanced trading strategies for digital assets, stocks, crypto, and forex. Stay ahead of the markets with Ascent Investment Limited.
-        </Typography>
-        <div className="flex justify-start gap-2">
-          <Button size="lg" color="white">
-            SIGN UP
-          </Button>
-          
-        </div>
-      </div> */}
+     
     </div>
   </div>
   <div className="relative h-full w-full">
@@ -165,7 +144,7 @@ const Home = () => {
     
 <div>
     <TradingWidget/>
-    <Gold />
+    
 </div>
 <div className='second-section w-full flex  items-center justify-center ' style={{backgroundColor:"#ece9ff", height:"100%"}}>
 <div className='section-wrapper flex   items-center justify-center'>
@@ -198,6 +177,11 @@ with our Gold and Silver IRA, Real estate and Algo Trade Limited.
 </div>
 </div>
 </div>
+<Gold />
+
+{/* third section */}
+<div></div>
+
 </div>
     
   )

@@ -40,7 +40,7 @@
     to right,
     rgba(6, 49, 58, 0.9),
     rgba(6, 49, 58, 0.4)
-  ); /* Adjust the alpha value for the desired darkness */
+  ); 
 }
 .nunito {
   font-family: "Nunito";
@@ -60,19 +60,7 @@
 .dmSerif {
   font-family: "DMserif";
 }
-/* .navbar{
-  display:flex;
-  justify-content:center;
-  align-content:center
-} */
-/* .navbar-container{
-  display:flex;
-  flex-direction:row;
-  width:80%;
-  justify-content:space-between;
-  align-items:center;
-  
-} */
+
 
 .signbut {
   background-color: #1a81c5;
@@ -144,7 +132,7 @@ p.linking:hover {
 
 .navbar.scrolled {
   box-shadow: 0 0 25px 0 rgba(90, 39, 179, 0.3);
-  background-color: #fff; /* Change this to your desired background color on scroll */
+  background-color: #fff; 
 }
 
 .navbar-container {
@@ -155,11 +143,7 @@ p.linking:hover {
   align-items: center;
 }
 
-/* .nav-links li {
-  margin-right: 20px;
-  color: black;
-  cursor: pointer;
-} */
+
 .nav-links-container {
   display: flex;
   align-items: center;
@@ -210,7 +194,7 @@ p.linking:hover {
 }
 
 
-//second section
+
 
 
 
