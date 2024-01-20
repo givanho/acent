@@ -1,9 +1,10 @@
 import {  useState, useEffect } from 'react'
-
 import { Outlet, NavLink, Link } from "react-router-dom";
 import { IoDiamond } from "react-icons/io5";
 import { FaUser } from "react-icons/fa6";
+import Lottie from "lottie-react";
 import logo from "../assets/logo.png";
+import diamond from "../assets/diamonds.json"
 
 
 export default function RootLayout() {
@@ -97,8 +98,11 @@ export default function RootLayout() {
 </button>
     </div> 
 <div className='mobileSign'>
-<FaUser color='#1a81c5' size={32} style={{marginInline:32}}/>
-<IoDiamond color='#1a81c5' size={32}/>
+<FaUser color='#1a81c5' size={32} />
+<div style={{width:64, height:64}}>
+    <Lottie animationData={diamond} loop={true} />
+</div>
+
 </div>
 
     </div>

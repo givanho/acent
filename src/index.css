@@ -143,6 +143,7 @@ p.nunito:hover {
 }
 
 .navbar.scrolled {
+  box-shadow: 0 0 25px 0 rgba(90, 39, 179, 0.3);
   background-color: #fff; /* Change this to your desired background color on scroll */
 }
 
@@ -189,12 +190,15 @@ p.nunito:hover {
   width: 30px;
   height: 3px;
   background-color: #fff;
-  margin: 6px 0;
+  margin: 4px 0;
   transition: 0.4s;
 }
 
+.scrolled .bar{
+  background-color: #1a81c5;
+}
 .open .bar:nth-child(1) {
-  transform: rotate(-45deg) translate(-10px, 11px);
+  transform: rotate(-45deg) translate(-10px, 6px);
 }
 
 .open .bar:nth-child(2) {
@@ -202,7 +206,7 @@ p.nunito:hover {
 }
 
 .open .bar:nth-child(3) {
-  transform: rotate(45deg) translate(-10px, -11px);
+  transform: rotate(45deg) translate(-10px, -6px);
 }
 
 
@@ -294,12 +298,20 @@ p.nunito:hover {
     position: absolute;
     top: 60px; /* Adjust this based on your design */
     left: 0;
-    background-color: #333; /* Change this to your desired background color for mobile */
+    background-color: #fff; /* Change this to your desired background color for mobile */
     z-index: 999;
     transform: translateY(-100%);
-    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out,
-      transform 0.3s ease-in-out;
+    transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out,
+      transform 0.4s ease-in-out;
+  box-shadow: 0 0 25px 0 rgba(90, 39, 179, 0.3);
+      
   }
+  .linking {
+    color:#3c4858;
+    font-weight:500;
+    padding-block:10px
+  }
+
 
   .nav-links.show-mobile {
     opacity: 1;
@@ -322,7 +334,7 @@ p.nunito:hover {
     display: none;
   }
 }
-@media screen and (min-width: 768px) and (max-width: 844px) {
+@media screen and (min-width: 769px) and (max-width: 844px) {
   .navbar-container {
     width: 85%;
   }
