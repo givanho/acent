@@ -1,18 +1,18 @@
 import React, { useState } from 'react'
 import TradingWidget from '../widgets/trading-widget'
+import Gold from '../widgets/gold'
 import { Carousel, Typography, Button, IconButton } from "@material-tailwind/react";
 import firstSlide from '../assets/carousel1.jpg'
 import secondSlide from '../assets/carousel2.jpg'
 import thirdSlide from '../assets/carousel3.jpg'
+import surfer from '../assets/surfer.png'
 
- import { Dialog } from '@headlessui/react'
-// import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 
 const Home = () => {
     
 
   return (
-    <div  >
+    <div>
  
  
      <div style={{height:"100vh"}}> 
@@ -165,9 +165,36 @@ const Home = () => {
     
 <div>
     <TradingWidget/>
-    
+    <Gold />
 </div>
-
+<div className='second-section w-full flex row-auto items-center justify-center h-full' style={{backgroundColor:"#ece9ff"}}>
+<div className='second-section-text
+ '>
+<p className='section-text-crumb nunito'>
+  Trade, Invest Stock and Bond
+</p>
+<h1 className='section-text-header nunito'>
+  Reasearch and Insight
+</h1>
+<p className='section-text-content nunito'>
+Gain valuable insights and stay ahead of the market 
+with our Gold and Silver IRA, Real estate and Algo Trade Limited.
+ Our research-driven trading strategies for Non digital and digital 
+ assets, Gold and Silver IRA, Real Estate, Stocks, Crypto and Forex. Stay informed 
+ and make informed investment decisions with Gold and Silver, Real Estate and Algo 
+ Trade Limited.
+</p>
+<button className='carouselButton nunito text-white px-4 py-4 '>
+     Create Free Account
+     </button>
+</div>
+<div className='second-section-image '>
+<img
+        src={surfer} alt="surfing"
+        
+      />
+</div>
+</div>
 </div>
     
   )
