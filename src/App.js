@@ -14,7 +14,7 @@ import About from "./screens/about"
 import Pricing from "./screens/pricing"
 import Faq from "./screens/faq"
 import Contact from "./screens/contact"
-import Navbar from "./widgets/navbar"
+// import Navbar from "./widgets/navbar"
 
 
 import RootLayout from '../src/layout/RootLayout'
@@ -41,6 +41,7 @@ function App() {
     <div className="relative">
       <Home />
       </div> */}
+      {/* <Navbar/> */}
       <RouterProvider router={router} />
    
     </AuthContextProvider>

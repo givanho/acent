@@ -1,21 +1,40 @@
+import {  useState, useEffect } from 'react'
+
 import { Outlet, NavLink, Link } from "react-router-dom";
-import { Button,} from "@material-tailwind/react";
 
 import logo from "../assets/logo.png";
 
 export default function RootLayout() {
+    const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      if (scrollPosition > 0) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const handleMobileMenuToggle = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   return (
     <div className="root-layout">
-      <header  className="absolute inset-x-0 top-0 z-50 ">
-    
-        <nav>
-
-          <div className="bg-opacity-0 h-64" >
-            <nav
-              className="flex items-center  justify-between p-6 lg:px-8" 
-              aria-label="Global"
-            >
-              <div className="flex lg:flex-1">
+      <header  >
+      <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
+    <div className="navbar-container">
+    <div className="logo">
                 {/* link to home */}
                 <Link to="/" className="-m-1.5 p-1.5">
                   <img
@@ -25,6 +44,74 @@ export default function RootLayout() {
                   />
                 </Link>
               </div>
+      <div className={`nav-links-container ${isMobileMenuOpen ? 'mobile-open' : ''}`}>
+        <ul className={`nav-links ${isMobileMenuOpen ? 'show-mobile' : ''}`}>
+        <NavLink
+                      to="about-us"
+                      style={({ isActive }) => ({
+                        color: isActive ? "#0056b3" : "white",
+                      })}
+                    >
+                      <p className="nunito linking">About Us</p>
+                    </NavLink>
+                    <NavLink
+                      to="pricing"
+                      style={({ isActive }) => ({
+                        color: isActive ? "#0056b3" : "white",
+                      })}
+                    >
+                      <p className="nunito linking" >Pricing</p>
+                    </NavLink>
+                    <NavLink
+                      to="faq"
+                      style={({ isActive }) => ({
+                        color: isActive ? "#0056b3" : "white",
+                      })}
+                    >
+                      <p className="nunito linking">FAQ</p>
+                    </NavLink>
+                    <NavLink
+                      to="contact"
+                      style={({ isActive }) => ({
+                        color: isActive ? "#0056b3" : "white",
+                      })}
+                    >
+                      <p className="nunito linking">Contact</p>
+                    </NavLink>
+        </ul>
+      </div>
+      <div className= {`mobile-menu-icon ${isMobileMenuOpen ? 'open' : ''}`} onClick={handleMobileMenuToggle}>
+        <div className="bar"></div>
+        <div className="bar"></div>
+        <div className="bar"></div>
+      </div>
+      <div className='deskSign hidden sm:block'>
+<button className=" px-4 py-2.5  text-white nunito  signbut mr-4"  >
+    logIn
+</button>
+<button className="px-4 py-2.5  text-white nunito  signbut">
+    Get Started
+</button>
+                </div> 
+    </div>
+  </nav>
+        {/* <nav> */}
+
+          {/* <div className="bg-opacity-0 h-64 w-full flex items-center justify-center" >
+            <nav
+              className="  navbar" 
+              aria-label="Global"
+            > */}
+              {/* <div className="flex lg:flex-1">
+                
+                <Link to="/" className="-m-1.5 p-1.5">
+                  <img
+                    className="h-8 w-auto"
+                    src={logo}
+                    alt="ascentinvestments"
+                  />
+                </Link>
+              </div> */}
               {/* mobile menu */}
               {/* <div className="flex lg:hidden">
             <button
@@ -35,10 +122,10 @@ export default function RootLayout() {
 
               {/* </button>
           </div> */}
-{/* 
-              <div>
+
+              {/* <div>
                 <div className="flex ">
-                  <div className="px-6 ">
+                  <div className="px-4 ">
                     <NavLink
                       to="about-us"
                       style={({ isActive }) => ({
@@ -48,7 +135,7 @@ export default function RootLayout() {
                       <p className="nunito">About Us</p>
                     </NavLink>
                   </div>
-                  <div className="px-6 ">
+                  <div className="px-4 ">
                     <NavLink
                       to="pricing"
                       style={({ isActive }) => ({
@@ -58,7 +145,7 @@ export default function RootLayout() {
                       <p className="nunito" >Pricing</p>
                     </NavLink>
                   </div>
-                  <div className="px-6 ">
+                  <div className="px-4 ">
                     <NavLink
                       to="faq"
                       style={({ isActive }) => ({
@@ -68,7 +155,7 @@ export default function RootLayout() {
                       <p className="nunito">FAQ</p>
                     </NavLink>
                   </div>
-                  <div className="px-6 ">
+                  <div className="px-4 ">
                     <NavLink
                       to="contact"
                       style={({ isActive }) => ({
@@ -90,9 +177,9 @@ export default function RootLayout() {
     Get Started
 </button>
                 </div> */}
-            </nav>
-          </div>
-        </nav>
+            {/* </nav>
+          </div> */}
+        {/* </nav> */}
       </header>
       <main className="relative">
         <Outlet />

@@ -60,6 +60,20 @@
   .dmSerif {
     font-family: "DMserif";
   }
+/* .navbar{
+  display:flex;
+  justify-content:center;
+  align-content:center
+} */
+/* .navbar-container{
+  display:flex;
+  flex-direction:row;
+  width:80%;
+  justify-content:space-between;
+  align-items:center;
+  
+} */
+
   .signbut {
     background-color:#1a81c5;
     box-shadow: 0 3px 5px 0 rgba(90, 39, 179, 0.3);
@@ -157,8 +171,8 @@ color:#fff
     flex-direction: column;
     justify-content: center;
     align-items: start;
-    width:40%;
-    margin-left:150px;
+    width:60%;
+    margin-left:100px;
   
   }
   .carouselHeader{
@@ -210,3 +224,110 @@ color:#fff
   
     }
      }
+
+
+     /* Navbar.css */
+.navbar {
+  display:flex;
+  justify-content:center;
+  align-Items:center;
+  background-color: transparent;
+  
+  transition: background-color 0.3s ease;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+}
+
+.navbar.scrolled {
+  background-color: #fff; /* Change this to your desired background color on scroll */
+}
+
+.navbar-container {
+
+  flex-direction:row;
+  width:80%;
+  justify-content:space-between;
+  display: flex;
+  align-items: center;
+}
+
+
+/* .nav-links li {
+  margin-right: 20px;
+  color: black;
+  cursor: pointer;
+} */
+.nav-links-container {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+.linking{
+  margin-right: 30px ;
+}
+
+.scrolled .linking {
+  color: #3c4858;
+  font-weight:500
+}
+
+.mobile-menu-icon {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.bar {
+  width: 30px;
+  height: 3px;
+  background-color: #fff;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+.open .bar:nth-child(1) {
+  transform: rotate(-45deg) translate(-10px, 11px);
+}
+
+.open .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.open .bar:nth-child(3) {
+  transform: rotate(45deg) translate(-10px, -11px);
+}
+
+@media screen and (max-width: 768px) {
+  .nav-links {
+    opacity: 0;
+    visibility: hidden;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    top: 60px; /* Adjust this based on your design */
+    left: 0;
+    background-color: #333; /* Change this to your desired background color for mobile */
+    z-index: 999;
+    transform: translateY(-100%);
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, transform 0.3s ease-in-out;
+  }
+
+  .nav-links.show-mobile {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+ 
+  .mobile-menu-icon {
+    display: flex;
+  }
+  
+}
