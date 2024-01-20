@@ -1,65 +1,65 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 @font-face {
   font-family: "Nunito";
   src: local("Nunito"),
-   url("./assets/fonts/Nunito-Regular.ttf") format("truetype");
+    url("./assets/fonts/Nunito-Regular.ttf") format("truetype");
 }
 @font-face {
   font-family: "NunitoSemi";
   src: local("NunitoSemi"),
-   url("./assets/fonts/Nunito-SemiBold.ttf") format("truetype");
+    url("./assets/fonts/Nunito-SemiBold.ttf") format("truetype");
 }
 @font-face {
   font-family: "NunitoMedium";
   src: local("NunitoMedium"),
-   url("./assets/fonts/Nunito-Medium.ttf") format("truetype");
+    url("./assets/fonts/Nunito-Medium.ttf") format("truetype");
 }
 @font-face {
   font-family: "NunitoBold";
   src: local("NunitoBold"),
-   url("./assets/fonts/Nunito-Bold.ttf") format("truetype");
+    url("./assets/fonts/Nunito-Bold.ttf") format("truetype");
 }
 @font-face {
   font-family: "NunitoExtra";
   src: local("NunitoExtra"),
-   url("./assets/fonts/Nunito-ExtraBold.ttf") format("truetype");
+    url("./assets/fonts/Nunito-ExtraBold.ttf") format("truetype");
 }
 @font-face {
   font-family: "DMserif";
-  src: local("DMserif"),
-   url("./assets/fonts/DMserif.ttf") format("truetype");
-  
- }
-
+  src: local("DMserif"), url("./assets/fonts/DMserif.ttf") format("truetype");
+}
 
 /* Add this to your styles or Tailwind CSS configuration */
 .overlay::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to right, rgba(6,49,58, 0.9), rgba(6,49,58, 0.4)); /* Adjust the alpha value for the desired darkness */
-  }
-  .nunito {
-    font-family: "Nunito";
-  }
-  .nunitoMedium {
-    font-family: "NunitoMedium";
-  }
-  .nunitoSemi {
-    font-family: "NunitoSemi";
-  } 
-  .nunitoBold {
-    font-family: "NunitoBold";
-  }
-  .nunitoExtra {
-    font-family: "NunitoExtra";
-  }
-  .dmSerif {
-    font-family: "DMserif";
-  }
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(6, 49, 58, 0.9),
+    rgba(6, 49, 58, 0.4)
+  ); /* Adjust the alpha value for the desired darkness */
+}
+.nunito {
+  font-family: "Nunito";
+}
+.nunitoMedium {
+  font-family: "NunitoMedium";
+}
+.nunitoSemi {
+  font-family: "NunitoSemi";
+}
+.nunitoBold {
+  font-family: "NunitoBold";
+}
+.nunitoExtra {
+  font-family: "NunitoExtra";
+}
+.dmSerif {
+  font-family: "DMserif";
+}
 /* .navbar{
   display:flex;
   justify-content:center;
@@ -74,165 +74,68 @@
   
 } */
 
-  .signbut {
-    background-color:#1a81c5;
-    box-shadow: 0 3px 5px 0 rgba(90, 39, 179, 0.3);
-    border-radius: 5px 5px 5px 0px;
-    font-weight: 500;
-    letter-spacing: 1px;
-    border: 1px solid #1a81c5;
+.signbut {
+  background-color: #1a81c5;
+  box-shadow: 0 3px 5px 0 rgba(90, 39, 179, 0.3);
+  border-radius: 5px 5px 5px 0px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  border: 1px solid #1a81c5;
+}
+.signbut:hover {
+  background-color: #423c8c;
+  border: 1px solid #1a81c5;
+}
+p.nunito:hover {
+  color: #0056b3;
+}
 
-  }
-  .signbut:hover {
-    background-color: #423c8c;
-    border: 1px solid #1a81c5;
-  }
-  p.nunito:hover{
-    color: #0056b3;
-  }
-
-  .carouselContent{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: start;
-    width:40%;
-    margin-left:200px;
-  
-  }
-  .carouselHeader{
-font-size: 51px;
-font-weight: 300;
-margin-bottom:8px;
-padding-bottom: 19px;
-line-height:1.2;
-color:#fff
-
-
-  }
-  .carouselBody{
-margin-bottom:16px;
-padding-bottom: 35px;
-font-size: 21px;
-text-align:left;
-color:#fff
-
-  }
-  .carouselButton{
-    background-color:#1a81c5;
-    box-shadow: 0 3px 5px 0 rgba(90, 39, 179, 0.3);
-    border-radius: 5px 5px 5px 0px;
-    font-weight: 500;
-    letter-spacing: 1px;
-    border: 1px solid #1a81c5;
-  }
-  .carouselButton:hover{
-    background-color: #423c8c;
-    border: 1px solid #1a81c5;
-  }
- 
-
-@media only screen and (max-width: 600px) {
- 
-.carouselContent{
+.carouselContent {
   display: flex;
   flex-direction: column;
-    justify-content: center;
-  align-items: center;
-  width:80%;
-  margin:auto;
-  
-
+  justify-content: center;
+  align-items: start;
+  width: 40%;
+  margin-left: 200px;
 }
-.carouselHeader{
-font-size: 32px;
-font-weight: 300;
-margin-bottom:8px;
-padding-bottom: 10px;
-line-height:1.2;
-color:#fff;
-text-align:center
-
-}
-.carouselBody{
-margin-bottom:8px;
-padding-bottom: 20px;
-font-size: 16px;
-text-align:center;
-color:#fff
-
-}
- }
-
- @media  screen and (min-width: 601px) {
- 
-  .carouselContent{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: start;
-    width:60%;
-    margin-left:100px;
-  
-  }
-  .carouselHeader{
-font-size: 42px;
-font-weight: 300;
-margin-bottom:8px;
-padding-bottom: 15px;
-line-height:1.2;
-color:#fff
-
-
-  }
-  .carouselBody{
-margin-bottom:13px;
-padding-bottom: 30px;
-font-size: 18px;
-text-align:left;
-color:#fff
-
-  }
-   }
-   @media  screen and (min-width: 950px) {
- 
-    .carouselContent{
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: start;
-      width:40%;
-      margin-left:200px;
-    
-    }
-    .carouselHeader{
-  font-size: 42px;
+.carouselHeader {
+  font-size: 51px;
   font-weight: 300;
-  margin-bottom:8px;
-  padding-bottom: 15px;
-  line-height:1.2;
-  color:#fff
-  
-  
-    }
-    .carouselBody{
-  margin-bottom:16px;
-  padding-bottom: 39px;
+  margin-bottom: 8px;
+  padding-bottom: 19px;
+  line-height: 1.2;
+  color: #fff;
+}
+.carouselBody {
+  margin-bottom: 16px;
+  padding-bottom: 35px;
   font-size: 21px;
-  text-align:left;
-  color:#fff
-  
-    }
-     }
+  text-align: left;
+  color: #fff;
+}
+.carouselButton {
+  background-color: #1a81c5;
+  box-shadow: 0 3px 5px 0 rgba(90, 39, 179, 0.3);
+  border-radius: 5px 5px 5px 0px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  border: 1px solid #1a81c5;
+}
+.carouselButton:hover {
+  background-color: #423c8c;
+  border: 1px solid #1a81c5;
+}
 
-
-     /* Navbar.css */
+.mobileSign {
+  display: none;
+}
+/* Navbar.css */
 .navbar {
-  display:flex;
-  justify-content:center;
-  align-Items:center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: transparent;
-  
+
   transition: background-color 0.3s ease;
   position: fixed;
   width: 100%;
@@ -244,14 +147,12 @@ color:#fff
 }
 
 .navbar-container {
-
-  flex-direction:row;
-  width:80%;
-  justify-content:space-between;
+  flex-direction: row;
+  width: 80%;
+  justify-content: space-between;
   display: flex;
   align-items: center;
 }
-
 
 /* .nav-links li {
   margin-right: 20px;
@@ -269,13 +170,13 @@ color:#fff
   margin: 0;
   padding: 0;
 }
-.linking{
-  margin-right: 30px ;
+.linking {
+  margin-right: 30px;
 }
 
 .scrolled .linking {
   color: #3c4858;
-  font-weight:500
+  font-weight: 500;
 }
 
 .mobile-menu-icon {
@@ -304,6 +205,85 @@ color:#fff
   transform: rotate(45deg) translate(-10px, -11px);
 }
 
+
+@media only screen and (max-width: 600px) {
+  .carouselContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    margin: auto;
+  }
+  .carouselHeader {
+    font-size: 32px;
+    font-weight: 300;
+    margin-bottom: 8px;
+    padding-bottom: 10px;
+    line-height: 1.2;
+    color: #fff;
+    text-align: center;
+  }
+  .carouselBody {
+    margin-bottom: 8px;
+    padding-bottom: 20px;
+    font-size: 16px;
+    text-align: center;
+    color: #fff;
+  }
+}
+
+@media screen and (min-width: 601px) {
+  .carouselContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    width: 60%;
+    margin-left: 100px;
+  }
+  .carouselHeader {
+    font-size: 42px;
+    font-weight: 300;
+    margin-bottom: 8px;
+    padding-bottom: 15px;
+    line-height: 1.2;
+    color: #fff;
+  }
+  .carouselBody {
+    margin-bottom: 13px;
+    padding-bottom: 30px;
+    font-size: 18px;
+    text-align: left;
+    color: #fff;
+  }
+}
+@media screen and (min-width: 950px) {
+  .carouselContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    width: 40%;
+    margin-left: 200px;
+  }
+  .carouselHeader {
+    font-size: 42px;
+    font-weight: 300;
+    margin-bottom: 8px;
+    padding-bottom: 15px;
+    line-height: 1.2;
+    color: #fff;
+  }
+  .carouselBody {
+    margin-bottom: 16px;
+    padding-bottom: 39px;
+    font-size: 21px;
+    text-align: left;
+    color: #fff;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .nav-links {
     opacity: 0;
@@ -317,7 +297,8 @@ color:#fff
     background-color: #333; /* Change this to your desired background color for mobile */
     z-index: 999;
     transform: translateY(-100%);
-    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, transform 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out,
+      transform 0.3s ease-in-out;
   }
 
   .nav-links.show-mobile {
@@ -325,9 +306,33 @@ color:#fff
     visibility: visible;
     transform: translateY(0);
   }
- 
+
   .mobile-menu-icon {
     display: flex;
   }
-  
+  .mobileSign {
+    
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:center;
+
+  }
+  .deskSign {
+    display: none;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 844px) {
+  .navbar-container {
+    width: 85%;
+  }
+  .deskSign {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .signbut {
+    width: 90px;
+  }
 }

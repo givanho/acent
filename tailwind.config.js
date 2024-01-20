@@ -8,6 +8,7 @@ module.exports = withMT({
         
         'comforter' : ['comforter', 'sans-serif'],
       },
+      
      },
   },
   plugins: [],

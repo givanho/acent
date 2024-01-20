@@ -36,7 +36,7 @@ export default function RootLayout() {
       <header  >
       <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
     <div className="navbar-container">
-    <div className="logo">
+    <div className="logo mr-4">
                 {/* link to home */}
                 <Link to="/" className="-m-1.5 p-1.5">
                   <img
@@ -88,7 +88,7 @@ export default function RootLayout() {
         <div className="bar"></div>
       </div>
 
-      <div className='deskSign hidden sm:block'>
+      <div className='deskSign'>
 <button className=" px-4 py-2.5  text-white nunito  signbut mr-4"  >
     logIn
 </button>
@@ -96,9 +96,9 @@ export default function RootLayout() {
     Get Started
 </button>
     </div> 
-<div>
-<FaUser />
-<IoDiamond />
+<div className='mobileSign'>
+<FaUser color='#1a81c5' size={32} style={{marginInline:32}}/>
+<IoDiamond color='#1a81c5' size={32}/>
 </div>
 
     </div>
