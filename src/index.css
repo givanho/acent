@@ -234,8 +234,31 @@ p.linking:hover {
 .section-wrapper{
   padding-block:90px
 }
+.third-section-wrapper{
+  width:80%
+}
+.third-section-text{
+  width:35%
+}
+.third-section-text-crumb{
+  font-size:15px;
+  font-weight:700;
+  color:#161C2D;
+  width:95%;
+  margin-bottom:12px
 
+}
+.third-section-text-content{
+  font-size:24px;
+  font-weight:500;
+  color:#161C2D;
+  width:95%;
+  margin-bottom:32px
 
+}
+.third-section-image{
+  width:65%
+}
 @media only screen and (max-width: 600px) {
   .carouselContent {
     display: flex;
@@ -372,6 +395,19 @@ p.linking:hover {
     width:80%
 
    }
+   .third-section-wrapper{
+    display:flex;
+    flex-direction:column;
+   }
+   .third-section-text{
+    width:80%
+
+   }
+   .third-section-image{
+    width:80%;
+    margin-top:5px;
+
+   }
 }
 @media screen and (min-width: 769px) and (max-width: 844px) {
   .navbar-container {
@@ -391,6 +427,13 @@ p.linking:hover {
     font-size:32px
   }
   .section-text-content{
+    font-size:15px
+  }
+  .third-section-text-crumb{
+    font-size:14px;
+    font-weight:700
+  }
+  .third-section-text-content{
     font-size:15px
   }
 }

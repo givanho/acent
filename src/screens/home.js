@@ -6,6 +6,7 @@ import firstSlide from '../assets/carousel1.jpg'
 import secondSlide from '../assets/carousel2.jpg'
 import thirdSlide from '../assets/carousel3.jpg'
 import surfer from '../assets/surfer.png'
+import negotiation from '../assets/negotiation.jpg'
 
 
 const Home = () => {
@@ -180,7 +181,36 @@ with our Gold and Silver IRA, Real estate and Algo Trade Limited.
 <Gold />
 
 {/* third section */}
-<div></div>
+<div className='third-section w-full flex  items-center justify-center ' style={{backgroundColor:"#fff", height:"100%"}}>
+<div className='third-section-wrapper flex   items-center justify-center'>
+<div className='third-section-text
+ '>
+<p className='third-section-text-crumb nunito'>
+ASCENT INVESTMENTS: Integrating AI for the best Investment and Trading 
+Experience
+</p>
+
+<p className='third-section-text-content nunito'>
+Ascent Investments Limited leverages cutting-edge AI technology to provide a 
+seamless investment and trading experience. Advanced algorithms analyze data in real-time, 
+optimizing trading strategies for non-digital and digital assets, Gold and Silver IRA, 
+Real Estate, Stocks, Crypto, and forex. 
+Invest with confidence with Ascent Investments' AI-powered platform.
+
+</p>
+<button className='carouselButton nunito text-white px-4 py-4 '>
+     Explore
+     </button>
+</div>
+<div className='third-section-image '>
+<img className='w-full'
+        src={negotiation} alt="negotiation"
+        
+      />
+
+</div>
+</div>
+</div>
 
 </div>
     
