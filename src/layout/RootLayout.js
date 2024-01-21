@@ -1,6 +1,5 @@
 import {  useState, useEffect } from 'react'
 import { Outlet, NavLink, Link } from "react-router-dom";
-import { IoDiamond } from "react-icons/io5";
 import { FaUser } from "react-icons/fa6";
 import Lottie from "lottie-react";
 import logo from "../assets/logo.png";

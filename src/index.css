@@ -235,7 +235,9 @@ p.linking:hover {
   padding-block:90px
 }
 .third-section-wrapper{
-  width:80%
+  width:80%;
+  display:flex;
+  justify-content:space-between
 }
 .third-section-text{
   width:35%
@@ -258,6 +260,48 @@ p.linking:hover {
 }
 .third-section-image{
   width:65%
+}
+
+.fourth-section-wrapper{
+  width:80%;
+  display:flex;
+  flex-wrap: wrap;
+  justify-content:space-between
+}
+.fourth-section-div{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  width:47%
+}
+.fourth-section-image{
+  background-color:#ece9ff;
+  border:1px solid #ccdcfc;
+  border-radius: 6px 6px 6px 0;
+  box-shadow: 0 0 3px rgba(60, 72, 88, 0.15);
+}
+.fourth-section-header{
+  font-size:20px;
+  font-weight:600;
+  line-height:30px;
+  color:#3c4858;
+  padding-block:24px;
+  text-align:center
+}
+.fourth-section-text-content{
+  font-size:16px;
+  color:#8492ac;
+  line-height:25px;
+  text-align:center
+}
+.fourth-section-subject{
+  font-size:36px;
+  font-weight:700;
+  margin-bottom:100px
+}
+.fourth-section-inner{
+
 }
 @media only screen and (max-width: 600px) {
   .carouselContent {
@@ -400,14 +444,31 @@ p.linking:hover {
     flex-direction:column;
    }
    .third-section-text{
-    width:80%
+    width:100%
 
    }
    .third-section-image{
-    width:80%;
-    margin-top:5px;
+    width:100%;
+    margin-top:15px;
 
    }
+   .fourth-section-wrapper{
+    width:100%;
+    
+    flex-direction:column;
+    justify-content:space-between
+  }
+  .fourth-section-text-content{
+    width:100%;
+
+  }
+  .fourth-section-subject{
+    font-size:28px;
+    margin-bottom:70px
+  }
+  .fourth-section-div{
+    width:80%
+  }
 }
 @media screen and (min-width: 769px) and (max-width: 844px) {
   .navbar-container {
