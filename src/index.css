@@ -301,11 +301,11 @@ p.linking:hover {
 .fourth-section-subject{
   font-size:36px;
   font-weight:700;
-  margin-bottom:100px
-}
-.fourth-section-inner{
+  margin-bottom:100px;
+  color:#161c2d
 
 }
+
 
 .fifth-section-wrapper{
   width:80%
@@ -314,55 +314,153 @@ p.linking:hover {
   width:100%;
  
 }
-.second-section-image{
-  width:33%;
+
+.fifth-section-subject{
+  font-size:36px;
+  font-weight:700;
+  color:#161c2d
+}
+.mission-text{
+  font-size:18px;
+  font-weight:500;
+  padding-block:20px;
+  line-height:29px;
+  color:#8492ac;
+  width:80%;
+  text-align:center;
+}
+.fifth-section-header{
+  font-size:18px;
+  font-weight:600;
+  line-height:27px;
+  color:#161c2d;
+  margin-bottom:10px
+}
+.fifth-section-text-content{
+  font-size:16px;
+  font-weight:500;
+  line-height:25.6px;
+  color:#8492ac
 
 }
 .card-double{
   display:flex;
-  justify-content:start;
+  justify-content:center;
   align-items:start;
-  width:66%;
+  width:70%;
+  margin-top:50px
+  
 }
 .fifth-section-sc{
   display:flex;
   align-items:start;
-  justify-content:start;
+  justify-content:center;
+  width:100%;
+  margin-bottom:80px;
+  
 }
 .fifth-section-content{
   text-align:left;
   display:flex;
   flex-direction:column;
   align-items:start;
+  width:100%;
+  margin-left:15px
+}
+.fifth-section-image{
+  width:30%
+}
+.icon-box{
+  border-radius: 50px 50px 50px 0px;
+  padding:15px;
+  background-color:#ece9ff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
-@media only screen and (max-width: 600px) {
-  .carouselContent {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 80%;
-    margin: auto;
-  }
-  .carouselHeader {
-    font-size: 32px;
-    font-weight: 300;
-    margin-bottom: 8px;
-    padding-bottom: 10px;
-    line-height: 1.2;
-    color: #fff;
-    text-align: center;
-  }
-  .carouselBody {
-    margin-bottom: 8px;
-    padding-bottom: 20px;
-    font-size: 16px;
-    text-align: center;
-    color: #fff;
-  }
-  
+
+
+.sixth-section-wrapper{
+  display:flex;
+  flex-direction:row;
+  justify-content:space-between;
+  width:80%;
+  align-items:start
+
 }
+.sixth-section-div{
+  width:31%;
+  display:flex;
+  flex-direction:column;
+  justify-content:start;
+  align-items:start;
+  margin-bottom:15px
+
+}
+.sixth-section-subject{
+  font-size:30px;
+  font-weight:700;
+  margin-bottom:100px;
+  color:#161c2d
+
+}
+
+.sixth-section-header{
+  font-size:24px;
+  font-weight:600;
+  color:#161c2d;
+  line-height:20px;
+  margin-block:15px
+}
+.sixth-section-text-content{
+  font-size:16px;
+  color:#161c2d;
+  line-height:25.6px;
+}
+.seventh-wrapper{
+  padding-block:90px;
+  width:80%;
+  display:flex;
+  justify-content:center;
+  align-itmes:center;
+}
+
+
+.seventh-section-image{
+  width:40%
+}
+
+.seventh-section-text{
+  width:40%;
+  text-align:left;
+margin-left:80px
+}
+.seventh-section-header{
+  font-size:36px;
+  color:#1a81c5;
+  font-weight:700;
+  line-height:54px;
+  margin-bottom:20px
+}
+.seventh-text{
+  font-size:16px;
+  color:#8492a6;
+  line-height:25.6px
+}
+.seventh-link{
+  font-size:16px;
+  color:#1a81c5;
+  font-weight:600;
+  text-decoration:underline;
+  margin-top:10px
+
+}
+
+
+
+
+
 
 @media screen and (min-width: 601px) {
   .carouselContent {
@@ -500,9 +598,169 @@ p.linking:hover {
     margin-bottom:70px
   }
   .fourth-section-div{
+    width:80%;
+    margin-bottom:20px
+  }
+  .card-double{
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:start;
+    width:100%;
+    margin-top:50px
+    
+  }
+  .fifth-section-wrapper{
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+    width:80%;
+    
+  }
+  .fifth-section-subject{
+    margin-top:-70px
+
+  }
+  .fifth-section-image{
     width:80%
   }
+  .sixth-section-wrapper{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    width:80%;
+    align-items:start
+  
+  }
+  .sixth-section-div{
+    width:100%;
+    margin-bottom:35px
+  }
+  .seventh-wrapper{
+    width:80%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-itmes:center;
+  }
+  .seventh-section-image{
+    width:100%
+  }
+  .seventh-section-text{
+    width:100%
+
+  }
+  .seventh-section-header{
+    font-size:26px;
+    margin-top:10px
+
+  }
 }
+
+@media only screen and (max-width: 600px) {
+  .carouselContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    margin: auto;
+  }
+  .carouselHeader {
+    font-size: 32px;
+    font-weight: 300;
+    margin-bottom: 8px;
+    padding-bottom: 10px;
+    line-height: 1.2;
+    color: #fff;
+    text-align: center;
+  }
+  .carouselBody {
+    margin-bottom: 8px;
+    padding-bottom: 20px;
+    font-size: 16px;
+    text-align: center;
+    color: #fff;
+  }
+  .second-section-text{
+    width:90%
+
+   }
+   .second-section-image{
+    width:90%
+
+   }
+   .third-section-wrapper{
+    width:90%;
+
+   }
+   
+   .third-section-image{
+    width:100%;
+    margin-top:15px;
+
+   }
+   .fourth-section-wrapper{
+    width:100%;
+    
+    flex-direction:column;
+    justify-content:space-between
+  }
+  .fourth-section-text-content{
+    width:100%;
+
+  }
+  
+  .fourth-section-div{
+    width:90%
+  }
+  .card-double{
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:start;
+    width:100%;
+    margin-top:50px
+    
+  }
+  .fifth-section-wrapper{
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+    width:90% !important;
+    
+  }
+  .sixth-section-wrapper{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    width:90%;
+    align-items:start
+  
+  }
+  .seventh-wrapper{
+    width:90%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-itmes:center;
+  }
+  .seventh-section-image{
+    width:100%
+  }
+  .seventh-section-text{
+    width:100%
+
+  }
+  .seventh-section-header{
+    font-size:24px;
+    margin-top:10px
+  }
+ 
+}
+
 @media screen and (min-width: 769px) and (max-width: 844px) {
   .navbar-container {
     width: 85%;
@@ -531,3 +789,4 @@ p.linking:hover {
     font-size:15px
   }
 }
+

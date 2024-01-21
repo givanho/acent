@@ -7,7 +7,14 @@ import secondSlide from '../assets/carousel2.jpg'
 import thirdSlide from '../assets/carousel3.jpg'
 import surfer from '../assets/surfer.png'
 import negotiation from '../assets/negotiation.jpg'
+import product1 from '../assets/product1.jpg'
+import product2 from '../assets/product2.jpg'
+import product3 from '../assets/product3.jpg'
+import product4 from '../assets/product4.jpg'
+import product5 from '../assets/product5.jpg'
+import product6 from '../assets/product6.jpg'
 import trader from '../assets/trader.png'
+import cert from '../assets/cert.jpg'
 import key from '../assets/key.png'
 import { FiActivity, FiCreditCard, FiZap, FiShield, FiMessageCircle } from "react-icons/fi";
 
@@ -262,84 +269,75 @@ to securely protect you from unauthorised access and impersonation.
 
 <div className='fifth-section w-full flex flex-col items-center justify-center ' style={{backgroundColor:"#fff", height:"100%"}}>
 <div className="section-wrapper flex flex-col items-center justify-center">
-<h1 className='nunito fifth-section-subject'> Security Comes first</h1>
-<p className='mission-text'>It’s our mission to provide you with a delightful and a successful trading experience!</p>
+<h1 className='nunito fifth-section-subject nunito'> Explore Our Services</h1>
+<p className='mission-text nunito'>It’s our mission to provide you with a delightful and a successful trading experience!</p>
 <div className='fifth-section-wrapper flex  items-center justify-center'>
   <div className="card-double">
 <div className='fifth-section-div'>
   <div className='fifth-section-sc'>
-<div>
-<FiActivity color='#1a81c5'/>
+<div className='icon-box'>
+<FiActivity color='#1a81c5' size={20}/>
 </div>
 <div className="fifth-section-content">
-<h2 className='fifth-section-header nunito' > Security</h2>
+<h2 className='fifth-section-header nunito' > Risk Management</h2>
 <p className='fifth-section-text-content nunito'>
-Ascent Investment Limited uses the highest levels of Internet Security, 
-and it is secured by 
-256 bits SSL security encryption to ensure that your 
-information is completely protected from fraud.
+We are outstanding when it 
+comes to managing risk in order to capitalize on opportunities 
+and improve our performance.
 </p>
 </div>
   </div>
 
   <div className='fifth-section-sc'>
-<div>
-<FiActivity color='#1a81c5'/>
+<div  className='icon-box'>
+<FiZap   color='#1a81c5' size={20}/>
 </div>
-<div>
-<h2 className='fourth-section-header nunito' > Security</h2>
-<p className='fourth-section-text-content nunito'>
-Ascent Investment Limited uses the highest levels of Internet Security, 
-and it is secured by 
-256 bits SSL security encryption to ensure that your 
-information is completely protected from fraud.
+<div className="fifth-section-content">
+<h2 className='fifth-section-header nunito' > Fast execution</h2>
+<p className='fifth-section-text-content nunito'>
+Super-fast trading software, so you never suffer slippage.
 </p>
 </div>
   </div>
 
   <div className='fifth-section-sc'>
-<div>
-<FiActivity color='#1a81c5'/>
+<div className='icon-box'>
+<FiMessageCircle  color='#1a81c5' size={20}/>
 </div>
-<div>
-<h2 className='fourth-section-header nunito' > Security</h2>
-<p className='fourth-section-text-content nunito'>
-Ascent Investment Limited uses the highest levels of Internet Security, 
-and it is secured by 
-256 bits SSL security encryption to ensure that your 
-information is completely protected from fraud.
+<div className="fifth-section-content">
+<h2 className='fifth-section-header nunito' > 24/7 live chat Support</h2>
+<p className='fifth-section-text-content nunito'>
+We have a dedicated team of support staff who are 
+always online and available to answer to your 
+requests and attend to all your issues.
 </p>
 </div>
   </div>
 
 </div>
 <div className='fifth-section-div'>
-  <div className='fifth-section-sc items-left'>
-<div>
-<FiActivity color='#1a81c5'/>
+  <div className='fifth-section-sc '>
+<div className='icon-box'>
+<FiCreditCard color='#1a81c5' size={20}/> 
 </div>
-<div className="fifth-section-content">
-<h2 className='fifth-section-header nunito' > Security</h2>
+<div className="fifth-section-content ">
+<h2 className='fifth-section-header nunito' > High leverage</h2>
 <p className='fifth-section-text-content nunito'>
-Ascent Investment Limited uses the highest levels of Internet Security, 
-and it is secured by 
-256 bits SSL security encryption to ensure that your 
-information is completely protected from fraud.
+Chance to magnify your investment and really win 
+big with super-low spreads to further up your profits
 </p>
 </div>
   </div>
 
-  <div className='fifth-section-sc'>
-<div>
-<FiActivity color='#1a81c5'/>
+  <div className='fifth-section-sc '>
+<div className='icon-box'>
+<FiShield color='#1a81c5' size={20}/>
 </div>
 <div className="fifth-section-content">
-<h2 className='fifth-section-header nunito' > Security</h2>
+<h2 className='fifth-section-header nunito' > Ultimate Security</h2>
 <p className='fifth-section-text-content nunito'>
-Ascent Investment Limited uses the highest levels of Internet Security, 
-and it is secured by 
-256 bits SSL security encryption to ensure that your 
-information is completely protected from fraud.
+Strict measures has been put in place to ensure that clients' 
+funds, assets and information are completely safe and fully secured.
 </p>
 </div>
   </div>
@@ -348,7 +346,7 @@ information is completely protected from fraud.
 
 </div>
 </div>
-<div className='second-section-image '>
+<div className='fifth-section-image '>
 <img className='w-full'
         src={trader} alt="trader"
         
@@ -358,6 +356,221 @@ information is completely protected from fraud.
 </div>
 </div>
 </div>
+
+{/* sixth section?\ */}
+
+<div className='sixth-section w-full flex flex-col items-center justify-center ' style={{backgroundColor:"#fff", height:"100%"}}>
+<div className="section-wrapper flex flex-col items-center justify-center">
+<h1 className='nunito sixth-section-subject'> Investment Products</h1>
+
+<div className='sixth-section-wrapper flex  flex-wrap items-center justify-center'>
+
+
+<div className='sixth-section-div'>
+
+<div className='sixth-section-image'>
+<img
+      src={product1} alt="key"
+    />
+</div>
+<h2 className='sixth-section-header nunito' > Cryptocurrencies</h2>
+<p className='sixth-section-text-content nunito'>
+Cryptocurrencies are the fastest growing assets in the financial space today, 
+and we have devised strategies to successfully trade them.
+</p>
+
+</div>
+
+<div className='sixth-section-div'>
+
+<div className='sixth-section-image'>
+<img
+      src={product2} alt="key"
+    />
+</div>
+<h2 className='sixth-section-header nunito' > Forex</h2>
+<p className='sixth-section-text-content nunito'>
+Our Forex pairs are carefully selected in a way that balances an 
+active portfolio for steady profits and lower risks for our investors.
+</p>
+
+</div>
+
+<div className='sixth-section-div'>
+
+<div className='sixth-section-image'>
+<img
+      src={product3} alt="key"
+    />
+</div>
+<h2 className='sixth-section-header nunito' > Industry ETFs</h2>
+<p className='sixth-section-text-content nunito'>
+
+Through Industry ETFs, investors 
+access the stocks and securities of specific industry sectors, 
+such as energy, biotechnology, or chemicals.
+</p>
+
+</div>
+
+<div className='sixth-section-div'>
+
+<div className='sixth-section-image'>
+<img
+      src={product4} alt="key"
+    />
+</div>
+<h2 className='sixth-section-header nunito' > Gold</h2>
+<p className='sixth-section-text-content nunito'>
+Commonly seen as a great store of wealth, this precious metal is also known as a reliable 
+safe-haven asset. Gold remains a highly popular investment.
+</p>
+
+</div>
+
+<div className='sixth-section-div'>
+
+<div className='sixth-section-image'>
+<img
+      src={product5} alt="key"
+    />
+</div>
+<h2 className='sixth-section-header nunito' > Binary Options</h2>
+<p className='sixth-section-text-content nunito'>
+Binary options give our investors the opportunity, but not the obligation, 
+to buy or sell an underlying asset at an agreed-upon price and date.
+</p>
+
+</div>
+
+<div className='sixth-section-div'>
+
+<div className='sixth-section-image'>
+<img
+      src={product6} alt="key"
+    />
+</div>
+<h2 className='sixth-section-header nunito' > Real Estate</h2>
+<p className='sixth-section-text-content nunito'>
+Real estate investment involves the purchase, ownership, management, 
+rental and/or sale of real estate for profit.
+</p>
+
+</div>
+
+
+</div>
+</div>
+</div>
+
+{/* seventh section */}
+
+<div className='seventh-section w-full flex   items-center justify-center ' style={{backgroundColor:"#ece9ff", height:"100%"}}>
+<div className='seventh-wrapper flex items-center justify-center'>
+
+<div className='seventh-section-image '>
+<img className='w-full h-full'
+        src={cert} alt="cert"
+        
+      />
+
+</div>
+<div className='seventh-section-text
+ '>
+<h1 className="seventh-section-header nunito">
+Our White Paper
+</h1>
+<p className="seventh-text nunito">
+Ascent Investment Limited is fully Licensed and registered
+</p>
+<p className="seventh-link nunito">
+Find Out More 
+</p>
+</div>
+</div>
+</div>
+
+{/* eight section */}
+<div className='eight-section w-full flex flex-col items-center justify-center ' style={{backgroundColor:"#fff", height:"100%"}}>
+<div className="section-wrapper flex flex-col items-center justify-center">
+<h1 className='nunito eight-section-subject'> Our Investment Packages</h1>
+<p className='nunito eight-section-tagline'> Choose how you want to invest with us</p>
+
+<div className='eight-card flex  flex-wrap items-center justify-center'>
+
+<div className='eight-section-div'>
+<div className="eight-header-wrapper">
+<h2 className="eight-card-header nunito">
+  BASIC BEGINER
+</h2>
+</div>
+
+<h1 className="eight-price nunito"> $ 500 </h1>
+<p className="eight-month nunito"> </p>
+
+<p className="eight-content nunito"> Min. Possible deposit: $500</p>
+<p className="eight-content nunito"> Max. Possible deposit: $5000</p>
+<p className="eight-content nunito"> 2% Minimum return</p>
+<p className="eight-content nunito"> 3% Maximum return</p>
+
+<button className=" px-4 py-2.5  text-white nunito  signbut mr-4"  >
+    Buy Now
+</button>
+
+</div>
+
+<div className='eight-section-div'>
+<div className="eight-header-wrapper">
+<h2 className="eight-card-header nunito">
+  BASIC BEGINER
+</h2>
+</div>
+
+<h1 className="eight-price nunito"> $ 500 </h1>
+<p className="eight-month nunito"> </p>
+
+<p className="eight-content nunito"> Min. Possible deposit: $500</p>
+<p className="eight-content nunito"> Max. Possible deposit: $5000</p>
+<p className="eight-content nunito"> 2% Minimum return</p>
+<p className="eight-content nunito"> 3% Maximum return</p>
+
+<button className=" px-4 py-2.5  text-white nunito  signbut mr-4"  >
+    Buy Now
+</button>
+
+</div>
+
+<div className='eight-section-div'>
+<div className="eight-header-wrapper">
+<h2 className="eight-card-header nunito">
+  BASIC BEGINER
+</h2>
+</div>
+
+<h1 className="eight-price nunito"> $ 500 </h1>
+<p className="eight-month nunito"> </p>
+
+<p className="eight-content nunito"> Min. Possible deposit: $500</p>
+<p className="eight-content nunito"> Max. Possible deposit: $5000</p>
+<p className="eight-content nunito"> 2% Minimum return</p>
+<p className="eight-content nunito"> 3% Maximum return</p>
+
+<button className=" px-4 py-2.5  text-white nunito  signbut mr-4"  >
+    Buy Now
+</button>
+
+</div>
+
+
+
+
+
+</div>
+</div>
+</div>
+
+
+
 </div>
     
   )
