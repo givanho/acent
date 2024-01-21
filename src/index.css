@@ -262,6 +262,9 @@ p.linking:hover {
   width:65%
 }
 
+
+
+
 .fourth-section-wrapper{
   width:80%;
   display:flex;
@@ -303,6 +306,36 @@ p.linking:hover {
 .fourth-section-inner{
 
 }
+
+.fifth-section-wrapper{
+  width:80%
+}
+.fifth-section-div{
+  width:100%;
+ 
+}
+.second-section-image{
+  width:33%;
+
+}
+.card-double{
+  display:flex;
+  justify-content:start;
+  align-items:start;
+  width:66%;
+}
+.fifth-section-sc{
+  display:flex;
+  align-items:start;
+  justify-content:start;
+}
+.fifth-section-content{
+  text-align:left;
+  display:flex;
+  flex-direction:column;
+  align-items:start;
+}
+
 @media only screen and (max-width: 600px) {
   .carouselContent {
     display: flex;

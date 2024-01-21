@@ -7,8 +7,9 @@ import secondSlide from '../assets/carousel2.jpg'
 import thirdSlide from '../assets/carousel3.jpg'
 import surfer from '../assets/surfer.png'
 import negotiation from '../assets/negotiation.jpg'
+import trader from '../assets/trader.png'
 import key from '../assets/key.png'
-
+import { FiActivity, FiCreditCard, FiZap, FiShield, FiMessageCircle } from "react-icons/fi";
 
 const Home = () => {
     
@@ -257,9 +258,106 @@ to securely protect you from unauthorised access and impersonation.
 </div>
 </div>
 
+{/* fifth section */}
 
+<div className='fifth-section w-full flex flex-col items-center justify-center ' style={{backgroundColor:"#fff", height:"100%"}}>
+<div className="section-wrapper flex flex-col items-center justify-center">
+<h1 className='nunito fifth-section-subject'> Security Comes first</h1>
+<p className='mission-text'>It’s our mission to provide you with a delightful and a successful trading experience!</p>
+<div className='fifth-section-wrapper flex  items-center justify-center'>
+  <div className="card-double">
+<div className='fifth-section-div'>
+  <div className='fifth-section-sc'>
+<div>
+<FiActivity color='#1a81c5'/>
+</div>
+<div className="fifth-section-content">
+<h2 className='fifth-section-header nunito' > Security</h2>
+<p className='fifth-section-text-content nunito'>
+Ascent Investment Limited uses the highest levels of Internet Security, 
+and it is secured by 
+256 bits SSL security encryption to ensure that your 
+information is completely protected from fraud.
+</p>
+</div>
+  </div>
 
+  <div className='fifth-section-sc'>
+<div>
+<FiActivity color='#1a81c5'/>
+</div>
+<div>
+<h2 className='fourth-section-header nunito' > Security</h2>
+<p className='fourth-section-text-content nunito'>
+Ascent Investment Limited uses the highest levels of Internet Security, 
+and it is secured by 
+256 bits SSL security encryption to ensure that your 
+information is completely protected from fraud.
+</p>
+</div>
+  </div>
 
+  <div className='fifth-section-sc'>
+<div>
+<FiActivity color='#1a81c5'/>
+</div>
+<div>
+<h2 className='fourth-section-header nunito' > Security</h2>
+<p className='fourth-section-text-content nunito'>
+Ascent Investment Limited uses the highest levels of Internet Security, 
+and it is secured by 
+256 bits SSL security encryption to ensure that your 
+information is completely protected from fraud.
+</p>
+</div>
+  </div>
+
+</div>
+<div className='fifth-section-div'>
+  <div className='fifth-section-sc items-left'>
+<div>
+<FiActivity color='#1a81c5'/>
+</div>
+<div className="fifth-section-content">
+<h2 className='fifth-section-header nunito' > Security</h2>
+<p className='fifth-section-text-content nunito'>
+Ascent Investment Limited uses the highest levels of Internet Security, 
+and it is secured by 
+256 bits SSL security encryption to ensure that your 
+information is completely protected from fraud.
+</p>
+</div>
+  </div>
+
+  <div className='fifth-section-sc'>
+<div>
+<FiActivity color='#1a81c5'/>
+</div>
+<div className="fifth-section-content">
+<h2 className='fifth-section-header nunito' > Security</h2>
+<p className='fifth-section-text-content nunito'>
+Ascent Investment Limited uses the highest levels of Internet Security, 
+and it is secured by 
+256 bits SSL security encryption to ensure that your 
+information is completely protected from fraud.
+</p>
+</div>
+  </div>
+
+  
+
+</div>
+</div>
+<div className='second-section-image '>
+<img className='w-full'
+        src={trader} alt="trader"
+        
+      />
+
+</div>
+</div>
+</div>
+</div>
 </div>
     
   )
