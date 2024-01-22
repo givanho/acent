@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import TradingWidget from '../widgets/trading-widget'
 import Gold from '../widgets/gold'
+import GoldPrice from '../widgets/GoldPrice';
+import SilverPrice from '../widgets/SilverPrice';
 import { Carousel, IconButton } from "@material-tailwind/react";
 import firstSlide from '../assets/carousel1.jpg'
 import secondSlide from '../assets/carousel2.jpg'
@@ -15,6 +17,10 @@ import product5 from '../assets/product5.jpg'
 import product6 from '../assets/product6.jpg'
 import trader from '../assets/trader.png'
 import cert from '../assets/cert.jpg'
+import goldbar from '../assets/goldbar.webp'
+import silverbar from '../assets/silver.webp'
+import platinumbar from '../assets/platinum.webp'
+import PlatinumPrice from '../widgets/PlatinumPrice'
 import key from '../assets/key.png'
 import { FiActivity, FiCreditCard, FiZap, FiShield, FiMessageCircle } from "react-icons/fi";
 
@@ -578,9 +584,62 @@ Find Out More
 </div>
 </div>
 
+<div className='eight-section  ' style={{backgroundColor:"#fff", height:"100%"}}>
+<div className="eight-section-wrapper ">
+<h1 className='nunito eight-subject'> Our Investment Packages</h1>
+<p className='eight-tagline'>Choose how you want to invest with us</p>
+<div className='eight-outer-div '>
+
+
+<div className='ninth-section-div'>
+
+<div className='jj ' >
+<img className='w-full'
+        src={goldbar} alt="goldbar"
+        
+      />
+
+</div>
+<GoldPrice/>
+</div>
+
+<div className='ninth-section-div'>
+
+<div className='jj ' >
+<img className='w-full'
+        src={silverbar} alt="silverbar"
+        
+      />
+
+</div>
+<SilverPrice/>
+</div>
+<div className='ninth-section-div '>
+
+<div className='jj ' >
+<img className='w-full'
+        src={platinumbar} alt="platinumbar"
+        
+      />
+
+</div>
+<PlatinumPrice/>
+</div>
 
 
 
+
+</div>
+</div>
+</div>
+
+
+<div style={{width:300, backgroundColor:"#000"}}>
+
+
+</div>
+
+<GoldPrice/>
 
 
 

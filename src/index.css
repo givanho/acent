@@ -423,7 +423,7 @@ p.linking:hover {
   width:80%;
   display:flex;
   justify-content:center;
-  align-itmes:center;
+  align-items:center;
 }
 
 
@@ -556,7 +556,17 @@ margin-left:80px
 }
 
 
-
+.ninth-section-div{
+    width:30%;
+    background-color: #01395e;
+    padding: 2rem;
+    margin-top: 3rem;
+    border-radius:8px ;
+    -webkit-border-radius:8px ;
+    -moz-border-radius:8px ;
+    -ms-border-radius:8px ;
+    -o-border-radius:8px ;
+}
 
 
 @media screen and (min-width: 601px) {
@@ -765,6 +775,7 @@ margin-left:80px
     width: 100%;
     
   }
+  
 }
 
 @media only screen and (max-width: 600px) {
