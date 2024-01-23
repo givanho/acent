@@ -32,8 +32,8 @@ import { HiMiniStar } from "react-icons/hi2";
 
 const Home = () => {
   const cards = [
-    { id: 1, src:userFeedback, title: 'Card 1', content: 'This is the content of Card 1.' },
-    { id: 2, src:userFeedback1, title: 'Card 2', content: 'This is the content of Card 2.' },
+    { id: 1, src:userFeedback, title: 'Lisa Aniston', role:'INVESTOR', content: 'I am extremely satisfied with Algo Trade Limited. Their platform offers efficient trading, advanced tools, and top-notch security. Highly recommended.' },
+    { id: 2, src:userFeedback1, title: 'Matt Strider', role:'INVESTOR', content: 'I have been impressed with the performance of Algo Trade Limited. Their algorithmic trading strategies have delivered consistent results, and their platform is user-friendly. I feel confident in my investment with them.' },
   ];
   const owloptions={
     items:1,
@@ -681,17 +681,40 @@ Find Out More
         className=" object-cover rounded-full items-center"
         style={{height:180, width:180}}
       />
-          <h3>{card.title}</h3>
-          <p>{card.content}</p>
+          <h1 className='title nunito'>{card.title}</h1>
+          <h3  className='role nunito'>{card.role}</h3>
+          <ul className='ratings'>
+            <li>
+            <HiMiniStar color="#f17425" size={20}/>
+            </li>
+            <li>
+            <HiMiniStar color="#f17425" size={20}/>
+            </li>
+            <li>
+            <HiMiniStar color="#f17425" size={20}/>
+            </li>
+            <li>
+            <HiMiniStar color="#f17425" size={20}/>
+            </li>
+            <li>
+            <HiMiniStar color="#f17425" size={20}/>
+            </li>
+          </ul>
+          <p  className='content nunito'>{card.content}</p>
         </div>
       ))}    
-</OwlCarousel>;
+</OwlCarousel>
 </div>
 
 </div>
 </div>
 
-
+<div className='eleven-section'>
+<div className='eleven-section-wrapper'>
+  <div className='eleven-section-text'></div>
+  <div className='eleven-section-button'></div>
+</div>
+</div>
 
 </div>
     
