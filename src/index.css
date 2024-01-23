@@ -861,7 +861,7 @@ margin-left:80px
     margin-top:15px;
 
    }
-   /* .fourth-section-wrapper{
+   .fourth-section-wrapper{
     width:100%;
     
     flex-direction:column;
@@ -901,7 +901,7 @@ margin-left:80px
   
   }
   .seventh-wrapper{
-    width:90%;
+    width:80%;
     display:flex;
     flex-direction:column;
     justify-content:center;
@@ -935,7 +935,7 @@ margin-left:80px
     
     width: 100%;
     
-  } */
+  }
 }
 
 @media screen and (min-width: 769px) and (max-width: 844px) {
