@@ -1,63 +1,47 @@
-import {  useState, useEffect } from 'react'
-
-
-const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      if (scrollPosition > 0) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    // Cleanup the event listener on component unmount
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  const handleMobileMenuToggle = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
-  
-  return (
-    <>
-     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
-    <div className="navbar-container">
-      <div className="logo">Your Logo</div>
-      <div className={`nav-links-container ${isMobileMenuOpen ? 'mobile-open' : ''}`}>
-        <ul className={`nav-links ${isMobileMenuOpen ? 'show-mobile' : ''}`}>
-          <li>Home</li>
-          <li>About</li>
-          <li>Contact</li>
-        </ul>
-      </div>
-      <div className= {`mobile-menu-icon ${isMobileMenuOpen ? 'open' : ''}`} onClick={handleMobileMenuToggle}>
-        <div className="bar"></div>
-        <div className="bar"></div>
-        <div className="bar"></div>
-      </div>
-      <div>
-<button className=" px-4 py-2.5  text-white nunito  signbut mr-4"  >
-    logIn
-</button>
-<button className="px-4 py-2.5  text-white nunito  signbut">
-    Get Started
-</button>
-                </div> 
-    </div>
-  </nav>
+<div className='second-section w-full flex  items-center justify-center ' style={{backgroundColor:"#ece9ff", height:"100%"}}>
+<div className='section-wrapper flex   items-center justify-center'>
+<div className='second-section-text
+ '>
+<p className='section-text-crumb nunito'>
+  Trade, Invest Stock and Bond
+</p>
+<h1 className='section-text-header nunito'>
+  Reasearch and Insight
+</h1>
+<p className='section-text-content nunito'>
+Gain valuable insights and stay ahead of the market 
+with our Gold and Silver IRA, Real estate and Algo Trade Limited.
+ Our research-driven trading strategies for Non digital and digital 
+ assets, Gold and Silver IRA, Real Estate, Stocks, Crypto and Forex. Stay informed 
+ and make informed investment decisions with Gold and Silver, Real Estate and Algo 
+ Trade Limited.
+</p>
+<button className='carouselButton nunito text-white px-4 py-4 '>
+     Create Free Account
+     </button>
+</div>
+<div className='second-section-image '>
+<img className='w-full'
+        src={surfer} alt="surfing"
         
- 
-       
-    </>
-  );
-};
+      />
 
-export default Navbar;
+</div>
+</div>
+</div>
+<Gold />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

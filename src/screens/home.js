@@ -397,7 +397,6 @@ funds, assets and information are completely safe and fully secured.
 </div>
 </div>
 </div>
-
 {/* sixth section?\ */}
 
 <div className='sixth-section w-full flex flex-col items-center justify-center ' style={{backgroundColor:"#fff", height:"100%"}}>
@@ -506,7 +505,7 @@ rental and/or sale of real estate for profit.
 
 {/* seventh section */}
 
-<div className='seventh-section w-full flex   items-center justify-center ' style={{backgroundColor:"#ece9ff", height:"100%"}}>
+<div className='seventh-section w-full  items-center justify-center ' style={{backgroundColor:"#ece9ff", height:"100%"}}>
 <div className='seventh-wrapper flex items-center justify-center'>
 
 <div className='seventh-section-image '>
@@ -715,6 +714,12 @@ Find Out More
   <div className='eleven-section-button'></div>
 </div>
 </div>
+
+
+
+
+
+
 
 </div>
     

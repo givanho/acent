@@ -108,7 +108,7 @@ export default function RootLayout() {
   </nav>
       
       </header>
-      <main className="relative">
+      <main className="relative" >
         <Outlet />
       </main>
     </div>
