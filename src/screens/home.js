@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 import TradingWidget from '../widgets/trading-widget'
+import OwlCarousel from 'react-owl-carousel';
+import 'owl.carousel/dist/assets/owl.carousel.css';
+import 'owl.carousel/dist/assets/owl.theme.default.css';
 import Gold from '../widgets/gold'
 import GoldPrice from '../widgets/GoldPrice';
 import SilverPrice from '../widgets/SilverPrice';
@@ -17,15 +20,47 @@ import product5 from '../assets/product5.jpg'
 import product6 from '../assets/product6.jpg'
 import trader from '../assets/trader.png'
 import cert from '../assets/cert.jpg'
-import goldbar from '../assets/goldbar.webp'
-import silverbar from '../assets/silver.webp'
+import goldbar from '../assets/goldclean.png'
+import silverbar from '../assets/silverclean.png'
 import platinumbar from '../assets/platinum.webp'
 import PlatinumPrice from '../widgets/PlatinumPrice'
 import key from '../assets/key.png'
+import userFeedback from '../assets/userfeedback.jpg'
+import userFeedback1 from '../assets/userfeedback1.jpg'
 import { FiActivity, FiCreditCard, FiZap, FiShield, FiMessageCircle } from "react-icons/fi";
+import { HiMiniStar } from "react-icons/hi2";
 
 const Home = () => {
-    
+  const cards = [
+    { id: 1, src:userFeedback, title: 'Card 1', content: 'This is the content of Card 1.' },
+    { id: 2, src:userFeedback1, title: 'Card 2', content: 'This is the content of Card 2.' },
+  ];
+  const owloptions={
+    items:1,
+    loop:true,
+    autoplay:true,
+    autoplayTimeout:4000,
+    animateout:'slideoutup',
+    nav:false,
+    dots:true,
+    margin:0,
+    responsive:{
+     1000:{
+      items:1
+     },
+     724:{
+      items:1
+     },
+     500:{
+      items:1
+     },
+     370:{
+      items:1
+     },
+
+    }
+
+  }
 
   return (
     <div>
@@ -584,23 +619,23 @@ Find Out More
 </div>
 </div>
 
-<div className='eight-section  ' style={{backgroundColor:"#fff", height:"100%"}}>
+<div className='eight-section  ' style={{backgroundColor:"#ECE9FF", height:"100%", width:"100%"}}>
 <div className="eight-section-wrapper ">
-<h1 className='nunito eight-subject'> Our Investment Packages</h1>
-<p className='eight-tagline'>Choose how you want to invest with us</p>
+<h1 className='nunito eight-subject'> Cryptocurrency</h1>
+<p className='eight-tagline'>Trade and invest Top Cryptocurrency</p>
 <div className='eight-outer-div '>
 
 
 <div className='ninth-section-div'>
 
-<div className='jj ' >
+<div className='jj 'style={{paddingBottom:56, paddingTop:10}}  >
 <img className='w-full'
         src={goldbar} alt="goldbar"
         
       />
 
 </div>
-<GoldPrice/>
+<GoldPrice />
 </div>
 
 <div className='ninth-section-div'>
@@ -633,14 +668,28 @@ Find Out More
 </div>
 </div>
 
-
-<div style={{width:300, backgroundColor:"#000"}}>
-
-
+<div className='tenth-section'>
+<div className='tenth-section-wrapper'>
+<h1 className='nunito fifth-section-subject nunito'> What our Customers say!</h1>
+<p className='mission-text nunito'>Don't take our word for it, here's what some of our clients have to say about us</p>
+<div className='testimonial-card'>
+<OwlCarousel className='owl-theme' loop  {...owloptions}>
+{cards.map((card) => (
+        <div key={card.id} className="card">
+          <img
+        src={card.src} alt="slide3"
+        className=" object-cover rounded-full items-center"
+        style={{height:180, width:180}}
+      />
+          <h3>{card.title}</h3>
+          <p>{card.content}</p>
+        </div>
+      ))}    
+</OwlCarousel>;
 </div>
 
-<GoldPrice/>
-
+</div>
+</div>
 
 
 

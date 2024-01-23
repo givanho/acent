@@ -14,7 +14,8 @@ const PlatinumPrice = () => {
     
       
     ]}
-    isTransparent="true"></Ticker>
+    isTransparent="true" >
+    </Ticker>
   )
 }
 
