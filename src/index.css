@@ -108,12 +108,34 @@ p.linking:hover {
   font-weight: 500;
   letter-spacing: 1px;
   border: 1px solid #1a81c5;
+  -webkit-border-radius: 5px 5px 5px 0px;
+  -moz-border-radius: 5px 5px 5px 0px;
+  -ms-border-radius: 5px 5px 5px 0px;
+  -o-border-radius: 5px 5px 5px 0px;
 }
 .carouselButton:hover {
   background-color: #423c8c;
   border: 1px solid #1a81c5;
 }
+.accountButton{
+  background-color: #f8f9fc;
+  box-shadow: 0 3px 5px 0 rgba(90, 39, 179, 0.3);
+  border-radius: 5px 5px 5px 0px;
+  font-weight: 500;
+  color: #3c4858;
 
+  letter-spacing: 1px;
+  border: 1px solid #dee2e6;
+  -webkit-border-radius: 5px 5px 5px 0px;
+  -moz-border-radius: 5px 5px 5px 0px;
+  -ms-border-radius: 5px 5px 5px 0px;
+  -o-border-radius: 5px 5px 5px 0px;
+}
+.accountButton:hover {
+  background-color: #423c8c;
+  border: 1px solid #1a81c5;
+  color: #f8f9fc;
+}
 .mobileSign {
   display: none;
 }
@@ -637,7 +659,30 @@ margin-left:80px
   align-items: center;
 }
 .eleven-section{
-  
+  display: flex;
+  align-items: center;
+flex-direction: column;
+padding-block: 30px;
+}
+.eleven-section-wrapper{
+  width:80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #1a81c5;
+}
+
+.eleven-header{
+  font-size:36px;
+  margin-bottom:20px;
+  font-weight: 700;
+  color:white
+
+}
+.eleven-content{
+  font-size: 16px;
+  line-height: 25.6px;
+  color:white
 }
 @media screen and (min-width: 601px) {
   .carouselContent {

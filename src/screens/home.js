@@ -708,10 +708,20 @@ Find Out More
 </div>
 </div>
 
-<div className='eleven-section'>
+<div className='eleven-section w-full' style={{backgroundColor:"#ece9ff"}}>
 <div className='eleven-section-wrapper'>
-  <div className='eleven-section-text'></div>
-  <div className='eleven-section-button'></div>
+  <div className='eleven-section-text' style={{width:"70%"}}>
+  <h1 className='eleven-header nunito'>Research and Insight</h1>
+<p className='eleven-content nunito'>Gain valuable insights and stay ahead of the market with Algo Trade Limited.
+ Our research-driven approach and advanced algorithms provide data-driven trading 
+ strategies for digital assets, 
+stocks, crypto, and forex. Stay informed and make informed investment decisions with Algo Trade Limited.</p>
+  </div>
+  <div className='eleven-section-button'>
+  <button className=" px-4 py-2.5 accountButton nunito  signbut mt-4  "  >
+    Create Free Account
+</button>
+  </div>
 </div>
 </div>
 
