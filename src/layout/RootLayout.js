@@ -4,6 +4,7 @@ import { FaUser } from "react-icons/fa6";
 import Lottie from "lottie-react";
 import logo from "../assets/logo.png";
 import diamond from "../assets/diamonds.json"
+import Footer from '../widgets/footer';
 
 
 export default function RootLayout() {
@@ -111,6 +112,9 @@ export default function RootLayout() {
       <main className="relative" >
         <Outlet />
       </main>
+      <footer>
+        <Footer/>
+      </footer>
     </div>
   );
 }

@@ -666,10 +666,16 @@ padding-block: 30px;
 }
 .eleven-section-wrapper{
   width:80%;
+  padding: 48px;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
   background-color: #1a81c5;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
 }
 
 .eleven-header{
@@ -683,6 +689,58 @@ padding-block: 30px;
   font-size: 16px;
   line-height: 25.6px;
   color:white
+}
+.footer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #0c4c76;
+}
+.footertext{
+  color:#ffffff;
+  width:80%;
+  margin: auto;
+  padding-block: 30px;
+}
+.footer-row{
+  width:30%
+}
+.footer-header{
+  font-size: 20px;
+  font-weight:500;
+  color:#f8f9fc;
+  margin-bottom: 25px;
+}
+.footer-para{
+  font-size: 16px;
+  line-height: 25.6px;
+  color: #fff;
+  margin-bottom: 10px;
+}
+.footer-content{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 60px 0 60px 0;
+  width:80%
+}
+.social-icons{
+  display: flex;
+  flex-direction: row;
+}
+.social-box{
+  border: 1px solid #adb5db;
+  padding: 8px;
+  border-radius:  6px 6px 0 6px;
+  -webkit-border-radius:  6px 6px 0 6px;
+  -moz-border-radius:  6px 6px 0 6px;
+  -ms-border-radius:  6px 6px 0 6px;
+  -o-border-radius:  6px 6px 0 6px;
+}
+.footerdiv{
+  border-top: 1px solid #A3B9A9;
+  width: 100%;
 }
 @media screen and (min-width: 601px) {
   .carouselContent {

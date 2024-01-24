@@ -708,7 +708,7 @@ Find Out More
 </div>
 </div>
 
-<div className='eleven-section w-full' style={{backgroundColor:"#ece9ff"}}>
+<div className='eleven-section w-full' style={{backgroundColor:"#ece9ff", paddingBlock:"100px"}}>
 <div className='eleven-section-wrapper'>
   <div className='eleven-section-text' style={{width:"70%"}}>
   <h1 className='eleven-header nunito'>Research and Insight</h1>
