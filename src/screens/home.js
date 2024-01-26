@@ -676,7 +676,7 @@ Find Out More
 {cards.map((card) => (
         <div key={card.id} className="card">
           <img
-        src={card.src} alt="slide3"
+        src={card.src} alt="feedback slide"
         className=" object-cover rounded-full items-center"
         style={{height:180, width:180}}
       />
@@ -710,7 +710,7 @@ Find Out More
 
 <div className='eleven-section w-full' style={{backgroundColor:"#ece9ff", paddingBlock:"100px"}}>
 <div className='eleven-section-wrapper'>
-  <div className='eleven-section-text' style={{width:"70%"}}>
+  <div className='eleven-section-text' >
   <h1 className='eleven-header nunito'>Research and Insight</h1>
 <p className='eleven-content nunito'>Gain valuable insights and stay ahead of the market with Algo Trade Limited.
  Our research-driven approach and advanced algorithms provide data-driven trading 
