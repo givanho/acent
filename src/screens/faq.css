@@ -1,0 +1,222 @@
+.faq-all{
+    padding-top:100px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center
+}
+.faq-us{
+    display:flex;
+    flex-direction:column;
+    align-items:center ;
+    background-color:#F8F9Fc
+  
+}
+.faq-header{
+    padding-block:120px;
+    color:#161c2d;
+    font-size:24px;
+    line-height:36px;
+    font-weight:600
+}
+.faq-help{
+    display:flex;
+    flex-direction:column;
+    align-items:center ;
+    padding-block:65px
+}
+.faq-help-header{
+    padding-bottom:20px ;
+    color:#161c2d;
+    font-size:24px;
+    line-height:36px;
+    font-weight:600
+}
+.faq-text{
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 28.8px;
+    color:#8492a6;
+    width: 45%;
+}
+.faq-div{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+width:80%;
+
+}
+.faq-single{
+width:32%;
+display: flex;
+flex-direction: column;
+align-items: center;
+padding:1.25rem;
+justify-content: center;
+}
+.faq-center{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.single-content{
+    text-align: center;
+    font-size: 16px;
+    line-height: 25.6px;
+    color:#8492a6;
+}
+.single-header{
+    padding-bottom:14px ;
+    color:#343e43;
+    font-size:20px;
+    line-height:30px;
+    text-align: center;
+
+}
+.single-header:hover{
+    color:#1A81cf;
+}
+.icons{
+    margin-bottom: 20px;
+    padding: 20px;
+    box-shadow: 0 10px 25px rgba(60, 72, 88, 0.15) !important;
+    border-radius: 50% !important;
+    border-top-left-radius: 50% !important;
+    border-top-right-radius: 50% !important;
+    border-bottom-right-radius: 50% !important;
+    border-bottom-left-radius: 50% !important;
+    border-bottom-left-radius: 0 !important
+}
+.icons:hover{
+    color:#1A81cf;
+
+}
+.closure{
+    width: 80%;
+    margin: auto;
+}
+.disclobut{
+    padding: 16px 40px 16px 16px;
+    background-color: #F8F9Fc;
+    margin-bottom: 15px;
+}
+.disclotext{
+    font-size:16px ;
+    line-height: 25.6px;
+    color:#8492a6;
+}
+.open{
+    font-size: 16px;
+    color:#1A81cf;
+}
+.closer{
+    font-size: 56px;
+    color: #3c4858;
+}
+.touch{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.in-touch{
+    padding-block: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.touch-head{
+    font-size: 20px;
+    font-weight: 600;
+    color:#3c4858;
+    line-height: 30px;
+}
+.touch-sub{
+    font-size: 16px;
+padding-block:12px ;
+    color:#8492a6;
+    line-height: 25.6px;
+}
+.icon-cont{
+    background-color: rgba(47, 85, 212, 0.1);
+    padding: 18px;
+    border-radius: 6px 6px 6px 0;
+    -webkit-border-radius: 6px 6px 6px 0;
+    -moz-border-radius: 6px 6px 6px 0;
+    -ms-border-radius: 6px 6px 6px 0;
+    -o-border-radius: 6px 6px 6px 0;
+}
+.requestbut{
+    font-size: 12px;
+    color: #1A81cf;
+    box-shadow: 0 3px 5px 0 rgba(90, 39, 179, 0.3);
+    border-radius: 6px 6px 6px 0;
+    -webkit-border-radius: 6px 6px 6px 0;
+    -moz-border-radius: 6px 6px 6px 0;
+    -ms-border-radius: 6px 6px 6px 0;
+    -o-border-radius: 6px 6px 6px 0;
+    background-color: rgba(47, 85, 212, 0.1);
+    padding: 9px 12px 9px 12px;
+
+}
+.requestbut:hover{
+    background-color: #1A81cf;
+    color: #F8F9Fc;
+}
+@media screen and (max-width: 768px){
+    .faq-text{
+        width: 80%;
+    }
+    .faq-div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    .single-header{
+        width: 100%;
+    }
+    .single-content{
+        width: 100%;
+    }
+    .faq-single{
+        width: 90%;
+    }
+    .closure{
+        width: 80%;
+    }
+    .in-touch{
+        width:90%;
+    }
+}
+@media only screen and (max-width: 600px){
+    .faq-text{
+        width: 90%;
+    }
+    .faq-div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    .single-header{
+        width: 100%;
+    }
+    .single-content{
+        width: 100%;
+    }
+    .faq-single{
+        width: 90%;
+    }
+    .closure{
+        width: 100%;
+    }
+    .in-touch{
+        width:90%;
+        margin:auto;
+
+    }
+}

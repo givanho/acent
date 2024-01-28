@@ -52,7 +52,7 @@ export default function RootLayout() {
         <NavLink
                       to="about-us"
                       style={({ isActive }) => ({
-                        color: isActive ? "#0056b3" : "white",
+                        color: isActive ? "#0056b3" : "#2c2c2c",
                       })}
                     >
                       <p className="nunito linking">About Us</p>
@@ -60,7 +60,7 @@ export default function RootLayout() {
                     <NavLink
                       to="pricing"
                       style={({ isActive }) => ({
-                        color: isActive ? "#0056b3" : "white",
+                        color: isActive ? "#0056b3" : "#2c2c2c",
                       })}
                     >
                       <p className="nunito linking" >Pricing</p>
@@ -68,15 +68,16 @@ export default function RootLayout() {
                     <NavLink
                       to="faq"
                       style={({ isActive }) => ({
-                        color: isActive ? "#0056b3" : "white",
+                        color: isActive ? "#0056b3" : "#2c2c2c",
                       })}
                     >
                       <p className="nunito linking">FAQ</p>
                     </NavLink>
                     <NavLink
                       to="contact"
+                    
                       style={({ isActive }) => ({
-                        color: isActive ? "#0056b3" : "white",
+                        color: isActive ? "#0056b3" : "#2c2c2c",
                       })}
                     >
                       <p className="nunito linking">Contact</p>

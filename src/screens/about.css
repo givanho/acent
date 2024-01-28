@@ -1,0 +1,233 @@
+.about-all{
+    padding-top:100px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center
+}
+.about-us{
+    display:flex;
+    flex-direction:column;
+    align-items:center ;
+    background-color:#F8F9Fc
+  
+}
+.about-header{
+    padding-block:120px;
+    color:#161c2d;
+    font-size:24px;
+    line-height:36px;
+    font-weight:600
+}
+.about-help{
+    display:flex;
+    flex-direction:column;
+    align-items:center ;
+    padding-block:65px
+}
+.who-contain{
+    width:80%;
+    margin:auto
+}
+.who-flex{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: 85px;
+}
+.about-text{
+    width: 45%;
+}
+.about-image{
+    width: 40%;
+
+}
+.about-heade{
+    font-size:36px;
+    line-height:54px;
+    font-weight:700;
+    color:#161c2d;
+    margin-bottom:14px
+ 
+}
+.about-par{
+    font-size:16px;
+    line-height:25.6px;
+    color:#8492a6
+}
+.aboutbut{
+    margin-top: 14px;
+    background-color: #1a81c5;
+    box-shadow: 0 3px 5px 0 rgba(90, 39, 179, 0.3);
+    border-radius: 5px 5px 5px 0px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    border: 1px solid #1a81c5;
+    -webkit-border-radius: 5px 5px 5px 0px;
+    -moz-border-radius: 5px 5px 5px 0px;
+    -ms-border-radius: 5px 5px 5px 0px;
+    -o-border-radius: 5px 5px 5px 0px;
+    color: #fff;
+    padding: 8px 14px 8px 14px;
+    font-size: 16px;
+}
+.aboutbut:hover{
+    background-color: #423c8c;
+    border: 1px solid #1a81c5;
+    color: #fff;
+}
+.get-started{
+    background-color:#F8F9Fc
+}
+.get-started-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-block: 80px;
+}
+.started-text{
+    font-size: 16px;
+    font-weight: 600;
+    color:#1a81c5;
+    line-height: 24px;
+    margin-bottom: 15px;
+}
+.started-header{
+    font-size: 36px;
+    font-weight: 700;
+    color:#161c2d;
+    line-height: 54px;
+}
+.contact-details-wrapper{
+    display:flex;
+    flex-direction:row;
+    align-items:flex-start; 
+    justify-content:space-between;
+    width:80%;
+    
+}
+.single-contact{
+    width:50%;
+    display:flex;
+    flex-direction:column;
+    align-items:center; 
+    justify-content:center
+}
+.contact-text{
+    flex-direction:column;
+    align-items:center; 
+    justify-content:center
+}
+.contact-subject{
+    text-align:center;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    line-height: 1.2;
+    font-size:20px;
+    color:#3c4858
+}
+.about-details-text{
+    text-align:center;
+    font-size:16px;
+    color:#8492ac;
+    line-height:24px;
+    width:70%;
+    margin:auto
+
+    
+}
+.contact-details{
+    display:flex;
+    flex-direction:column;
+    align-items:center; 
+    justify-content:center;
+    padding-block:100px;
+  
+}
+
+.contact-icon{
+    padding:16px;
+    background-color:#ece9ff;
+    border-radius:6px 6px 6px 0;
+    margin-bottom: 1rem;
+
+}
+.eleven-section{
+    display: flex;
+    align-items: center;
+  flex-direction: column;
+  padding-block: 30px;
+  }
+  .eleven-section-wrapper{
+    width:80%;
+    padding: 48px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    background-color: #1a81c5;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+  }
+  
+  .eleven-header{
+    font-size:36px;
+    margin-bottom:20px;
+    font-weight: 700;
+    color:white
+  
+  }
+  .eleven-content{
+    font-size: 16px;
+    line-height: 25.6px;
+    color:white
+  }
+
+
+  @media screen and (max-width: 768px){
+    .eleven-section-wrapper{
+        width:80%
+    }
+    .who-flex{
+        display: flex;
+        flex-direction: column;
+        align-items: space-between;
+        justify-content: center;
+        padding-block: 85px;
+    }
+    .about-text{
+        width: 80%;
+    }
+    .about-image{
+        width: 80%;
+    
+    }
+  }
+  @media only screen and (max-width: 600px){
+    .eleven-section-wrapper{
+        width:90%
+    }
+    .started-header{
+        font-size: 30px;
+    }
+    .who-flex{
+        display: flex;
+        flex-direction: column;
+        align-items: space-between;
+        justify-content: center;
+        padding-block: 85px;
+    }
+    .about-text{
+        width: 100%;
+    }
+    .about-image{
+        width: 100%;
+    
+    }
+    .about-details-text{
+        width:100%
+    }
+  }
