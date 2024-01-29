@@ -15,9 +15,9 @@ import negotiation from '../assets/negotiation.jpg'
 import product1 from '../assets/product1.jpg'
 import product2 from '../assets/product2.jpg'
 import product3 from '../assets/product3.jpg'
-import product4 from '../assets/product4.jpg'
-import product5 from '../assets/product5.jpg'
-import product6 from '../assets/product6.jpg'
+import product4 from '../assets/goldsi.png'
+import product5 from '../assets/platinum.JPG'
+import product6 from '../assets/house.png'
 import trader from '../assets/trader.png'
 import cert from '../assets/cert.jpg'
 import goldbar from '../assets/goldclean.png'
@@ -129,7 +129,7 @@ const Home = () => {
      Advanced Trading Strategies
      </h1>
      <h3 className='nunito carouselBody'>
-     Our algorithms are backed by extensive research and data analysis, offering advanced trading strategies for digital assets, stocks, crypto, and forex. Stay ahead of the markets with Ascent Investment Limited.
+     Our algorithms are backed by extensive research and data analysis, offering advanced trading strategies for digital assets, stocks, crypto, and forex. Stay ahead of the markets with Ascent Investments Limited.
 
      </h3>
      <button className='carouselButton nunito text-white px-4 py-4'>
@@ -152,7 +152,7 @@ const Home = () => {
       Secure and Reliable
      </h1>
      <h3 className='nunito carouselBody'>
-     Your security is our top priority. Ascent Investment Limited implements robust security measures, including encryption technologies and multi-factor authentication, to protecint your personal information and investment funds.
+     Your security is our top priority. Ascent Investments Limited implements robust security measures, including encryption technologies and multi-factor authentication, to protecint your personal information and investment funds.
 
 
      </h3>
@@ -176,7 +176,7 @@ const Home = () => {
      User-Friendly Platform
      </h1>
      <h3 className='nunito carouselBody'>
-     Experience a seamless trading journey with our intuitive and easy-to-use platform. Access a wide range of trading instruments, advanced tools, and features to optimize your trading strategies. Join Ascent Investment Limited today.
+     Experience a seamless trading journey with our intuitive and easy-to-use platform. Access a wide range of trading instruments, advanced tools, and features to optimize your trading strategies. Join Ascent Investments Limited today.
     
 
 
@@ -278,7 +278,7 @@ Invest with confidence with Ascent Investments' AI-powered platform.
 </div>
 <h2 className='fourth-section-header nunito' > Security</h2>
 <p className='fourth-section-text-content nunito'>
-Ascent Investment Limited uses the highest levels of Internet Security, 
+Ascent Investments Limited uses the highest levels of Internet Security, 
 and it is secured by 
 256 bits SSL security encryption to ensure that your 
 information is completely protected from fraud.
@@ -410,6 +410,26 @@ funds, assets and information are completely safe and fully secured.
 
 <div className='sixth-section-image'>
 <img
+      src={product4} alt="key"
+    />
+</div>
+<h2 className='sixth-section-header nunito' > Gold and Silver</h2>
+<p className='sixth-section-text-content nunito'>
+Commonly seen as a great store of wealth, this precious metal is also known as a reliable safe-haven asset. 
+Gold and silver remain a highly popular investment. Investing in gold and silver bullion gives you unique 
+control over your money that you would not be entitled to. With so much financial instability in the markets, 
+investing in gold gives you a secure commodity you can physically possess that will always hold its value.
+</p>
+
+</div>
+
+
+
+
+<div className='sixth-section-div'>
+
+<div className='sixth-section-image'>
+<img
       src={product1} alt="key"
     />
 </div>
@@ -417,6 +437,22 @@ funds, assets and information are completely safe and fully secured.
 <p className='sixth-section-text-content nunito'>
 Cryptocurrencies are the fastest growing assets in the financial space today, 
 and we have devised strategies to successfully trade them.
+</p>
+
+</div>
+
+<div className='sixth-section-div'>
+
+<div className='sixth-section-image'>
+<img
+      src={product6} alt="key"
+   
+    />
+</div>
+<h2 className='sixth-section-header nunito' > Real Estate</h2>
+<p className='sixth-section-text-content nunito'>
+Real estate investment involves the purchase, ownership, management, 
+rental and/or sale of real estate for profit.
 </p>
 
 </div>
@@ -453,20 +489,7 @@ such as energy, biotechnology, or chemicals.
 
 </div>
 
-<div className='sixth-section-div'>
 
-<div className='sixth-section-image'>
-<img
-      src={product4} alt="key"
-    />
-</div>
-<h2 className='sixth-section-header nunito' > Gold</h2>
-<p className='sixth-section-text-content nunito'>
-Commonly seen as a great store of wealth, this precious metal is also known as a reliable 
-safe-haven asset. Gold remains a highly popular investment.
-</p>
-
-</div>
 
 <div className='sixth-section-div'>
 
@@ -475,28 +498,17 @@ safe-haven asset. Gold remains a highly popular investment.
       src={product5} alt="key"
     />
 </div>
-<h2 className='sixth-section-header nunito' > Binary Options</h2>
+<h2 className='sixth-section-header nunito' > Platinum</h2>
 <p className='sixth-section-text-content nunito'>
-Binary options give our investors the opportunity, but not the obligation, 
-to buy or sell an underlying asset at an agreed-upon price and date.
+As a precious metal with various industrial applications, platinum's value is 
+influenced by factors such as supply and demand dynamics, geopolitical events, 
+and economic indicators. Investors can gain exposure to platinum through various 
+investment vehicles, including physical bullion, exchange-traded funds (ETFs), futures contracts, and mining stocks. 
 </p>
 
 </div>
 
-<div className='sixth-section-div'>
 
-<div className='sixth-section-image'>
-<img
-      src={product6} alt="key"
-    />
-</div>
-<h2 className='sixth-section-header nunito' > Real Estate</h2>
-<p className='sixth-section-text-content nunito'>
-Real estate investment involves the purchase, ownership, management, 
-rental and/or sale of real estate for profit.
-</p>
-
-</div>
 
 
 </div>
@@ -521,7 +533,7 @@ rental and/or sale of real estate for profit.
 Our White Paper
 </h1>
 <p className="seventh-text nunito">
-Ascent Investment Limited is fully Licensed and registered
+Ascent Investments Limited is fully Licensed and registered
 </p>
 <p className="seventh-link nunito">
 Find Out More 
@@ -576,7 +588,7 @@ Find Out More
 <p className="eight-month nunito"> 1 month</p>
 
 <hr className='divider'></hr>
-<p className="eight-content nunito"> Min. Possible deposit: $3000
+<p className="eight-content nunito"> Min. Possible deposit: $5000
 </p>
 <p className="eight-content nunito">Max. Possible deposit: $12000</p>
 <p className="eight-content nunito"> 3% Minimum return</p>

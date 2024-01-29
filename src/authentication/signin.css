@@ -1,0 +1,157 @@
+.signin{
+    background-color: #ECE9FF;
+    height:100%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top:100px;
+    width: 100%;
+
+}
+.signlogo{
+  width: 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.signform{
+    background-color: #ffffff;
+    border:1px solid #edf2f9;
+    box-shadow: 0 0.75rem 1.5rem rgba(18, 38, 63, 0.03);
+    border-radius: 6px ;
+    -webkit-border-radius: 6px ;
+    -moz-border-radius: 6px ;
+    -ms-border-radius: 6px ;
+    -o-border-radius: 6px ; 
+    box-shadow: 0 0 3px rgba(60, 72, 88, 0.15);
+    padding: 20px 20px;
+    width: 100%; 
+    margin-top: 20px;
+}
+
+.input-with-icon input{
+  width: 100%;
+  border-radius: 6px 6px 6px 0;
+  -webkit-border-radius: 6px 6px 6px 0;
+  -moz-border-radius: 6px 6px 6px 0;
+  -ms-border-radius: 6px 6px 6px 0;
+  -o-border-radius: 6px 6px 6px 0;
+  padding: 12px 22px 12px 0;
+  outline: 1px solid #dee2e6;
+}
+.input-with-icon input:focus{
+ 
+  outline: 1px solid #1a81c5;
+}
+.input-with-icon {
+  position: relative;
+  display: inline-block;
+  width: 100%; 
+
+}
+.accept{
+  color:#1a81c5;
+  font-size: 14px;
+  font-weight: 700;
+  padding-left: 10px;
+}
+.input-with-icon input[type="text"] {
+  padding-left: 40px; 
+  font-family: "nunito";
+}
+input[type="checkbox"]{
+  height:18px;
+  width:18px;
+  
+}
+.input-with-icon input[type="password"] {
+  padding-left: 40px; 
+  font-family: "nunito";
+}
+.pado{
+  margin-top: 28px;
+}
+.input-icon {
+  position: absolute;
+  top: 50%;
+  left: 10px; /* Adjust the position of the icon */
+  transform: translateY(-50%);
+  pointer-events: none; /* Ensure the icon doesn't interfere with input events */
+  
+}
+.form-head{
+  font-size: 24px;
+  line-height: 36px;
+  font-weight: 600;
+  color: #1a81c5;
+  text-align: center;
+  padding-block: 30px;
+}
+
+.input-header{
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  color: #1a81c5;
+  margin-bottom: 8px;
+}
+.forgot{
+  text-decoration: underline;
+  color: #3c4858;
+}
+.signinbut{
+  margin-top: 28px;
+  background-color: #1a81c5;
+  width: 100%;
+  box-shadow: 0 3px 5px 0 rgba(90, 39, 179, 0.3);
+  border-radius: 5px 5px 5px 0px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  border: 1px solid #1a81c5;
+  -webkit-border-radius: 5px 5px 5px 0px;
+  -moz-border-radius: 5px 5px 5px 0px;
+  -ms-border-radius: 5px 5px 5px 0px;
+  -o-border-radius: 5px 5px 5px 0px;
+  padding: 10px 0 10px 0;
+  color: #ffffff;
+
+}
+.signinbut:hover {
+  background-color: #423c8c;
+  border: 1px solid #1a81c5;
+}
+.dont{
+  font-size: 13.5px;
+  line-height: 21.6px;
+  color: #3c4858;
+  text-align: center;
+  padding-block:23px ;
+}
+.copyright{
+  text-align: center;
+  font-size: 13.5px;
+  line-height: 21.6px;
+  color: #3c4858;
+}
+
+
+
+@media screen and (max-width: 768px){
+  .signlogo{
+    width: 80%;
+
+  }
+  .imagelogo{
+    width:150px
+  }
+}
+@media only screen and (max-width: 600px){
+  .signlogo{
+    width: 90%;
+  }
+  .imagelogo{
+    width:150px
+  }
+}

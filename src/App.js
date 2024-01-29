@@ -18,6 +18,8 @@ import Contact from "./screens/contact"
 
 
 import RootLayout from '../src/layout/RootLayout'
+import SignIn from "./authentication/signIn";
+import SignUp from "./authentication/signUp";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -27,6 +29,8 @@ const router = createBrowserRouter(
       <Route path="pricing" element={<Pricing />} />
       <Route path="faq" element={<Faq />} />
       <Route path="contact" element={<Contact />} />
+      <Route path="login" element={<SignIn />} />
+      <Route path = "register" element={<SignUp />} />
     </Route>
   )
 )
@@ -35,13 +39,7 @@ const router = createBrowserRouter(
 function App() {
   return (
     <AuthContextProvider>
-      {/* <div className="absolute inset-x-0 top-0 z-50 ">
-    <Navbar/>
-    </div>
-    <div className="relative">
-      <Home />
-      </div> */}
-      {/* <Navbar/> */}
+      
       <RouterProvider router={router} />
    
     </AuthContextProvider>

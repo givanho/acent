@@ -1,5 +1,5 @@
 import {  useState, useEffect } from 'react'
-import { Outlet, NavLink, Link } from "react-router-dom";
+import { Outlet, NavLink, Link , useLocation} from "react-router-dom";
 import { FaUser } from "react-icons/fa6";
 import Lottie from "lottie-react";
 import logo from "../assets/logo.png";
@@ -8,6 +8,10 @@ import Footer from '../widgets/footer';
 
 
 export default function RootLayout() {
+  const location = useLocation();
+  const isLoginRoute = location.pathname === "/login" || location.pathname === "/register";
+
+
     const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   useEffect(() => {
@@ -91,17 +95,28 @@ export default function RootLayout() {
       </div>
 
       <div className='deskSign'>
+      <Link to="login">
 <button className=" px-4 py-2.5  text-white nunito  signbut mr-4"  >
     logIn
 </button>
+</Link>
+<Link to= "register">
+
 <button className="px-4 py-2.5  text-white nunito  signbut">
     Get Started
 </button>
+</ Link>
+
     </div> 
 <div className='mobileSign'>
+<Link to="login">
+
 <FaUser color='#1a81c5' size={32} />
+</Link>
 <div style={{width:64, height:64}}>
+  <Link to= "register">
     <Lottie animationData={diamond} loop={true} />
+    </Link>
 </div>
 
 </div>
@@ -113,9 +128,11 @@ export default function RootLayout() {
       <main className="relative" >
         <Outlet />
       </main>
-      <footer>
-        <Footer/>
-      </footer>
+      {!isLoginRoute && (
+        <footer>
+          <Footer />
+        </footer>
+      )}
     </div>
   );
 }

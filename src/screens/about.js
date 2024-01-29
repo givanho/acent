@@ -28,17 +28,17 @@ const About = () => {
 <div className='about-text'>
   <h1 className='nunito about-heade'> Who we are</h1>
   <p  className='nunito about-par'>
-  Ascent Investment Limited is a leading trading and investment 
-  platform specializing in digital assets, stocks, crypto, and 
-  forex. With a research-driven approach and advanced algorithms, 
-  Ascent Investment aims to deliver consistent results for traders 
-  and investors. The user-friendly platform offers advanced tools and 
-  features, while robust security measures protect personal information 
-  and investment funds. Backed by their expertise in algorithmic trading, 
-  Ascent Investment Limited provides exceptional customer service and 
-  strives to be the trusted choice for optimizing trading strategies 
-  in today's financial markets. Invest with confidence. Choose 
-  Ascent Investment Limited.
+  Ascent Investments Limited is a leading investment and trading platform 
+  specializing in non digital and digital assets, Gold and silver IRA, 
+  Real estate, stocks, crypto, and forex. With a research-driven approach and 
+  advanced algorithms, Ascent Investment aims to deliver consistent results for 
+  traders and investors. The user-friendly platform offers advanced tools and 
+  features, while robust security measures protect personal information and 
+  investment funds. Backed by their expertise in IRA and 
+  algorithmic trading, Ascent Investments Limited provides 
+  exceptional customer service and strives to be the trusted choice for optimizing 
+  Investments and trading strategies in today's financial markets. Invest with confidence. 
+  Choose Ascent Investments Limited.
   </p>
 
 <button  className='nunito aboutbut'>
