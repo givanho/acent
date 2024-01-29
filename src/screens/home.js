@@ -12,12 +12,12 @@ import secondSlide from '../assets/carousel2.jpg'
 import thirdSlide from '../assets/carousel3.jpg'
 import surfer from '../assets/surfer.png'
 import negotiation from '../assets/negotiation.jpg'
-import product1 from '../assets/product1.jpg'
+import product1 from '../assets/bitcoinn.png'
 import product2 from '../assets/product2.jpg'
 import product3 from '../assets/product3.jpg'
 import product4 from '../assets/goldsi.png'
 import product5 from '../assets/platinum.JPG'
-import product6 from '../assets/house.png'
+import product6 from '../assets/real-estate-home-house.jpeg'
 import trader from '../assets/trader.png'
 import cert from '../assets/cert.jpg'
 import goldbar from '../assets/goldclean.png'
@@ -413,7 +413,7 @@ funds, assets and information are completely safe and fully secured.
       src={product4} alt="key"
     />
 </div>
-<h2 className='sixth-section-header nunito' > Gold and Silver</h2>
+<h2 className='sixth-secti  1`on-header nunito' > Gold and Silver IRA</h2>
 <p className='sixth-section-text-content nunito'>
 Commonly seen as a great store of wealth, this precious metal is also known as a reliable safe-haven asset. 
 Gold and silver remain a highly popular investment. Investing in gold and silver bullion gives you unique 

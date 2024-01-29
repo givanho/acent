@@ -1,14 +1,65 @@
 import React, { useState, useMemo } from 'react'
 import Select from 'react-select'
 import countryList from 'react-select-country-list'
+import { useFormik } from 'formik';
+import * as Yup from "yup";
 import "./signin.css";
 import logo from "../assets/logo.png";
 import { PiPasswordBold } from "react-icons/pi";
 import { IoMailOutline } from "react-icons/io5";
 import { FiUserCheck } from "react-icons/fi";
+
+
 const SignUp = () => {
     const [checked, setChecked] = useState(false)
     const [value, setValue] = useState('')
+
+
+    const[loading, setLoading] = useState(false)
+    const [firstName, setFirstName] = useState(null);
+    const [lastName, setLastName] = useState(null);
+    const [email, setEmail] = useState(null);
+    const [emailError, setEmailError] = useState(null);
+    const [password, setPasswowrd] = useState(null);
+    const [rePassword, setRePassword] = useState(null);
+    const [show, setShow] = useState(false);
+    const [errorOutput, setErrorOutput] = useState({
+      firstname: null,
+      lastName: null,
+      password: null,
+      rePassword: null,
+      fireError: null,
+    });
+
+    const formik = useFormik({
+      initialValues : {
+      email: "",
+      firstname: "",
+      lastname: "",
+      password: "",
+      country: "",
+      repassword: "",
+      checked:""
+    },
+    onSubmit: values => {
+      console.log("onSubmit", values);
+    },
+  }) 
+    
+
+    const validationSchema = Yup.object({
+      email: Yup.string()
+        .required("Email is required")
+        .email("Invalid email adress"),
+      password: Yup.string().required("Password is required"),
+      repassword: Yup.string().required("Re-enter Password"),
+      firstname: Yup.string().required("First Name is required"),
+      lastname: Yup.string().required("Last name is required"),
+      country: Yup.string().required("Country is required"),
+    });
+
+
+
   const options = useMemo(() => countryList().getData(), [])
   const changeHandler = value => {
     setValue(value)
@@ -16,6 +67,27 @@ const SignUp = () => {
   function handleChange(e) {
       setChecked(e.target.checked);
    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   return (
     <>
       <div className="signin  ">
@@ -29,12 +101,17 @@ const SignUp = () => {
     
 
             <h1 className="nunito form-head">Create an Account</h1>
+            <form onSubmit={formik.handleSubmit}> 
             <div className=" pado">
               <p className="nunito input-header">
                 First Name <span style={{ color: "red" }}>*</span>
               </p>
               <div className="input-with-icon">
-                <input type="text" placeholder="Enter your first name" />
+                <input type="text" placeholder="Enter your first name" 
+                name='firstname' 
+                value={formik.values.firstname} 
+                onChange={formik.handleChange}
+                />
                 <FiUserCheck color="#1a81c5" className="input-icon" />
               </div>
             </div>
@@ -45,7 +122,10 @@ const SignUp = () => {
                 Last Name <span style={{ color: "red" }}>*</span>
               </p>
               <div className="input-with-icon">
-                <input type="text" placeholder="Enter your last name" />
+                <input type="text" placeholder="Enter your last name" 
+                name='lastname' 
+                value={formik.values.lastname} 
+                onChange={formik.handleChange} />
                 <FiUserCheck color="#1a81c5" className="input-icon" />
               </div>
             </div>
@@ -56,7 +136,10 @@ const SignUp = () => {
                 Your Email <span style={{ color: "red" }}>*</span>
               </p>
               <div className="input-with-icon">
-                <input type="text" placeholder="mail@example.com" />
+                <input type="text" placeholder="mail@example.com" 
+                name='email' 
+                value={formik.values.email} 
+                onChange={formik.handleChange}/>
                 <IoMailOutline color="#1a81c5" className="input-icon" />
               </div>
             </div>
@@ -98,7 +181,10 @@ const SignUp = () => {
               </p>
             </div>
             <div className="input-with-icon">
-              <input type="password" placeholder="Enter password" />
+              <input type="password" placeholder="Enter password" 
+               name='password' 
+               value={formik.values.password} 
+               onChange = {formik.handleChange} />
               <PiPasswordBold color="#1a81c5" className="input-icon" />
             </div>
 
@@ -110,14 +196,21 @@ const SignUp = () => {
               </p>
             </div>
             <div className="input-with-icon">
-              <input type="password" placeholder="Re-enter your password" />
+              <input type="password" placeholder="Re-enter your password" 
+               name='repassword' 
+               value={formik.values.repassword} 
+               onChange = {formik.handleChange} />
               <PiPasswordBold color="#1a81c5" className="input-icon" />
             </div>
             <div className='flex justify-evenly align-middle nunito pt-5' >
-           <input value = "accepted" type = "checkbox" onChange = {handleChange} />
+           <input  type = "checkbox" 
+           name='checked' 
+           value={formik.values.checked} 
+           onChange = {formik.handleChange} />
            <p className='accept'>I Accept the Terms And Privacy Policy</p>
             </div>
-            <button className="nunito signinbut"> Register</button>
+            <button type='submit' className="nunito signinbut"> Register</button>
+            </form>
             <p className="dont nunito">
             Already have an account ?{" "}
               <span style={{ fontWeight: 700, fontSize: "15px" }}>
