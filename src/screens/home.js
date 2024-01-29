@@ -632,8 +632,8 @@ Find Out More
 
 <div className='eight-section  ' style={{backgroundColor:"#ECE9FF", height:"100%", width:"100%"}}>
 <div className="eight-section-wrapper ">
-<h1 className='nunito eight-subject'> Cryptocurrency</h1>
-<p className='eight-tagline'>Trade and invest Top Cryptocurrency</p>
+<h1 className='nunito eight-subject'> Metals Market</h1>
+<p className='eight-tagline'>Trade and invest Top Precious metals</p>
 <div className='eight-outer-div '>
 
 
