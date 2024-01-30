@@ -101,7 +101,7 @@ input[type="checkbox"]{
 .errors{
   font-size: 11px;
   color:red;
-  font-weight: 600;
+  
   padding-left: 30px;
 }
 .forgot{
