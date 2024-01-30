@@ -43,6 +43,7 @@ const SignUp = () => {
     },
     onSubmit: values => {
       console.log("onSubmit", values);
+      // console.log(value.label)
     },
   }) 
     
@@ -61,14 +62,11 @@ const SignUp = () => {
 
 
   const options = useMemo(() => countryList().getData(), [])
-  const changeHandler = value => {
-    setValue(value)
-  }
-  function handleChange(e) {
-      setChecked(e.target.checked);
-   }
+  
 
-
+const changeHandler = selectedOption => {
+    formik.setFieldValue('country', selectedOption.label);
+  };
 
 
 
@@ -150,7 +148,11 @@ const SignUp = () => {
                 Country <span style={{ color: "red" }}>*</span>
               </p>
             </div>
-            <Select options={options} value={value} onChange={changeHandler}  placeholder="Choose Country" isSearchable={true} 
+            <Select options={options} 
+      
+            placeholder="Choose Country" isSearchable={true} 
+             value={options.find(option => option.value === formik.values.country)}
+             onChange={changeHandler}
      styles={{
         control: (baseStyles, state) => ({
           ...baseStyles,

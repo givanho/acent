@@ -413,7 +413,7 @@ funds, assets and information are completely safe and fully secured.
       src={product4} alt="key"
     />
 </div>
-<h2 className='sixth-secti  1`on-header nunito' > Gold and Silver IRA</h2>
+<h2 className='sixth-section-header nunito' > Gold and Silver IRA</h2>
 <p className='sixth-section-text-content nunito'>
 Commonly seen as a great store of wealth, this precious metal is also known as a reliable safe-haven asset. 
 Gold and silver remain a highly popular investment. Investing in gold and silver bullion gives you unique 
