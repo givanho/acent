@@ -1,4 +1,13 @@
 import React, { useState, useMemo } from 'react'
+import { Navigate } from 'react-router-dom';
+import { setDoc, serverTimestamp, doc } from "firebase/firestore";
+import { db } from '../context/firebase';
+import { UserAuth } from '../context/context';
+
+
+
+
+
 import Select from 'react-select'
 import countryList from 'react-select-country-list'
 import { useFormik } from 'formik';
@@ -10,26 +19,14 @@ import { IoMailOutline } from "react-icons/io5";
 import { FiUserCheck } from "react-icons/fi";
 
 
+
 const SignUp = () => {
-    const [checked, setChecked] = useState(false)
-    const [value, setValue] = useState('')
 
 
     const[loading, setLoading] = useState(false)
-    const [firstName, setFirstName] = useState(null);
-    const [lastName, setLastName] = useState(null);
-    const [email, setEmail] = useState(null);
-    const [emailError, setEmailError] = useState(null);
-    const [password, setPasswowrd] = useState(null);
-    const [rePassword, setRePassword] = useState(null);
     const [show, setShow] = useState(false);
-    const [errorOutput, setErrorOutput] = useState({
-      firstname: null,
-      lastName: null,
-      password: null,
-      rePassword: null,
-      fireError: null,
-    });
+  const { createUser , user} = UserAuth();
+    
 
     const formik = useFormik({
       initialValues : {
@@ -41,14 +38,38 @@ const SignUp = () => {
       repassword: "",
       checked:""
     },
-    onSubmit: values => {
-      console.log("onSubmit", values);
-      // console.log(value.label)
+    // onSubmit: values => {
+    //   console.log("onSubmit", values.email);
+    //   // console.log(value.label)
+      
+    // },
+     onSubmit: async values => {
+      try {
+        // Create user in Firebase Authentication
+      const user = await createUser(values.email, values.password);
+      if (user) {
+        await setDoc(doc(db, 'users', user.user.uid ), {
+          firstname: values.firstname,
+          lastname: values.lastname,
+          email: values.email,
+          createdAt: serverTimestamp(),
+          country : values.country,
+          userID: user.user.uid
+        },{ merge: true })
+        console.log('account created');
+        <Navigate to='/dashboard' />
+
+      }
+      }
+       catch (error) {
+        console.error('Error creating user:', error.message);
+      }
+    
     },
     validationSchema :Yup.object({
       email: Yup.string()
         .required("Email is required")
-        .email("Invalid email adress"),
+        .email("email must contain @"),
       password: Yup.string().required("Password is required").min(5, 'password must be at least 5 characters'),
       repassword: Yup.string()
       .oneOf([Yup.ref('password'), null], 'Passwords do not match')
@@ -56,8 +77,8 @@ const SignUp = () => {
       firstname: Yup.string().required("First Name is required").min(2, 'enter a valid name'),
       lastname: Yup.string().required("Last name is required").min(2, 'enter a valid name'),
       country: Yup.string().required("Country is required"),
-      checked:Yup.boolean().oneOf([true], 'accept terms')
-      .required('accept terms'),
+      checked:Yup.boolean().oneOf([true], '***')
+      .required('***'),
     })
   }) 
     

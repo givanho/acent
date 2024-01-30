@@ -20,6 +20,7 @@ import Contact from "./screens/contact"
 import RootLayout from '../src/layout/RootLayout'
 import SignIn from "./authentication/signIn";
 import SignUp from "./authentication/signUp";
+import UserDashboard from "./screens/userDashboard";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -31,6 +32,7 @@ const router = createBrowserRouter(
       <Route path="contact" element={<Contact />} />
       <Route path="login" element={<SignIn />} />
       <Route path = "register" element={<SignUp />} />
+      <Route path = "dashboard" element={<UserDashboard />} />
     </Route>
   )
 )
