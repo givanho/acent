@@ -45,19 +45,24 @@ const SignUp = () => {
       console.log("onSubmit", values);
       // console.log(value.label)
     },
-  }) 
-    
-
-    const validationSchema = Yup.object({
+    validationSchema :Yup.object({
       email: Yup.string()
         .required("Email is required")
         .email("Invalid email adress"),
-      password: Yup.string().required("Password is required"),
-      repassword: Yup.string().required("Re-enter Password"),
-      firstname: Yup.string().required("First Name is required"),
-      lastname: Yup.string().required("Last name is required"),
+      password: Yup.string().required("Password is required").min(5, 'password must be at least 5 characters'),
+      repassword: Yup.string()
+      .oneOf([Yup.ref('password'), null], 'Passwords do not match')
+      .required('please confirm password'),
+      firstname: Yup.string().required("First Name is required").min(2, 'enter a valid name'),
+      lastname: Yup.string().required("Last name is required").min(2, 'enter a valid name'),
       country: Yup.string().required("Country is required"),
-    });
+      checked:Yup.boolean().oneOf([true], 'accept terms')
+      .required('accept terms'),
+    })
+  }) 
+    
+
+   
 
 
 
@@ -103,7 +108,7 @@ const changeHandler = selectedOption => {
             <div className=" pado">
               <p className="nunito input-header">
                 First Name <span style={{ color: "red" }}>*</span>
-              </p>
+              </p> <span className='errors nunito'>{formik.errors.firstname && formik.touched.firstname && formik.errors.firstname}</span>
               <div className="input-with-icon">
                 <input type="text" placeholder="Enter your first name" 
                 name='firstname' 
@@ -118,7 +123,7 @@ const changeHandler = selectedOption => {
             <div className=" pado">
               <p className="nunito input-header">
                 Last Name <span style={{ color: "red" }}>*</span>
-              </p>
+              </p> <span className='errors nunito'>{formik.errors.lastname && formik.touched.lastname && formik.errors.lastname}</span>
               <div className="input-with-icon">
                 <input type="text" placeholder="Enter your last name" 
                 name='lastname' 
@@ -132,7 +137,7 @@ const changeHandler = selectedOption => {
             <div className=" pado">
               <p className="nunito input-header">
                 Your Email <span style={{ color: "red" }}>*</span>
-              </p>
+              </p> <span className='errors nunito'>{formik.errors.email && formik.touched.email && formik.errors.email}</span>
               <div className="input-with-icon">
                 <input type="text" placeholder="mail@example.com" 
                 name='email' 
@@ -146,7 +151,7 @@ const changeHandler = selectedOption => {
               <p className="nunito input-header">
                 {" "}
                 Country <span style={{ color: "red" }}>*</span>
-              </p>
+              </p> <span className='errors nunito'>{formik.errors.country && formik.touched.country && formik.errors.country}</span>
             </div>
             <Select options={options} 
       
@@ -180,7 +185,7 @@ const changeHandler = selectedOption => {
               <p className="nunito input-header">
                 {" "}
                 password <span style={{ color: "red" }}>*</span>
-              </p>
+              </p> <span className='errors nunito'>{formik.errors.password && formik.touched.password && formik.errors.password}</span>
             </div>
             <div className="input-with-icon">
               <input type="password" placeholder="Enter password" 
@@ -195,7 +200,7 @@ const changeHandler = selectedOption => {
               <p className="nunito input-header">
                 {" "}
                 Confirm Password <span style={{ color: "red" }}>*</span>
-              </p>
+              </p> <span className='errors nunito'>{formik.errors.repassword && formik.touched.repassword && formik.errors.repassword}</span>
             </div>
             <div className="input-with-icon">
               <input type="password" placeholder="Re-enter your password" 
@@ -209,6 +214,8 @@ const changeHandler = selectedOption => {
            name='checked' 
            value={formik.values.checked} 
            onChange = {formik.handleChange} />
+           <span className='errors text-lg nunito'>{formik.errors.checked && formik.touched.checked && formik.errors.checked}</span>
+
            <p className='accept'>I Accept the Terms And Privacy Policy</p>
             </div>
             <button type='submit' className="nunito signinbut"> Register</button>

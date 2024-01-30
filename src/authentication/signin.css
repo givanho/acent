@@ -96,6 +96,13 @@ input[type="checkbox"]{
   line-height: 21px;
   color: #1a81c5;
   margin-bottom: 8px;
+  display: inline;
+}
+.errors{
+  font-size: 11px;
+  color:red;
+  font-weight: 600;
+  padding-left: 30px;
 }
 .forgot{
   text-decoration: underline;
