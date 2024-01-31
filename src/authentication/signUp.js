@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react'
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { setDoc, serverTimestamp, doc } from "firebase/firestore";
 import { db } from '../context/firebase';
 import { UserAuth } from '../context/context';
@@ -21,12 +21,14 @@ import { FiUserCheck } from "react-icons/fi";
 
 
 const SignUp = () => {
-
+  const apiKey = process.env.REACT_APP_API_KEY;
+  const apiUrl = process.env.REACT_APP_API_URL;
+ 
 
     const[loading, setLoading] = useState(false)
     const [show, setShow] = useState(false);
   const { createUser , user} = UserAuth();
-    
+    const history = useNavigate()
 
     const formik = useFormik({
       initialValues : {
@@ -44,6 +46,10 @@ const SignUp = () => {
       
     // },
      onSubmit: async values => {
+      
+  console.log(process.env.REACT_APP_FIRE_AUTH);
+  
+
       try {
         // Create user in Firebase Authentication
       const user = await createUser(values.email, values.password);
@@ -56,9 +62,7 @@ const SignUp = () => {
           country : values.country,
           userID: user.user.uid
         },{ merge: true })
-        console.log('account created');
-        <Navigate to='/dashboard' />
-
+        history('/')
       }
       }
        catch (error) {
