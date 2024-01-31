@@ -48,6 +48,7 @@ const SignUp = () => {
      onSubmit: async values => {
       
   console.log(process.env.REACT_APP_FIRE_AUTH);
+  console.log("hello");
   
 
       try {
