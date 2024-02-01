@@ -29,8 +29,12 @@ import userFeedback from '../assets/userfeedback.jpg'
 import userFeedback1 from '../assets/userfeedback1.jpg'
 import { FiActivity, FiCreditCard, FiZap, FiShield, FiMessageCircle } from "react-icons/fi";
 import { HiMiniStar } from "react-icons/hi2";
+import { UserAuth } from '../context/context'
+import { Outlet, NavLink, Link , useLocation} from "react-router-dom";
 
 const Home = () => {
+  const {user} = UserAuth();
+
   const cards = [
     { id: 1, src:userFeedback, title: 'Lisa Aniston', role:'INVESTOR', content: 'I am extremely satisfied with Algo Trade Limited. Their platform offers efficient trading, advanced tools, and top-notch security. Highly recommended.' },
     { id: 2, src:userFeedback1, title: 'Matt Strider', role:'INVESTOR', content: 'I have been impressed with the performance of Algo Trade Limited. Their algorithmic trading strategies have delivered consistent results, and their platform is user-friendly. I feel confident in my investment with them.' },
@@ -132,9 +136,11 @@ const Home = () => {
      Our algorithms are backed by extensive research and data analysis, offering advanced trading strategies for digital assets, stocks, crypto, and forex. Stay ahead of the markets with Ascent Investments Limited.
 
      </h3>
+     <Link to={user ? "/dashboard" : "/register"}>
      <button className='carouselButton nunito text-white px-4 py-4'>
      SIGN UP
      </button>
+</Link>
      
      
     </div>
@@ -156,9 +162,12 @@ const Home = () => {
 
 
      </h3>
+     <Link to={user ? "/dashboard" : "/login"}>
      <button className='carouselButton nunito text-white px-4 py-4'>
      LEARN MORE
      </button>
+</Link>
+   
      
      
     </div>
@@ -181,9 +190,12 @@ const Home = () => {
 
 
      </h3>
+     <Link to={user ? "/dashboard" : "/register"}>
      <button className='carouselButton nunito text-white px-4 py-4'>
      SIGN UP
      </button>
+</Link>
+     
      
      
     </div>
@@ -215,9 +227,13 @@ with our Gold and Silver IRA, Real estate and Algo Trade Limited.
  and make informed investment decisions with Gold and Silver, Real Estate and Algo 
  Trade Limited.
 </p>
-<button className='carouselButton nunito text-white px-4 py-4 '>
+<Link to={user ? "/dashboard" : "/register"}>
+     
+    <button className='carouselButton nunito text-white px-4 py-4 '>
      Create Free Account
-     </button>
+     </button> 
+</Link>
+
 </div>
 <div className='second-section-image '>
 <img className='w-full'
@@ -248,9 +264,12 @@ Real Estate, Stocks, Crypto, and forex.
 Invest with confidence with Ascent Investments' AI-powered platform.
 
 </p>
-<button className='carouselButton nunito text-white px-4 py-4 '>
+<Link to= "/about-us">
+  <button className='carouselButton nunito text-white px-4 py-4 '>
      Explore
      </button>
+</Link>
+
 </div>
 <div className='third-section-image '>
 <img className='w-full'
@@ -730,9 +749,12 @@ Find Out More
 stocks, crypto, and forex. Stay informed and make informed investment decisions with Algo Trade Limited.</p>
   </div>
   <div className='eleven-section-button'>
-  <button className=" px-4 py-2.5 accountButton nunito  signbut mt-4  "  >
+  <Link to={user ? "/dashboard" : "/register"}>
+ <button className=" px-4 py-2.5 accountButton nunito  signbut mt-4  "  >
     Create Free Account
 </button>
+</Link>
+  
   </div>
 </div>
 </div>

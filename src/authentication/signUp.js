@@ -21,13 +21,11 @@ import { FiUserCheck } from "react-icons/fi";
 
 
 const SignUp = () => {
-  const apiKey = process.env.REACT_APP_API_KEY;
-  const apiUrl = process.env.REACT_APP_API_URL;
- 
+  
 
     const[loading, setLoading] = useState(false)
     const [show, setShow] = useState(false);
-  const { createUser , user} = UserAuth();
+  const { createUser} = UserAuth();
     const history = useNavigate()
 
     const formik = useFormik({
@@ -47,9 +45,6 @@ const SignUp = () => {
     // },
      onSubmit: async values => {
       
-  console.log(process.env.REACT_APP_FIRE_AUTH);
-  console.log("hello");
-  
 
       try {
         // Create user in Firebase Authentication
@@ -63,7 +58,8 @@ const SignUp = () => {
           country : values.country,
           userID: user.user.uid
         },{ merge: true })
-        history('/')
+        history('/dashboard')
+        
       }
       }
        catch (error) {

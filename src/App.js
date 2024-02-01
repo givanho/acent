@@ -21,9 +21,11 @@ import RootLayout from '../src/layout/RootLayout'
 import SignIn from "./authentication/signIn";
 import SignUp from "./authentication/signUp";
 import UserDashboard from "./screens/userDashboard";
+import PrivateRoutes from "./layout/privateRoute";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
+    <>
     <Route path="/" element={<RootLayout />}>
       <Route index element={<Home />} />
       <Route path="about-us" element={<About />} />
@@ -32,8 +34,11 @@ const router = createBrowserRouter(
       <Route path="contact" element={<Contact />} />
       <Route path="login" element={<SignIn />} />
       <Route path = "register" element={<SignUp />} />
-      <Route path = "dashboard" element={<UserDashboard />} />
     </Route>
+    <Route element={<PrivateRoutes/>}>
+              <Route path="dashboard" element={<UserDashboard/>}/>
+     </Route>
+    </>
   )
 )
 

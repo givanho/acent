@@ -109,7 +109,7 @@ export default function RootLayout() {
 
     </div> 
 <div className='mobileSign'>
-<Link to="login">
+<Link to="dashboard">
 
 <FaUser color='#1a81c5' size={32} />
 </Link>

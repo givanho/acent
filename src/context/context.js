@@ -20,7 +20,9 @@ export const AuthContextProvider = ({ children }) => {
   };
 
    const signIn = (email, password) =>  {
+    setIsPending(true); // Set isPending to true before the operation
     return signInWithEmailAndPassword(auth, email, password)
+      .finally(() => setIsPending(false)); 
    }
    const forgotPassword = (email) =>{
     return sendPasswordResetEmail(auth, email);
@@ -40,11 +42,12 @@ export const AuthContextProvider = ({ children }) => {
     };
   }, []);
 if (isPending){
-  return <>loading...</>
+  return <h2>loading...</h2>
 }
   return (
     <UserContext.Provider value={{ createUser, user, logout, signIn,forgotPassword }}>
-      {children}
+
+      {isPending ? <h1>i am Loading...</h1> : children}
     </UserContext.Provider>
   );
 };
