@@ -20,8 +20,18 @@ import Contact from "./screens/contact"
 import RootLayout from '../src/layout/RootLayout'
 import SignIn from "./authentication/signIn";
 import SignUp from "./authentication/signUp";
-import UserDashboard from "./screens/userDashboard";
 import PrivateRoutes from "./layout/privateRoute";
+import DashLayout from "./screens/userDashboard";
+import Withdrawal from "./dashboard/withdrawal";
+import Deposit from "./dashboard/deposit";
+import Transfer from "./dashboard/Transfer";
+import Swap from "./dashboard/Swap";
+
+import Profit from "./dashboard/Profit";
+import Profile from "./dashboard/Profile";
+import Plans from "./dashboard/Plans";
+import Managed from "./dashboard/Managed";
+import Transactions from "./dashboard/Transactions";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -36,7 +46,19 @@ const router = createBrowserRouter(
       <Route path = "register" element={<SignUp />} />
     </Route>
     <Route element={<PrivateRoutes/>}>
-              <Route path="dashboard" element={<UserDashboard/>}/>
+              <Route path="dashboard" element={<DashLayout/>}>
+                <Route path="withdrawal" element={<Withdrawal/>} />
+                <Route path="deposit" element={<Deposit/>}/>
+                <Route path="transfer" element={<Transfer/>}/>
+                <Route path="swap" element={<Swap/>}/>
+                <Route path="transactions" element={<Transactions/>}/>
+                <Route path="profit" element={<Profit/>}/>
+                <Route path="profile" element={<Profile/>}/>
+                <Route path="buy-plans" element={<Plans/>}/>
+                <Route path="managed-accounts" element={<Managed/>}/>
+
+
+                </Route>
      </Route>
     </>
   )

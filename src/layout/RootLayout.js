@@ -1,6 +1,7 @@
 import {  useState, useEffect } from 'react'
 import { Outlet, NavLink, Link , useLocation} from "react-router-dom";
 import { FaUser } from "react-icons/fa6";
+import { BiSolidUserCircle } from "react-icons/bi";
 import Lottie from "lottie-react";
 import logo from "../assets/logo.png";
 import diamond from "../assets/diamonds.json"
@@ -111,7 +112,7 @@ export default function RootLayout() {
 <div className='mobileSign'>
 <Link to="dashboard">
 
-<FaUser color='#1a81c5' size={32} />
+<BiSolidUserCircle color='#1a81c5' size={32} />
 </Link>
 <div style={{width:64, height:64}}>
   <Link to= "register">

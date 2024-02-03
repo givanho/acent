@@ -1,0 +1,13 @@
+.makepay label{
+    display:flex;
+    width:100%;
+    
+
+}
+.logic {
+    display:flex;
+    align-items:center
+}
+/* .logic label{
+    background-color:#000
+} */

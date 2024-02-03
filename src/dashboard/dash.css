@@ -1,0 +1,220 @@
+.dash-container{
+    width:100%;
+    margin-inline: auto;
+    margin-bottom: 32px;
+
+}
+.dash-container h1{
+    font-size: 24px;
+    font-weight: 600;
+    color: #29302D;
+    line-height: 31.2px;
+    padding-left: 10px;
+
+}
+.dash-out-flex{
+    display:flex;
+    flex-direction:row;
+    width: 100%;
+    flex-wrap: wrap;
+    flex-grow: inherit;
+
+}
+.dash-in-flex{
+    margin-bottom: 12px;
+    margin-inline: auto;
+    padding: 14px;
+    border:1px solid #d9e0eb;
+    background-color: #fff;
+    border-radius: 10px;
+    width: 32%;
+    display:flex;
+    justify-content: space-between;
+    flex-direction:row;
+    align-items: center;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+    -webkit-transition: box-shadow 0.3s ease-in-out;
+    -moz-transition: box-shadow 0.3s ease-in-out;
+    -ms-transition: box-shadow 0.3s ease-in-out;
+    -o-transition: box-shadow 0.3s ease-in-out;
+}
+.dash-in-single{
+    margin-bottom: 12px;
+    margin-inline: auto;
+    padding-block: 24px;
+    padding-inline:14px ;
+    border:1px solid #d9e0eb;
+    background-color: #fff;
+    border-radius: 10px;
+    width: 98%;
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+    -webkit-transition: box-shadow 0.3s ease-in-out;
+    -moz-transition: box-shadow 0.3s ease-in-out;
+    -ms-transition: box-shadow 0.3s ease-in-out;
+    -o-transition: box-shadow 0.3s ease-in-out;
+}
+.dash-in-single .but{
+    margin-top: 20px;
+    background-color: #29302D;
+    color:#fff;
+    padding: 12px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+.dash-in-single .but:hover{
+    background-color: #363837;
+   
+}
+.dash-in-single table{
+    width:100%
+}
+.dash-in-single thead{
+    background-color:#EFF2F7;
+    
+}
+.dash-in-single th{
+    padding-block:12px;
+    font-family: "nunito";
+
+    color:#8492A6;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 21px;
+    
+}
+.dash-in-single tbody{
+    width:100%;
+    margin-inline:auto;
+    text-align: center;
+    font-size: 13px;
+    color: #8492A6;
+    line-height: 22.1px;
+    font-family: "nunito";
+
+}
+.dash-in-single td{
+    padding-block:12px ;
+    background-color:#EFF2F7;
+border-top: 1px solid #ffffff;
+}
+.dash-icon{
+    background-color:#29302D;
+    padding: 12px;
+    border-radius:10px ;
+    -webkit-border-radius:10px ;
+    -moz-border-radius:10px ;
+    -ms-border-radius:10px ;
+    -o-border-radius:10px ;
+}
+.dash-in-flex p{
+    font-size: 16px;
+    color:#8492A6;
+    line-height: 21.2px;
+
+}
+.dash-in-single p{
+    font-size: 16px;
+    color:#8492A6;
+    line-height: 21.2px;
+
+}
+.dash-in-flex h2{
+    font-size: 24px;
+    color:#3C4858;
+    font-weight: 600;
+    line-height: 27.2px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* For screens up to 600px */
+@media screen and (max-width: 600px) {
+    .dash-in-flex{
+        padding-inline:10px;
+        width: 100%;
+        display:flex;
+        
+        flex-direction:row;
+        align-items: center;
+        
+    
+    }
+   
+    .dash-in-single{
+        width:100%;
+        padding-inline:5px
+    }
+  }
+  
+  /* For screens between 601px and 768px */
+  @media screen and (min-width: 601px) and (max-width: 768px) {
+    .dash-in-flex{
+        padding-inline:10px;
+        width: 45%;
+        display:flex;
+        
+        flex-direction:row;
+        align-items: center;
+        
+    
+    }
+   
+    .dash-in-single{
+        width:100%;
+        padding-inline:5px
+    }
+    .dash-out-flex{
+        display:flex;
+        flex-direction:row;
+
+    }
+  }
+  
+  /* For screens between 769px and 900px */
+  @media screen and (min-width: 769px) and (max-width: 900px) {
+    .dash-in-flex{
+        padding-inline:10px;
+        width: 45%;
+        display:flex;
+        
+        flex-direction:row;
+        align-items: center;
+        
+    
+    }
+   
+    .dash-in-single{
+        width:100%;
+        padding-inline:5px
+    }
+    .dash-out-flex{
+        display:flex;
+        flex-direction:row;
+
+    }
+  }
