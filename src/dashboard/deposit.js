@@ -7,9 +7,9 @@ import './deposit.css'
 import Modal from 'react-modal';
 import { GrClose } from "react-icons/gr";
 import Button from 'react-bootstrap/Button';
-
+import Alert from 'react-bootstrap/Alert';
 import Payment from './Payment'
-
+import { FaRegCopy } from "react-icons/fa";
 import ReactModal from 'react-modal';
 
 // Set global style override for ReactModal
@@ -23,8 +23,14 @@ ReactModal.defaultStyles.overlay.backgroundColor = 'rgba(0, 0, 0, 0.7)';
   const [bitPrice, setBitPrice] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [errorMessag, setErrorMessag] = useState('');
+  const [copied, setCopied] = useState('');
+  const [showAlert, setShowAlert] = useState(false);
   const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
+const address1 = "gdjdgXh urudkd sgsugdu"
+const address2 = "2dhdgbs suhdis siojioo"
+const address3 = "1235448887552277888"
   const handleCheckboxChange = (value) => {
     setSelectedItem(value);
   };
@@ -117,6 +123,13 @@ else{
 
     },
   };
+  const customStyles2 = {
+    content: {
+  
+      width:"100%"
+
+    },
+  };
 
 
 function openModal(numb, item, error) {
@@ -132,13 +145,52 @@ function openModal(numb, item, error) {
     setIsOpen(false);
   }
 
+  const handleCopy = () => {
+    // Text to be copied to the clipboard
 
- 
+    // Attempt to copy the text to the clipboard
+    navigator.clipboard.writeText(address1)
+      .then(() => {
+        setCopied("Address Copied!");
+        // Show the alert
+        setShowAlert(true);
+        // Hide the alert after 2 seconds (adjust the time as needed)
+        setTimeout(() => {
+          setShowAlert(false);
+        }, 2000);
+      })
+      .catch(err => {
+        setCopied('Failed to copy text: ', err);
+        // You can also show an error message to the user here
+      });
+  };
   
+
+
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    };
+
+    // Add event listener for window resize
+    window.addEventListener('resize', handleResize);
+
+    // Clean up the event listener when component unmounts
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []); 
+
+
   return (
     <>
     <div className="makepay">
+      
+   
+    
+
       <div className='warning'>
+      
       <h1> Please only make payments to the wallet address provided to you when you click the *proceed to payment* button
     </h1>  
       </div>
@@ -249,20 +301,59 @@ function openModal(numb, item, error) {
 <Modal
   isOpen={modalIsOpen}
   onRequestClose={closeModal}
-  style={customStyles}
+  style={screenWidth < 768 ? customStyles2: customStyles}
   contentLabel="Example Modal"
 >
 
   <button onClick={closeModal}><GrClose size={32} color="black"/></button>
   <div className='modal-content'>
 {!errorMessage &&   
+<>
  <div className="payout-div">
       <div className="payin-div">
         <p>Your payment method </p>
       </div>
-       <div>  <p>{items}</p>
+       <div className='payin-para'>  <p>{items}</p>
   </div>
-    </div>}
+    </div>
+    <p> You are to make payment of {numbe} {items} using your selected payment method.</p>
+    
+    <div className='assetpic'>
+      {items === "USDT ERC (20)"? <SiTether size={82} color="#29302D"/>: items === "Ethereum"? <FaEthereum size={82} color="#29302D"/>: items === "Bitcoin"? <SiBitcoinsv size={82} color="#29302D"/> :""}
+    </div>
+    
+    <div className='address-head'>
+      <h2>{items} Address: </h2>
+      <div >
+       <div className='copyaddress'> <h3>{address1} </h3>
+        <button onClick={handleCopy}>
+        <FaRegCopy color='gray' style={{marginLeft:"18px"}}/>
+        </button>
+      </div>
+     
+      {/* Bootstrap Alert */}
+      <Alert show={showAlert} variant="success">
+        Link has been copied!
+      </Alert>
+      </div>
+
+    </div>
+
+    <div className='address-head'>
+      <h2>Upload Payment proof after payment. </h2>
+      
+      
+      <input type="file" 
+      placeholder='No file Chosen' />
+     
+      
+      
+
+    </div>
+    
+    <button className='modbut'> Submit Payment</button>
+    </>
+    }
     {!errorMessage && <div>  <p>{items}</p>
   <p>{numbe}</p> </div>}
 {errorMessage && <p>{errorMessage}</p>}
