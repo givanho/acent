@@ -12,7 +12,8 @@
     -moz-border-radius:25px;
     -ms-border-radius:25px;
     -o-border-radius:25px;
-    margin-bottom:15px
+    margin-bottom:15px;
+
 }
 .warning h1{
     font-family:'nunito';
@@ -70,6 +71,12 @@ label input{
     line-height: 21.2px;
     font-family: 'nunito';
 }
+input[type=number]::-webkit-inner-spin-button {
+    opacity: 1;
+    
+  }
+
+
 .amountinput input{
     border: 1px solid #1a81c5;
     padding: 12px;
@@ -115,6 +122,7 @@ label input{
 .modal-content{
     text-align:center;
     color:#3C4858;
+    border:none
 }
 .payout-div{
     background-color:#94d0f8;
@@ -227,12 +235,41 @@ margin-top:25px
     .labeldiv{
         display: flex;
         flex-direction: column;
+        width: 100%;
+        justify-content:center;
+        align-items: center;
+        margin-inline: auto;
     }
     .labeld{
-        width: 100%;
+        width: 90%;
     }
+    
 }
 
 
 
-@media screen and (min-width: 601px) and (max-width: 768px){}
+@media screen and (min-width: 601px) and (max-width: 768px){
+
+    .labeldiv{
+        display: flex;
+        flex-direction: row;
+        flex-wrap:wrap;
+        width: 100%;
+        justify-content:center;
+        align-items: center;
+        margin-inline: auto;
+    }
+    .labeld{
+        width: 45%;
+        
+    }
+    .amountinput input{
+        width:100%
+    }
+}
+@media screen and (min-width: 769px) and (max-width: 900px) {
+    /* CSS rules for screens between 769px and 900px */
+    .amountinput input{
+        width:100%
+    }
+  }

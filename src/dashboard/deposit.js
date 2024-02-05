@@ -4,17 +4,13 @@ import { SiTether } from "react-icons/si";
 import { FaEthereum } from "react-icons/fa";
 import { SiBitcoinsv } from "react-icons/si";
 import './deposit.css'
-import Modal from 'react-modal';
 import { GrClose } from "react-icons/gr";
-import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
-import Payment from './Payment'
-import { FaRegCopy } from "react-icons/fa";
-import ReactModal from 'react-modal';
 
-// Set global style override for ReactModal
+import { FaRegCopy } from "react-icons/fa";
+import Modal from 'react-bootstrap/Modal';
+
 const Deposit = () => {
-ReactModal.defaultStyles.overlay.backgroundColor = 'rgba(0, 0, 0, 0.7)';
   const [selectedItem, setSelectedItem] = useState("");
   const [number, setNumber] = useState('');
   const [numbe, setNumbe] = useState('');
@@ -22,15 +18,13 @@ ReactModal.defaultStyles.overlay.backgroundColor = 'rgba(0, 0, 0, 0.7)';
   const [ethPrice, setEthPrice] = useState('');
   const [bitPrice, setBitPrice] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const [errorMessag, setErrorMessag] = useState('');
   const [copied, setCopied] = useState('');
   const [showAlert, setShowAlert] = useState(false);
-  const [modalIsOpen, setIsOpen] = React.useState(false);
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+ 
+  const [address, setAddress] = useState("")
+  const [modalShow, setModalShow] = React.useState(false);
 
-const address1 = "gdjdgXh urudkd sgsugdu"
-const address2 = "2dhdgbs suhdis siojioo"
-const address3 = "1235448887552277888"
+
   const handleCheckboxChange = (value) => {
     setSelectedItem(value);
   };
@@ -49,7 +43,8 @@ const numberInputRef = useRef(null);
 if(!selectedItem || !numberInputRef.current.value){
   
     setErrorMessage('Select a coin and input deposit amount')
-    openModal(errorMessage);
+    OpenMode(errorMessage);
+
   
   return null
 }
@@ -62,7 +57,9 @@ else{
   
       setNumber(numberInputRef.current.value);
       setSelectedItem('USDT ERC (20)');
-      openModal(number, selectedItem);
+     setAddress("gdjdgXh urudkd sgsugdu") 
+      OpenMode(number, selectedItem);
+
     setErrorMessage('')
 
     }
@@ -80,14 +77,17 @@ else{
     if (numberInputRef2.current.value && checkboxRef2.current) {
       setEthPrice(numberInputRef2.current.value);
       setSelectedItem('Ethereum');
-      openModal(ethPrice, selectedItem);
+     setAddress("gdjdgXh urudkd sgsugdu") 
+
+      OpenMode(ethPrice, selectedItem);
+
     setErrorMessage('')
 
 
     }
     else {
       setErrorMessage('Select a coin and input deposit amount')
-      openModal(errorMessage);
+      OpenMode(errorMessage);
 
     }
   };
@@ -99,57 +99,31 @@ else{
     if (numberInputRef3.current.value && checkboxRef2.current) {
       setBitPrice(numberInputRef3.current.value);
       setSelectedItem('Bitcoin');
-      openModal(bitPrice, selectedItem);
+     setAddress("gdjdgXh urudkd sgsugdu") 
+
+      OpenMode(bitPrice, selectedItem)
+
       setErrorMessage('')
 
     }
     else {
       setErrorMessage('Select a coin and input deposit amount')
-      openModal(errorMessage);
+      OpenMode(errorMessage)
       
     }
   };
  
-  const customStyles = {
-    content: {
-      top: '50%',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      marginRight: '-50%',
-      transform: 'translate(-50%, -50%)',
-      borderRadius:'15px',
-      width:"50%"
-
-    },
-  };
-  const customStyles2 = {
-    content: {
   
-      width:"100%"
 
-    },
-  };
-
-
-function openModal(numb, item, error) {
-    setIsOpen(true);
-  setItems(item);
-    setNumbe(numb);
-    setErrorMessag(error)
-  }
 
   
 
-  function closeModal() {
-    setIsOpen(false);
-  }
-
+  
   const handleCopy = () => {
     // Text to be copied to the clipboard
 
     // Attempt to copy the text to the clipboard
-    navigator.clipboard.writeText(address1)
+    navigator.clipboard.writeText(address)
       .then(() => {
         setCopied("Address Copied!");
         // Show the alert
@@ -167,26 +141,107 @@ function openModal(numb, item, error) {
   
 
 
-  useEffect(() => {
-    const handleResize = () => {
-      setScreenWidth(window.innerWidth);
-    };
 
-    // Add event listener for window resize
-    window.addEventListener('resize', handleResize);
+function OpenMode (numb, items, error) {
+  setModalShow(true)
+  setItems(items);
+  setNumbe(numb);
+  setErrorMessage(error)
+}
 
-    // Clean up the event listener when component unmounts
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []); 
+
+
+function MyVerticallyCenteredModal(props) {
+  return (
+    <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+  <button onClick={() => setModalShow(false)}><GrClose size={32} color="black"/></button>
+
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+       
+      <div className='modal-content'>
+{!errorMessage &&   
+<>
+ <div className="payout-div">
+      <div className="payin-div">
+        <p>Your payment method </p>
+      </div>
+       <div className='payin-para'>  <p>{items}</p>
+  </div>
+    </div>
+    <p> You are to make payment of {numbe} {items} using your selected payment method.</p>
+    
+    <div className='assetpic'>
+      {items === "USDT ERC (20)"? <SiTether size={82} color="#29302D"/>: items === "Ethereum"? <FaEthereum size={82} color="#29302D"/>: items === "Bitcoin"? <SiBitcoinsv size={82} color="#29302D"/> :""}
+    </div>
+    
+    <div className='address-head'>
+      <h2>{items} Address: </h2>
+      <div >
+       <div className='copyaddress'> <h3>{address} </h3>
+        <button onClick={handleCopy}>
+        <FaRegCopy color='gray' style={{marginLeft:"18px"}}/>
+        </button>
+      </div>
+     
+      <Alert show={showAlert} variant="success">
+       {copied}
+      </Alert>
+      </div>
+
+    </div>
+
+    <div className='address-head'>
+      <h2>Upload Payment proof after payment. </h2>
+      
+      
+      <input type="file" 
+      placeholder='No file Chosen' />
+     
+      
+      
+
+    </div>
+    
+    
+    </>
+    }
+    {!errorMessage && <div>  <p>{items}</p>
+  <p>{numbe}</p> </div>}
+{errorMessage && <p>{errorMessage}</p>}
+  </div>
+      </Modal.Body>
+      <Modal.Footer>
+      <button className='modbut'> Submit Payment</button>
+      </Modal.Footer>
+    </Modal>
+  );
+}
+
+
+
+
 
 
   return (
     <>
+     <MyVerticallyCenteredModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
     <div className="makepay">
       
    
+
+     
     
 
       <div className='warning'>
@@ -236,9 +291,10 @@ function openModal(numb, item, error) {
         ref={numberInputRef2}
 
         onChange={(event) => setEthPrice(parseFloat(event.target.value))}
-        step="0.00022"
+        step="0.00001"
         min="0"
         placeholder="Enter a deposit amount"
+        
       />
     </div>
     <label>
@@ -268,7 +324,7 @@ function openModal(numb, item, error) {
         ref={numberInputRef3}
 
         onChange={(event) => setBitPrice(parseFloat(event.target.value))}
-        step="0.000023"
+        step="0.000001"
         min="0"
         placeholder="Enter a deposit amount"
       />
@@ -296,71 +352,7 @@ function openModal(numb, item, error) {
   </div>
 
 
-<div style={{width:"100%", marginInline:"auto", display:"flex", justifyContent:'center',flexDirection:"row"}}>
 
-<Modal
-  isOpen={modalIsOpen}
-  onRequestClose={closeModal}
-  style={screenWidth < 768 ? customStyles2: customStyles}
-  contentLabel="Example Modal"
->
-
-  <button onClick={closeModal}><GrClose size={32} color="black"/></button>
-  <div className='modal-content'>
-{!errorMessage &&   
-<>
- <div className="payout-div">
-      <div className="payin-div">
-        <p>Your payment method </p>
-      </div>
-       <div className='payin-para'>  <p>{items}</p>
-  </div>
-    </div>
-    <p> You are to make payment of {numbe} {items} using your selected payment method.</p>
-    
-    <div className='assetpic'>
-      {items === "USDT ERC (20)"? <SiTether size={82} color="#29302D"/>: items === "Ethereum"? <FaEthereum size={82} color="#29302D"/>: items === "Bitcoin"? <SiBitcoinsv size={82} color="#29302D"/> :""}
-    </div>
-    
-    <div className='address-head'>
-      <h2>{items} Address: </h2>
-      <div >
-       <div className='copyaddress'> <h3>{address1} </h3>
-        <button onClick={handleCopy}>
-        <FaRegCopy color='gray' style={{marginLeft:"18px"}}/>
-        </button>
-      </div>
-     
-      {/* Bootstrap Alert */}
-      <Alert show={showAlert} variant="success">
-        Link has been copied!
-      </Alert>
-      </div>
-
-    </div>
-
-    <div className='address-head'>
-      <h2>Upload Payment proof after payment. </h2>
-      
-      
-      <input type="file" 
-      placeholder='No file Chosen' />
-     
-      
-      
-
-    </div>
-    
-    <button className='modbut'> Submit Payment</button>
-    </>
-    }
-    {!errorMessage && <div>  <p>{items}</p>
-  <p>{numbe}</p> </div>}
-{errorMessage && <p>{errorMessage}</p>}
-  </div>
- 
-</Modal>
-</div>
 </>
   )
 }
