@@ -146,7 +146,6 @@ function OpenMode (numb, items, error) {
   setModalShow(true)
   setItems(items);
   setNumbe(numb);
-  setErrorMessage(error)
 }
 
 
@@ -220,7 +219,8 @@ function MyVerticallyCenteredModal(props) {
   </div>
       </Modal.Body>
       <Modal.Footer>
-      <button className='modbut'> Submit Payment</button>
+      {!errorMessage &&   
+      <button className='modbut'> Submit Payment</button>}
       </Modal.Footer>
     </Modal>
   );
