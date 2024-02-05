@@ -94,7 +94,7 @@ export default function DashLayout() {
 <Link to="dashboard">
 <div className='header-Linked'>
      <BiSolidUserCircle color='#fff' size={32} />
-<span className='text-white nunito '>Given Fyneface</span>
+<span className='text-white nunito '>User</span>
   </div>
 
 </Link>
