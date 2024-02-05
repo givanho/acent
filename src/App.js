@@ -26,6 +26,7 @@ import Withdrawal from "./dashboard/withdrawal";
 import Deposit from "./dashboard/deposit";
 import Transfer from "./dashboard/Transfer";
 import Swap from "./dashboard/Swap";
+import Payment from "./dashboard/Payment";
 
 import Profit from "./dashboard/Profit";
 import Profile from "./dashboard/Profile";
@@ -48,7 +49,9 @@ const router = createBrowserRouter(
     <Route element={<PrivateRoutes/>}>
               <Route path="dashboard" element={<DashLayout/>}>
                 <Route path="withdrawal" element={<Withdrawal/>} />
-                <Route path="deposit" element={<Deposit/>}/>
+                <Route path="deposit" element={<Deposit/>}>
+                  <Route path = "payment" element={<Payment/>} />
+                   </Route>
                 <Route path="transfer" element={<Transfer/>}/>
                 <Route path="swap" element={<Swap/>}/>
                 <Route path="transactions" element={<Transactions/>}/>
