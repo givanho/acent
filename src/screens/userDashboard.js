@@ -441,7 +441,7 @@ export default function DashLayout() {
       
       </header>
       <main  >
-        <Outlet />
+        
       </main>
       
        

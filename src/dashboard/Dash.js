@@ -11,9 +11,9 @@ import { CryptoCurrencyMarket } from "react-ts-tradingview-widgets";
 import './dash.css'
 const Dash = () => {
     const data = [
-        { id: 1, name: 'John Doe', age: 30 },
-        { id: 2, name: 'Jane Smith', age: 25 },
-        { id: 3, name: 'Bob Johnson', age: 35 }
+      { id: "GyFpl", name: '$280', age: "4 feb 2024" },
+      { id: "LoBBD", name: '$496', age: "4 feb 2024"  },
+      { id: "OHtse", name: '$125', age: "3 feb 2024"  }
       ];
   return (
     <> 

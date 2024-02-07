@@ -1,0 +1,164 @@
+.maincard-div{
+    display:flex;
+    overflow-x:hidden;
+    justify-content:center;
+}
+.single-card{
+    width: 32%;
+   margin-bottom:40px;
+   
+    border-radius:10px 10px 10px 10px;
+    -webkit-border-radius:10px 10px 10px 10px;
+    -moz-border-radius:10px 10px 10px 10px;
+    -ms-border-radius:10px 10px 10px 10px;
+    -o-border-radius:10px 10px 10px 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
+    transition: box-shadow 0.3s ease-in-out;
+    -webkit-transition: box-shadow 0.3s ease-in-out;
+    -moz-transition: box-shadow 0.3s ease-in-out;
+    -ms-transition: box-shadow 0.3s ease-in-out;
+    -o-transition: box-shadow 0.3s ease-in-out;
+}
+.multi-card{
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    align-items:center;
+    width:100%
+}
+.card-coin{
+    background-color:#29302D;
+    padding-bottom:80px;
+    border-radius:10px 10px 10px 10px;
+    -webkit-border-radius:10px 10px 10px 10px;
+    -moz-border-radius:10px 10px 10px 10px;
+    -ms-border-radius:10px 10px 10px 10px;
+    -o-border-radius:10px 10px 10px 10px;
+}
+.card-coin h2{
+    margin-inline:auto;
+font-family:'nunito';
+font-size:16px;
+font-weight:600;
+color:#3c4858;
+text-align:center;
+    width:50%;
+    background-color:#ffffff;
+    border-radius:0 0 5px 5px;
+    padding-block:3px;
+    margin-block:auto;
+    padding-inline:5px;
+    -webkit-border-radius:0 0 5px 5px;
+    -moz-border-radius:0 0 5px 5px;
+    -ms-border-radius:0 0 5px 5px;
+    -o-border-radius:0 0 5px 5px;
+}
+.card-con{
+    padding:25px;
+    margin-top:-20px;
+    margin-inline:auto;
+    text-align:center;
+    background-color:#fff;
+    border-radius:20px 20px 0 0;
+    -webkit-border-radius:20px 20px 0 0;
+    -moz-border-radius:20px 20px 0 0;
+    -ms-border-radius:20px 20px 0 0;
+    -o-border-radius:20px 20px 0 0;
+}
+.card-con p{
+font-family:'nunito';
+font-size:12.8px;
+line-height:21.7px;
+color:#29302d;
+}
+.card-con h1{
+    margin-bottom:15px;
+font-family:'nunito';
+font-size:24px;
+font-weight:600;
+line-height:31.2px;
+color:#29302d;
+}
+
+.card-con button{
+    padding:12px;
+    color:#fff;
+    font-family:'nunito';
+    background-color:#484d4b;
+    border-radius:10px 10px 10px 0;
+    -webkit-border-radius:10px 10px 10px 0;
+    -moz-border-radius:10px 10px 10px 0;
+    -ms-border-radius:10px 10px 10px 0;
+    -o-border-radius:10px 10px 10px 0;
+    margin-top:25px
+}
+.card-con button:hover{
+    background-color:#1a81c5;
+}
+.address-head{
+    width:100%;
+    
+}
+.withdrawal{
+    width:70%;
+    background-color:#fff !important;
+    margin-right:auto !important;
+    border:1px solid #1a81c5
+
+}
+.withdrawall{
+    width:70%;
+    margin-inline:auto !important;
+    text-align:left;
+    font-weight:700;
+    margin-top:40px
+    
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 600px) {
+    .single-card{
+        width:100%;
+        margin-inline:auto;
+        background:transparent
+    }
+}
+
+
+
+@media screen and (min-width: 601px) and (max-width: 768px){
+    .single-card{
+        width:90%;
+        margin-inline:auto
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 900px) {
+    .single-card{
+        width:220px;
+        margin-inline:auto
+    }
+    .multi-card{
+        display:flex;
+        flex-direction:row;
+        flex-wrap:wrap;
+        
+        justify-content:center;
+        align-items:center;
+        width:100%
+    }
+}

@@ -213,8 +213,7 @@ function MyVerticallyCenteredModal(props) {
     
     </>
     }
-    {!errorMessage && <div>  <p>{items}</p>
-  <p>{numbe}</p> </div>}
+   
 {errorMessage && <p>{errorMessage}</p>}
   </div>
       </Modal.Body>

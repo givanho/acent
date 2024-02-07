@@ -1,0 +1,217 @@
+
+
+
+.coinflex{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    width:100%;
+    align-items:end;
+}
+.coincard{
+width:200px;
+margin-bottom:30px;
+    display:flex;
+    align-items:center;
+    border-radius: 10px;
+border:1px solid #eff2f7;
+box-shadow: 0 0 1.25rem rgba(31,45,61,.08)!important;
+}
+.coincardin{
+    display:flex;
+padding:20px;
+    align-items:center;
+}
+.coincard h2{
+  font-size:16px;
+  font-weight:700;
+  font-family:'nunito';
+
+  color:#8492A6;
+  line-height:27.6px;
+padding-left:20px
+    }
+.coinuser{
+    width:200px;
+    background-color: rgb(233, 233, 235);
+    border-radius:10px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+    -ms-border-radius:10px;
+    -o-border-radius:10px;
+}
+
+.coinuse{
+    padding:20px
+}
+.coinuse h2{
+    font-size:20px;
+    font-weight:700;
+    font-family:'nunito';
+    padding-block:14px;
+    text-align:center;
+    
+}
+.coinuse p{
+    color:#8492A6;
+    font-size:12px;
+    font-family:'nunito';
+    text-align:center;
+
+}
+.tradv{
+    display:flex;
+    width:100%;
+    justify-content:space-between;
+    margin-bottom:60px
+}
+.tradeview{
+width:50%;
+
+}
+.convert{
+    width:50%;
+
+}
+
+.convert{
+    padding-inline: 20px;
+}
+.convert-heading h1{
+    font-size: 19px;
+    color:#010914;
+    line-height: 21.2px;
+    font-family: 'nunito';
+}
+ h3{
+    padding-top:20px ;
+    font-size: 13px;
+    color:#8492A6;
+    line-height: 21.2px;
+    font-family: 'nunito';
+}
+.left input{
+    width:60%;
+    border:1px solid #1a81c5;
+    height:40px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    padding:10px
+}
+.result h2{
+    padding-top:20px ;
+    font-size: 13px;
+    color:#8492A6;
+    line-height: 21.2px;
+    font-family: 'nunito';
+}
+.result p{
+   
+    font-size: 16px;
+    color:#1a81c5;
+    line-height: 21.2px;
+    font-family: 'nunito'; 
+}
+
+
+.swapBut{
+    padding-inline:32px;
+    padding-block:12px;
+    color:#fff;
+    font-family:'nunito';
+    background-color:#484d4b;
+    border-radius:10px 10px 10px 0;
+    -webkit-border-radius:10px 10px 10px 0;
+    -moz-border-radius:10px 10px 10px 0;
+    -ms-border-radius:10px 10px 10px 0;
+    -o-border-radius:10px 10px 10px 0;
+    margin-top:25px
+}
+.swapBut:hover{
+    background-color:#1a81c5;
+}
+
+
+
+/* .dflex{
+    height: 48px;
+    width: 48px;
+} */
+/* .col{
+    background-color:blue !important
+}
+.row{
+    margin-inline:3px
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 600px) {
+    .coincard{
+        width:90%;
+        
+        }
+        .coinflex{
+            display:flex;
+            flex-wrap:wrap;
+            justify-content:center;
+            align-items:center;
+            width:100%;
+            align-items:end;
+        }
+
+        .tradv{
+            display:flex;
+            flex-direction: column;
+            width:100%;
+           align-items:center;
+            margin-bottom:60px
+        }
+        .tradeview{
+        width:90%;
+        
+        }
+        .convert{
+            width:90%;
+        
+        }
+}
+@media screen and (min-width: 601px) and (max-width: 768px){
+    .coincard{
+        width:300px;
+        
+        }
+        .tradv{
+            display:flex;
+            flex-direction: column;
+            width:100%;
+           align-items:center;
+            margin-bottom:60px
+        }
+        .tradeview{
+        width:90%;
+        
+        }
+        .convert{
+            width:90%;
+        
+        }
+}
+
+@media screen and (min-width: 769px) and (max-width: 900px) {
+}

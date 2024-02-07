@@ -1,0 +1,22 @@
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    background-color: #1a81c5; /* Change to your desired background color */
+    color: #fff; /* Change to your desired text color */
+     font-family:'nunito';
+    font-size:16px;
+
+}
+
+/* Change background color of inactive tabs */
+.nav-tabs .nav-link {
+    background-color: #EFF2F7; /* Change to your desired background color */
+    color: #000; /* Change to your desired text color */
+    font-family:'nunito';
+    font-size:16px;
+
+}
+
+/* Change background color of disabled tabs */
+.nav-tabs .nav-item.disabled .nav-link {
+    background-color: #f8f9fa; /* Change to your desired background color */
+    color: #6c757d; /* Change to your desired text color */
+}
