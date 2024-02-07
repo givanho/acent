@@ -6,6 +6,8 @@ import { BiSolidUserCircle } from "react-icons/bi";
 import Modal from 'react-bootstrap/Modal';
 import { GrClose } from "react-icons/gr";
 import success from "../assets/success.json"
+import Lottie from "lottie-react";
+
 
 
 const Transfer = () => {
@@ -21,8 +23,8 @@ const Transfer = () => {
    onSubmit: async values => {
     
     try {
+    OpenMode(values.amount)
     
-  
   
 
     } catch (e) {
@@ -60,24 +62,21 @@ function MyVerticallyCenteredModal(props) {
       <Modal.Body>
        
       <div className='modal-content'>
-{!amount &&   
+
 <>
- <div className="payout-div">
+ <div >
       
     </div>
     
-    <div className='assetpic'>
+    <div style={{width:"300px", margin:"auto"}}>
+    <Lottie animationData={success} loop={false} />
+
     </div>
     
     
 
-    <div className='address-head'>
-      <h2>Upload Payment proof after payment. </h2>
-      
-      
-      <input type="file" 
-      placeholder='No file Chosen' />
-     
+    <div className='success-text'>
+      <h2>Your $ {amount} transfer was successful </h2>
       
       
 
@@ -85,13 +84,13 @@ function MyVerticallyCenteredModal(props) {
     
     
     </>
-    }
+    
    
   </div>
       </Modal.Body>
       <Modal.Footer>
-      {!amount &&   
-      <button className='modbut'> Continue</button>}
+      {amount &&   
+      <button className='modbut' onClick={() => setModalShow(false)}> Continue</button>}
       </Modal.Footer>
     </Modal>
   );
@@ -100,6 +99,12 @@ function MyVerticallyCenteredModal(props) {
 
   return (
     <>
+
+<MyVerticallyCenteredModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
+
     <div className='transfer-container  '>
         <div className='transfer-in'>
         <div className="coinuser">
