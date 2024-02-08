@@ -33,7 +33,7 @@ Reach us at contact@ascentinvestmentltd.com for more info.
 
 
    </div>
-<h2> My Trading Accounts</h2>
+<h2 className="header2"> My Trading Accounts</h2>
   <Table responsive style={{marginBottom:"32px"}}>
   <thead>
     <tr className='table-head'>
