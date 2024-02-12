@@ -7,9 +7,10 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
+import  FormCheck  from 'react-bootstrap/FormCheck';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Row from 'react-bootstrap/Row';
-
+import { Field } from 'formik';
 import * as formik from 'formik';
 import * as yup from 'yup';
 
@@ -19,7 +20,7 @@ const Profile = () => {
   const schema = yup.object().shape({
     fullName: yup.string().required(),
     email: yup.string().required(),
-    number: yup.string().required(),
+    number: yup.string().required().min(10, 'enter a valid number'),
     address: yup.string().required(),
     country: yup.string().required(),
     dob: yup.string().required(),
@@ -37,11 +38,11 @@ const Profile = () => {
     
   >
     <Tab eventKey="Personal Settings" title={"Personal Settings"} >
-      <div className='dash-in-single' >
+      <div className='dash-in-singles' >
       
       <Formik
       validationSchema={schema}
-      onSubmit={console.log}
+      onSubmit={() => console.log("HEllo*************")}
       initialValues={{
         fullName: '',
         email: '',
@@ -49,6 +50,10 @@ const Profile = () => {
         address: '',
         country: '',
         dob: '',
+
+
+
+
         terms: false,
       }}
     >
@@ -61,6 +66,7 @@ const Profile = () => {
                 type="text"
                 name="fullName"
                 value={values.fullName}
+                placeholder='enter your full name'
                 onChange={handleChange}
                 isValid={touched.fullName && !errors.fullName}
                 isInvalid={!!errors.fullName}
@@ -75,6 +81,7 @@ const Profile = () => {
               <Form.Control
                 type="email"
                 name="email"
+                placeholder='enter your email'
                 value={values.email}
                 onChange={handleChange}
                 isValid={touched.email && !errors.email}
@@ -89,7 +96,7 @@ const Profile = () => {
             <Form.Group as={Col} md="4" controlId="validationFormikUsername">
               <Form.Label>Phone number</Form.Label>
               <InputGroup hasValidation>
-                <Form.Control
+                <Form.Control className="numberInput"
                   type="number"
                   placeholder="Phone number"
                   aria-describedby="inputGroupPrepend"
@@ -162,7 +169,7 @@ const Profile = () => {
               id="validationFormik0"
             />
           </Form.Group>
-          <Button type="submit">Submit form</Button>
+          <Button className="prof-button" type="submit">Update Profile</Button>
         </Form>
       )}
     </Formik>
@@ -174,33 +181,143 @@ const Profile = () => {
     
     >
      
-     <div className='dash-in-single' >
-      
+       <Formik
+      validationSchema={schema}
+      onSubmit={() => console.log("Hi*************")}
+      initialValues={{
+        bankName: '',
+        accountName: '',
+        accountNumber: '',
+        swift: '',
+        bitcoin: '',
+        eth: '',
+        lite:'',
 
-      <table>
-            <thead >
-              <tr style={{textAlign:'center'}}>
-                <th style={{width:'20%'}}>Amount Requested</th>
-                <th style={{width:'20%'}}>Amount + charges</th>
-                <th style={{width:'20%'}}> Receiving mode</th>
-                <th style={{width:'20%'}}>Status</th>
-                <th style={{width:'20%'}}>Date Created</th>
-              </tr>
-            </thead>
-            <tbody>
-              {/* {data.map(item => (
-                <tr key={item.id}>
-                  <td style={{width:'15%'}}>{item.id}</td>
-                  <td style={{width:'25%'}}>{item.id}</td>
-                  <td style={{width:'25%'}}>{item.name}</td>
-                  <td style={{width:'35%'}}>{item.age}</td>
-                </tr>
-              ))} */}
-            <span className='nunito' style={{fontSize:"12px", marginTop:"20px", textAlign:'center'}}>No record yet</span>
-      
-            </tbody>
-          </table>
-      </div>
+
+
+
+        terms: false,
+      }}
+    >
+      {({ handleSubmit, handleChange, values, touched, errors }) => (
+        <Form noValidate onSubmit={handleSubmit}>
+          <Row className="mb-3">
+            <Form.Group as={Col} md="4" controlId="validationFormik01">
+              <Form.Label>Bank name</Form.Label>
+              <Form.Control
+                type="text"
+                name="bankName"
+                value={values.bankName}
+                onChange={handleChange}
+                isInvalid={!!errors.bankName}
+
+              />
+              <Form.Control.Feedback type="invalid">
+                  {errors.bankName}
+                </Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group as={Col} md="4" controlId="validationFormik02">
+              <Form.Label>Account Name</Form.Label>
+              <Form.Control
+                type="text"
+                name="accountName"
+                value={values.accountName}
+                onChange={handleChange}
+                isInvalid={!!errors.accountName}
+
+              />
+
+<Form.Control.Feedback type="invalid">
+                  {errors.accountName}
+                </Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group as={Col} md="4" controlId="validationFormikUsername">
+              <Form.Label>Account number</Form.Label>
+              <InputGroup hasValidation>
+                <Form.Control className="numberInput"
+                  type="number"
+                  placeholder="enter your account number"
+                  aria-describedby="inputGroupPrepend"
+                  name="number"
+                  value={values.accountNumber}
+                  onChange={handleChange}
+                  isInvalid={!!errors.accountNumber}
+                />
+                <Form.Control.Feedback type="invalid">
+                  {errors.accountNumber}
+                </Form.Control.Feedback>
+              </InputGroup>
+            </Form.Group>
+          </Row>
+          <Row className="mb-3">
+            <Form.Group as={Col} md="4" controlId="validationFormik03">
+              <Form.Label>Swift Code</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="swift code"
+                name="swift"
+                value={values.swift}
+                onChange={handleChange}
+                isInvalid={!!errors.swift}
+              />
+
+              <Form.Control.Feedback type="invalid">
+                {errors.swift}
+              </Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group as={Col} md="4" controlId="validationFormik04">
+              <Form.Label>Bitcoin</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="bitcoin address"
+                name="bitcoin"
+                value={values.bitcoin}
+                onChange={handleChange}
+                isInvalid={!!errors.bitcoin}
+              />
+              <Form.Control.Feedback type="invalid">
+                {errors.bitcoin}
+              </Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group as={Col} md="4" controlId="validationFormik05">
+              <Form.Label>Ethereum</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="ethereum"
+                name="eth"
+                value={values.eth}
+                onChange={handleChange}
+                isInvalid={!!errors.eth}
+              />
+
+              <Form.Control.Feedback type="invalid">
+                {errors.eth}
+              </Form.Control.Feedback>
+            </Form.Group>
+
+ <Form.Group as={Col} md="6" controlId="validationFormik06" className="mt-3">
+              <Form.Label>Lite Address</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="lite"
+                name="lite"
+                value={values.lite}
+                onChange={handleChange}
+                isInvalid={!!errors.lite}
+              />
+
+              <Form.Control.Feedback type="invalid">
+                {errors.lite}
+              </Form.Control.Feedback>
+            </Form.Group>
+
+
+          </Row>
+        
+          <Button className="prof-button" type="submit">Update Profile</Button>
+        </Form>
+      )}
+    </Formik>
 
 
     </Tab>
@@ -241,34 +358,115 @@ const Profile = () => {
     <Tab eventKey="Other Settings" 
     title={"Other Settings"}
     >
-     
-     <div className='dash-in-single' >
-      
+     <div className='radio-in'>
+     <Formik
+      validationSchema={schema}
+      onSubmit={(values) => {
+        console.log(values); // Handle form submission here
+      }}
+      initialValues={{
+        pair1: '',
+        pair2: '',
+        pair3: '',
+      }}
+    >
+      {({ errors, touched }) => (
+        <Form>
+          <h2>Send confirmation OTP to my email when withdrawing my funds.</h2>
+          <Field name="pair1">
+            {({ field }) => (
+              <>
+                <Form.Check
+                inline
 
-      <table>
-            <thead >
-              <tr style={{textAlign:'center'}}>
-                <th style={{width:'25%'}}>Amount</th>
-                <th style={{width:'25%'}}>Type</th>
-                <th style={{width:'25%'}}>Plan / Naration</th>
-                <th style={{width:'25%'}}>Date Created</th>
-              </tr>
-            </thead>
-            <tbody>
-              {/* {data.map(item => (
-                <tr key={item.id}>
-                  <td style={{width:'15%'}}>{item.id}</td>
-                  <td style={{width:'25%'}}>{item.id}</td>
-                  <td style={{width:'25%'}}>{item.name}</td>
-                  <td style={{width:'35%'}}>{item.age}</td>
-                </tr>
-              ))} */}
-            <span className='nunito' style={{fontSize:"12px", marginTop:"20px", textAlign:'center'}}>No record yet</span>
-      
-            </tbody>
-          </table>
-      </div>
+                  type="radio"
+                  label="Yes"
+                  value="yes"
+                  {...field}
+                  id="pair1-yes"
+                  isInvalid={errors.pair1 && touched.pair1}
+                />
+                <Form.Check
+                inline
 
+                  type="radio"
+                  label="No"
+                  value="no"
+                  {...field}
+                  id="pair1-no"
+                  isInvalid={errors.pair1 && touched.pair1}
+                />
+              </>
+            )}
+          </Field>
+          {errors.pair1 && touched.pair1 && (
+            <div className="invalid-feedback">{errors.pair1}</div>
+          )}
+
+          <h2>Send me email when i get profit.</h2>
+          <Field name="pair2">
+            {({ field }) => (
+              <>
+                <Form.Check
+                  type="radio"
+                  label="Yes"
+                  value="yes"
+                inline
+                  {...field}
+                  id="pair2-yes"
+                  isInvalid={errors.pair2 && touched.pair2}
+                />
+                <Form.Check
+                  type="radio"
+                  label="No"
+                  value="no"
+                  {...field}
+                  id="pair2-no"
+                inline
+                  isInvalid={errors.pair2 && touched.pair2}
+                />
+              </>
+            )}
+          </Field>
+          {errors.pair2 && touched.pair2 && (
+            <div className="invalid-feedback">{errors.pair2}</div>
+          )}
+
+          <h2>Send me email when my investment plan expires.</h2>
+          <Field name="pair3">
+            {({ field }) => (
+              <>
+                <Form.Check
+                  type="radio"
+                  label="Yes"
+                  value="yes"
+                  {...field}
+                  id="pair3-yes"
+                  isInvalid={errors.pair3 && touched.pair3}
+                />
+                <Form.Check
+                
+
+                  type="radio"
+                  label="No"
+                  value="no"
+                  {...field}
+                  id="pair3-no"
+                  isInvalid={errors.pair3 && touched.pair3}
+                />
+              </>
+            )}
+          </Field>
+          {errors.pair3 && touched.pair3 && (
+            <div className="invalid-feedback">{errors.pair3}</div>
+          )}
+
+<Button  className="prof-button" type="submit">Save</Button>
+
+        </Form>
+      )}
+    </Formik>
+</div>
 
     </Tab>
     

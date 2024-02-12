@@ -1,0 +1,54 @@
+
+  
+
+  .prof-button{
+    padding:12px;
+    color:#fff;
+    font-family:'nunito';
+    background-color:#484d4b;
+    border-radius:10px 10px 10px 0;
+    -webkit-border-radius:10px 10px 10px 0;
+    -moz-border-radius:10px 10px 10px 0;
+    -ms-border-radius:10px 10px 10px 0;
+    -o-border-radius:10px 10px 10px 0;
+    margin-top:25px;
+    margin-bottom:32px;
+}
+.prof-button:hover{
+    background-color:#1a81c5;
+}
+
+.form-control::placeholder{
+    font-family:'nunito';
+    font-size:13px;
+    color:gray
+}
+.form-control:focus{
+  outline:1px solid #423c8c;
+  border:none;
+  box-shadow:none
+}
+.form-control{
+    font-family:'nunito';
+    color: #29302D;
+}
+.radio-flex{
+width:100%;
+display:flex;
+flex-direction:column;
+align-items:center
+
+}
+.radio-in{
+  width:80%;
+margin-inline:auto;
+margin-top:32px;
+color:#8492a6;
+font-family:'nunito';
+font-size:16px
+
+
+}
+.radio-in h2{
+padding-bottom: 15px;
+}
