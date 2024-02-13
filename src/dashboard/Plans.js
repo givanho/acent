@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react'
+import React, {useState,useEffect, useRef} from 'react'
 import Dropdown from 'react-bootstrap/Dropdown';
 import Stack from 'react-bootstrap/Stack';
 import { SiTether } from "react-icons/si";
@@ -8,26 +8,24 @@ import './plans.css'
 const Plans = () => {
   const [selectedItem, setSelectedItem] = useState("Basic Beginner");
   const [amounts, setAmount] = useState("");
+  const [sideAmount, setSideAmount] = useState("");
    const amountRef = useRef("");
 
   const handleChange = (e) => {
     amountRef.current = e.target.value ;
   };
-  const handleButtonClick = (amount) => {
-    amountRef.current = "500";
-  };
+ 
   const handleSelect = (eventKey) => {
     setSelectedItem(eventKey);
   };
   function AmountInput() {
-  const [amount, setAmount] = useState("");
 
     return (
       <form className="amountins">
         <input   
         type="number"
        placeholder="enter an amount"
-        defaultValue={amountRef.current||amounts}
+        defaultValue={amountRef.current && amounts}
         onChange={handleChange}/>
       </form>
     );
@@ -40,12 +38,12 @@ const Plans = () => {
           <>
          <h2>Choose Quick Amount to Invest</h2>
          <Stack direction="horizontal" gap={3}>
-         <button className="pp" onClick={handleButtonClick(100)}>$100</button>
-         <button className="pp" onClick={handleButtonClick(250)}>$250</button>
-         <button className="pp" onClick={handleButtonClick(500)}>$500</button>
-         <button className="pp" onClick={handleButtonClick(1000)}>$1,000</button>
-         <button className="pp" onClick={handleButtonClick(1500)}>$1,500</button>
-         <button className="pp" onClick={handleButtonClick(2000)}>$2,000</button>
+         <button className="pp" onClick={()=> setAmount(100)}>$100</button>
+         <button className="pp" onClick={()=> setAmount(250)}>$250</button>
+         <button className="pp" onClick={()=> setAmount(500)}>$500</button>
+         <button className="pp" onClick={()=> setAmount(1000)}>$1,000</button>
+         <button className="pp" onClick={()=> setAmount(1500)}>$1,500</button>
+         <button className="pp" onClick={()=> setAmount(2000)}>$2,000</button>
        </Stack>
      
        </>
@@ -54,12 +52,12 @@ const Plans = () => {
            <>
            <h2>Choose Quick Amount to Invest</h2>
            <Stack direction="horizontal" gap={3}>
-           <button className="pp" onClick={handleButtonClick(100)}>$100</button>
-           <button className="pp" onClick={handleButtonClick(250)}>$250</button>
-           <button className="pp" onClick={handleButtonClick(500)}>$500</button>
-           <button className="pp" onClick={handleButtonClick(1000)}>$1,000</button>
-           <button className="pp" onClick={handleButtonClick(1500)}>$1,500</button>
-           <button className="pp" onClick={handleButtonClick}>$2,000</button>
+           <button className="pp" onClick={()=> setAmount(100)}>$100</button>
+           <button className="pp" onClick={()=> setAmount(250)}>$250</button>
+           <button className="pp" onClick={()=> setAmount(500)}>$500</button>
+           <button className="pp" onClick={()=> setAmount(1000)}>$1,000</button>
+           <button className="pp" onClick={()=> setAmount(1500)}>$1,500</button>
+           <button className="pp" onClick={()=> setAmount(2000)}>$2,000</button>
          </Stack>
        
          </>
@@ -68,12 +66,12 @@ const Plans = () => {
        <>
        <h2>Choose Quick Amount to Invest</h2>
        <Stack direction="horizontal" gap={3}>
-       <button className="pp" onClick={handleButtonClick(100)}>$100</button>
-       <button className="pp" onClick={handleButtonClick(250)}>$250</button>
-       <button className="pp" onClick={handleButtonClick(500)}>$500</button>
-       <button className="pp" onClick={handleButtonClick(1000)}>$1,000</button>
-       <button className="pp" onClick={handleButtonClick(1500)}>$1,500</button>
-       <button className="pp" onClick={()=>handleButtonClick(2000)}>$2,000</button>
+       <button className="pp" onClick={()=> setAmount(100)}>$100</button>
+       <button className="pp" onClick={()=> setAmount(250)}>$250</button>
+       <button className="pp" onClick={()=> setAmount(500)}>$500</button>
+       <button className="pp" onClick={()=> setAmount(1000)}>$1,000</button>
+       <button className="pp" onClick={()=> setAmount(1500)}>$1,500</button>
+       <button className="pp" onClick={()=> setAmount(2000)}>$2,000</button>
      </Stack>
    
      </>
@@ -118,6 +116,10 @@ const Plans = () => {
   
 
   function RenderSelectedItemsSide() {
+     useEffect(() => {
+    setSideAmount(prev => prev.amounts || prev.amountRef.current);
+  }, [amountRef.current, amounts]);
+    
     return (
       <div>
         {selectedItem === "Basic Beginner" && (
@@ -134,7 +136,7 @@ const Plans = () => {
             <hr></hr>
             <h3>Payment Method: &ensp; &emsp; </h3>
             <hr></hr>
-            <h2>Amount to Invest: &ensp; &emsp; {amounts}</h2>
+            <h2>Amount to Invest: &ensp; &emsp; {amountRef.current? amountRef.current : amounts}</h2>
 
 
 
@@ -181,9 +183,13 @@ const Plans = () => {
     </Dropdown>
 
 
-<div>
-
+<div className='plans-flex'>
+<div className="selected">
 <RenderSelectedItems />
+</div>
+<div  className="selected-side">
+<RenderSelectedItemsSide/>
+</div>
 </div>
 </>
   )

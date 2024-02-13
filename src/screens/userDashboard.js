@@ -1,7 +1,9 @@
-import {  useState, useEffect } from 'react'
+import React,{  useState, useEffect } from 'react'
 import { Outlet, NavLink, Link ,  useLocation} from "react-router-dom";
 import { BiSolidUserCircle } from "react-icons/bi";
 import logo from "../assets/logo.png";
+import Modal from 'react-bootstrap/Modal';
+import { GrClose } from "react-icons/gr";
 
 import { FaIdCardClip } from "react-icons/fa6";
 import { TbCoins } from "react-icons/tb";
@@ -27,10 +29,10 @@ import Profile from '../dashboard/Profile';
 import Plans from '../dashboard/Plans';
 import Dash from '../dashboard/Dash';
 import GoogleTranslate from '../widgets/GoogleTranslate'
-import { GrClose } from "react-icons/gr";
 
 export default function DashLayout() {
   const [isOpen, setIsOpen] = useState(false);
+  const [modalShow, setModalShow] = React.useState(false);
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
@@ -48,8 +50,61 @@ export default function DashLayout() {
       setIsMenuOpen(!isMenuOpen);
     };
 
+
+    function OpenMode () {
+      setModalShow(true)
+      
+    }
+
+    function MyVerticallyCenteredModal(props) {
+      return (
+        <Modal
+          {...props}
+          size="lg"
+          aria-labelledby="contained-modal-title-vcenter"
+          centered
+        >
+          <Modal.Header closeButton>
+            <Modal.Title id="contained-modal-title-vcenter">
+      <button onClick={() => setModalShow(false)}><GrClose size={32} color="black"/></button>
+    
+            </Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+           
+          <div className='modal-content'>
+        <h2> KYC verification - Upload documents below to get verified. </h2>
+        <p> Valid identity card. (e.g. Drivers licence, international passport or any government approved document).</p>
+
+        <div className='address-head'>
+      <h2>Upload Payment proof after payment. </h2>
+      
+      
+      <input type="file" 
+      placeholder='No file Chosen' />
+     
+      
+      
+
+    </div>
+   
+      </div>
+          </Modal.Body>
+          <Modal.Footer>
+         
+          <button className='modbut'> Verify</button>
+          </Modal.Footer>
+        </Modal>
+      );
+    }
+    
+
   return (
     <div className="root-layout">
+       <MyVerticallyCenteredModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
       <header  >
       <nav className='navi'>
     <div className="navi-container">
@@ -87,7 +142,7 @@ export default function DashLayout() {
  <Link to= "register">
   <div className='header-Linked' style={{marginInline:"5vw"}}>
      <FaIdCardClip  color='#fff' size={20}/>
-<p className='text-white nunito '>KYC</p>
+<button className='text-white nunito ' onClick ={() => OpenMode()}>KYC</button>
   </div>
     </Link>
 
