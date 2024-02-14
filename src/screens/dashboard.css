@@ -244,11 +244,40 @@ margin-block:15px;
 }
 
 
+.modal-kyc{
+  text-align:left;
+  color:#3C4858;
+  border:none
+}
 
+.modal-kyc h2{
+ font-size:20px;
+ font-weight:600;
+ line-height:26px;
+ color:#3c4858;
+ margin-block:32px;
+ font-family:'nunito'
 
+}
+.modal-kyc p{
+  font-size:16px;
+ color:#8492A6;
+ margin-bottom:12px;
+ font-family:'nunito'
 
+}
 
-
+.modal-kyc input{
+  margin-bottom:25px;
+  border:1px solid #E0E6ED;
+  width:80%;
+  padding:10px;
+  border-radius:8px;
+  -webkit-border-radius:8px;
+  -moz-border-radius:8px;
+  -ms-border-radius:8px;
+  -o-border-radius:8px;
+}
 
 
 

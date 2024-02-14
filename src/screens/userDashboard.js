@@ -29,10 +29,17 @@ import Profile from '../dashboard/Profile';
 import Plans from '../dashboard/Plans';
 import Dash from '../dashboard/Dash';
 import GoogleTranslate from '../widgets/GoogleTranslate'
+import { UserAuth } from '../context/context'
+import { collection, query, where ,doc, setDoc, onSnapshot,getDocs } from "firebase/firestore";
+import { db } from '../context/firebase';
+
 
 export default function DashLayout() {
   const [isOpen, setIsOpen] = useState(false);
   const [modalShow, setModalShow] = React.useState(false);
+const [data, setData] = useState(null)
+const { user, logout} = UserAuth();
+
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
@@ -72,21 +79,22 @@ export default function DashLayout() {
           </Modal.Header>
           <Modal.Body>
            
-          <div className='modal-content'>
+          <div className='modal-kyc'>
         <h2> KYC verification - Upload documents below to get verified. </h2>
         <p> Valid identity card. (e.g. Drivers licence, international passport or any government approved document).</p>
 
-        <div className='address-head'>
-      <h2>Upload Payment proof after payment. </h2>
-      
       
       <input type="file" 
       placeholder='No file Chosen' />
      
+
+     <p>Passport Photograph </p>
+      
+      <input type="file" 
+      placeholder='No file Chosen' />
       
       
 
-    </div>
    
       </div>
           </Modal.Body>
@@ -98,6 +106,37 @@ export default function DashLayout() {
       );
     }
     
+
+
+
+
+    //fetch data
+    useEffect(() => {
+      if (user) {
+        //When the query snapshot changes (new data is added), 
+       // the onSnapshot callback function is called. If the query snapshot is not empty, 
+       // we update the state with the data from the first document in the snapshot.
+  
+        const q = query(collection(db, 'users'), where('userID', '==', user.uid));
+  
+        //The unsubscribe function returned by onSnapshot is used to 
+        //remove the listener when the component unmounts, preventing memory leaks.
+  
+        const unsubscribe = onSnapshot(q, (querySnapshot) => {
+          if (!querySnapshot.empty) {
+            const doc = querySnapshot.docs[0];
+            
+            setData(doc.data());
+  
+           
+          }
+        });
+  
+        return () => {
+          unsubscribe();
+        };
+      }
+    }, []);
 
   return (
     <div className="root-layout">
@@ -139,17 +178,18 @@ export default function DashLayout() {
       
 </button>
 
- <Link to= "register">
-  <div className='header-Linked' style={{marginInline:"5vw"}}>
+ <div>
+ <button className='text-white nunito ' style={{display:"flex", alignItems:"center"}} onClick ={() => OpenMode()}>
+  <div className='header-Linked' style={{marginInline:"5vw", display:"flex", alignItems:"center"}}>
      <FaIdCardClip  color='#fff' size={20}/>
-<button className='text-white nunito ' onClick ={() => OpenMode()}>KYC</button>
+<p>KYC</p>
   </div>
-    </Link>
-
-<Link to="dashboard">
+  </button>
+</div>
+<Link to="/dashboard">
 <div className='header-Linked'>
      <BiSolidUserCircle color='#fff' size={32} />
-<span className='text-white nunito '>User</span>
+<span className='text-white nunito '>{data.firstname +" "+ data.lastname}</span>
   </div>
 
 </Link>

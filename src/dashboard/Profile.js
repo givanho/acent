@@ -65,6 +65,7 @@ const Profile = () => {
               <Form.Control
                 type="text"
                 name="fullName"
+                readonly
                 value={values.fullName}
                 placeholder='enter your full name'
                 onChange={handleChange}
@@ -81,6 +82,7 @@ const Profile = () => {
               <Form.Control
                 type="email"
                 name="email"
+                readonly
                 placeholder='enter your email'
                 value={values.email}
                 onChange={handleChange}
@@ -133,6 +135,7 @@ const Profile = () => {
                 type="text"
                 placeholder="Country"
                 name="country"
+                readonly
                 value={values.country}
                 onChange={handleChange}
                 isInvalid={!!errors.country}
