@@ -189,7 +189,7 @@ const { user, logout} = UserAuth();
 <Link to="/dashboard">
 <div className='header-Linked'>
      <BiSolidUserCircle color='#fff' size={32} />
-<span className='text-white nunito '>{data.firstname +" "+ data.lastname}</span>
+<span className='text-white nunito '>{ data && data.firstname +" "+ data.lastname}</span>
   </div>
 
 </Link>

@@ -6,12 +6,14 @@ import Lottie from "lottie-react";
 import logo from "../assets/logo.png";
 import diamond from "../assets/diamonds.json"
 import Footer from '../widgets/footer';
+import { UserAuth } from '../context/context'
 
 
 export default function RootLayout() {
   const location = useLocation();
   const isLoginRoute = location.pathname === "/login" || location.pathname === "/register";
 
+  const { user, logout} = UserAuth();
 
     const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -96,17 +98,32 @@ export default function RootLayout() {
       </div>
 
       <div className='deskSign'>
-      <Link to="login">
+
+{user?  <Link to="dashboard">
+<button className=" px-4 py-2.5  text-white nunito  signbut mr-4"  >
+    Dashboard
+</button>
+</Link>: <Link to="login">
 <button className=" px-4 py-2.5  text-white nunito  signbut mr-4"  >
     logIn
 </button>
-</Link>
+</Link>}
+
+   {user ? <Link to= "pricing">
+
+<button className="px-4 py-2.5  text-white nunito  signbut">
+    Pricing
+</button>
+</ Link> 
+: 
 <Link to= "register">
 
 <button className="px-4 py-2.5  text-white nunito  signbut">
     Get Started
 </button>
 </ Link>
+}  
+
 
     </div> 
 <div className='mobileSign'>

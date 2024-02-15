@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect}from 'react'
 
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
@@ -13,7 +13,9 @@ import Row from 'react-bootstrap/Row';
 import { Field } from 'formik';
 import * as formik from 'formik';
 import * as yup from 'yup';
-
+import { UserAuth } from '../context/context'
+import { collection, query, where ,doc, setDoc, onSnapshot,getDocs } from "firebase/firestore";
+import { db } from '../context/firebase';
 import './profile.css'
 const Profile = () => {
   const { Formik } = formik;
@@ -27,8 +29,37 @@ const Profile = () => {
     terms: yup.bool().required().oneOf([true], 'Terms must be accepted'),
   });
 
+  const { user} = UserAuth();
+const [data, setData] = useState(null)
 
 
+//fetch data
+useEffect(() => {
+  if (user) {
+    //When the query snapshot changes (new data is added), 
+   // the onSnapshot callback function is called. If the query snapshot is not empty, 
+   // we update the state with the data from the first document in the snapshot.
+
+    const q = query(collection(db, 'users'), where('userID', '==', user.uid));
+
+    //The unsubscribe function returned by onSnapshot is used to 
+    //remove the listener when the component unmounts, preventing memory leaks.
+
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      if (!querySnapshot.empty) {
+        const doc = querySnapshot.docs[0];
+        
+        setData(doc.data());
+
+       
+      }
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }
+}, []);
   return (
     <Tabs
     defaultActiveKey="Personal Settings"
@@ -65,12 +96,11 @@ const Profile = () => {
               <Form.Control
                 type="text"
                 name="fullName"
-                readonly
-                value={values.fullName}
+                readOnly
+                value={data && data.firstname + " "+ data.lastname}
                 placeholder='enter your full name'
                 onChange={handleChange}
-                isValid={touched.fullName && !errors.fullName}
-                isInvalid={!!errors.fullName}
+             
 
               />
               <Form.Control.Feedback type="invalid">
@@ -82,12 +112,11 @@ const Profile = () => {
               <Form.Control
                 type="email"
                 name="email"
-                readonly
+                readOnly
                 placeholder='enter your email'
-                value={values.email}
+                value={data && data.email}
                 onChange={handleChange}
-                isValid={touched.email && !errors.email}
-                isInvalid={!!errors.email}
+                
 
               />
 
@@ -135,10 +164,10 @@ const Profile = () => {
                 type="text"
                 placeholder="Country"
                 name="country"
-                readonly
-                value={values.country}
+                readOnly
+                value={data && data.country}
                 onChange={handleChange}
-                isInvalid={!!errors.country}
+                
               />
               <Form.Control.Feedback type="invalid">
                 {errors.country}

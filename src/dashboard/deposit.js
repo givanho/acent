@@ -259,7 +259,7 @@ function MyVerticallyCenteredModal(props) {
         value={number}
         ref={numberInputRef}
         onChange={(event) => setNumber(parseFloat(event.target.value))}
-        step="1"
+        step="0.00001"
         min="0"
         placeholder="Enter a deposit amount"
       />
@@ -270,6 +270,7 @@ function MyVerticallyCenteredModal(props) {
       </div> 
       <div>  
       <input
+        
         type="checkbox"
         checked={selectedItem === 'USDT ERC (20)'}
         ref={checkboxRef}
