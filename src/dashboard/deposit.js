@@ -120,9 +120,7 @@ else{
 
   
   const handleCopy = () => {
-    // Text to be copied to the clipboard
-
-    // Attempt to copy the text to the clipboard
+    
     navigator.clipboard.writeText(address)
       .then(() => {
         setCopied("Address Copied!");

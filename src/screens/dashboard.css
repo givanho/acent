@@ -266,7 +266,33 @@ margin-block:15px;
  font-family:'nunito'
 
 }
+.imge p{ color:#3c4858; border: 1px solid gray; 
+  padding:10px; border-radius:10px; -webkit-border-radius:10px; 
+  -moz-border-radius:10px; -ms-border-radius:10px; -o-border-radius:10px;
+  margin-block: auto;
+ font-family:'nunito'
 
+
+}
+.imge{
+  background-color: #f8f8f8;
+  margin-bottom: 20px;
+}
+.imge p:hover{
+  background-color:#8492A6;
+  color:#000
+
+}
+.modbut.disabled {
+  /* Your disabled button styles */
+  opacity: 0.5; /* Example: reduce opacity for a disabled effect */
+  cursor: not-allowed; /* Example: change cursor to not-allowed */
+}
+.imge span{
+ margin-right: auto;
+ padding-left: 25px;
+ font-family:'nunito'
+}
 .modal-kyc input{
   margin-bottom:25px;
   border:1px solid #E0E6ED;

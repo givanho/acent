@@ -4,7 +4,7 @@ import { BiSolidUserCircle } from "react-icons/bi";
 import logo from "../assets/logo.png";
 import Modal from 'react-bootstrap/Modal';
 import { GrClose } from "react-icons/gr";
-
+import Button from 'react-bootstrap/Button';
 import { FaIdCardClip } from "react-icons/fa6";
 import { TbCoins } from "react-icons/tb";
 import { FaArrowDownShortWide } from "react-icons/fa6";
@@ -31,7 +31,9 @@ import Dash from '../dashboard/Dash';
 import GoogleTranslate from '../widgets/GoogleTranslate'
 import { UserAuth } from '../context/context'
 import { collection, query, where ,doc, setDoc, onSnapshot,getDocs } from "firebase/firestore";
-import { db } from '../context/firebase';
+import { db, storage } from '../context/firebase';
+import { ref , uploadBytesResumable, getDownloadURL,} from 'firebase/storage';
+import Alert from 'react-bootstrap/Alert';
 
 
 export default function DashLayout() {
@@ -39,7 +41,14 @@ export default function DashLayout() {
   const [modalShow, setModalShow] = React.useState(false);
 const [data, setData] = useState(null)
 const { user, logout} = UserAuth();
+const [image2, setImage2] = useState('')
+const [image1, setImage1] = useState('')
+const [error, setError] = useState(true)
+const [error1, setError1] = useState(true)
+const [showAlert, setShowAlert] = useState(false);
 
+const [selectedFileName2, setSelectedFileName2] = useState('No image chosen'); 
+ const [selectedFileName1, setSelectedFileName1] = useState('No image chosen');
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
@@ -72,8 +81,11 @@ const { user, logout} = UserAuth();
           centered
         >
           <Modal.Header closeButton>
-            <Modal.Title id="contained-modal-title-vcenter">
+            <Modal.Title id="contained-modal-title-vcenter" style={{display:"inline-flex", justifyContent:"space-between"}} >
       <button onClick={() => setModalShow(false)}><GrClose size={32} color="black"/></button>
+      <Alert show={showAlert} variant="success" >
+       succesfully uploaded
+      </Alert>
     
             </Modal.Title>
           </Modal.Header>
@@ -84,23 +96,37 @@ const { user, logout} = UserAuth();
         <p> Valid identity card. (e.g. Drivers licence, international passport or any government approved document).</p>
 
       
-      <input type="file" 
-      placeholder='No file Chosen' />
+        <input type="file" 
+        accept="image/*"
+      id="img"
+      style={{display:'none'}}
+      onChange={handleFileChange1}
+    />
+      <label className="imge" for="img"><p>Choose Image</p>  <span>{selectedFileName1} </span></label>
      
 
      <p>Passport Photograph </p>
       
       <input type="file" 
-      placeholder='No file Chosen' />
-      
+        accept="image/*"
+
+      id="imge"
+      style={{display:'none'}}
+      onChange={handleFileChange2}
+      />
+      <label className="imge" for="imge"><p>Choose Image</p>  <span>{selectedFileName2} </span></label>
       
 
    
       </div>
           </Modal.Body>
           <Modal.Footer>
-         
-          <button className='modbut'> Verify</button>
+         {/* <Button  size="lg" onClick={handleUpload} disabled={selectedFileName2 || selectedFileName1 === "No image chosen" ? true: false}
+       >
+        Primary button
+      </Button> */}
+          <button onClick={handleUpload} disabled={error}
+           className={`modbut ${error || error1 ? 'disabled' : ''}`}> Verify</button>
           </Modal.Footer>
         </Modal>
       );
@@ -137,6 +163,74 @@ const { user, logout} = UserAuth();
         };
       }
     }, []);
+
+//imageupload function
+
+
+const handleUpload = () => {
+
+  const storageRef = ref(storage);
+
+  const uploadImage = (image, fileName) => {
+    const imageRef = ref(storageRef, 'kyc/' + data.firstname +data.lastname+ '/'+fileName);
+    const uploadTask = uploadBytesResumable(imageRef, image);
+
+    uploadTask.on('state_changed',
+      (snapshot) => {
+        const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+      },
+      (error) => {
+        console.error(error);
+      },
+      async () => {
+        const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+        console.log('File uploaded:', downloadURL);
+          setImage2('');
+          setImage1('');
+setError1(true)
+setError(true)
+  setSelectedFileName2('No image chosen');
+  setSelectedFileName1('No image chosen');
+  setShowAlert(true);
+        // Hide the alert after 2 seconds (adjust the time as needed)
+        setTimeout(() => {
+          setShowAlert(false);
+        }, 2000);
+
+        setTimeout(() => {
+          setModalShow(false);
+        }, 2500);
+      }
+    );
+  };
+
+  if (image1) {
+    uploadImage(image1, "licence");
+  }
+
+  if (image2) {
+    uploadImage(image2, "passport");
+  }
+};
+
+
+
+const handleFileChange1 = (e) => {
+  const file = e.target.files[0];
+  setImage1(file);
+setError(false)
+  setSelectedFileName1(file ? file.name : 'No image chosen');
+  
+};
+
+const handleFileChange2 = (e) => {
+  const file = e.target.files[0];
+  setImage2(file);
+setError1(false)
+  setSelectedFileName2(file ? file.name : 'No image chosen');
+ 
+};
+
 
   return (
     <div className="root-layout">
