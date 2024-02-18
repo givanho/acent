@@ -304,7 +304,12 @@ margin-block:15px;
   -ms-border-radius:8px;
   -o-border-radius:8px;
 }
-
+.lert{
+  padding:20px;
+  font-size:14px;
+  display:flex;
+  justify-content:center
+}
 
 
 

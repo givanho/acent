@@ -81,7 +81,7 @@ const [selectedFileName2, setSelectedFileName2] = useState('No image chosen');
           centered
         >
           <Modal.Header closeButton>
-            <Modal.Title id="contained-modal-title-vcenter" style={{display:"inline-flex", justifyContent:"space-between"}} >
+            <Modal.Title id="contained-modal-title-vcenter" style={{display:"flex", justifyContent:"space-between"}} >
       <button onClick={() => setModalShow(false)}><GrClose size={32} color="black"/></button>
       <Alert show={showAlert} variant="success"  className="lert">
        succesfully uploaded
