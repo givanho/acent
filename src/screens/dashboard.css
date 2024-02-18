@@ -310,6 +310,18 @@ margin-block:15px;
   display:flex;
   justify-content:center
 }
+.verified h2{
+  font-size:20px;
+  font-weight:600;
+  font-family:"nunito";
+  color:#3c4858;
+  margin-block:32px
+}
+.verified{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
 
 
 

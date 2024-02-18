@@ -1,6 +1,7 @@
 import React,{  useState, useEffect } from 'react'
 import { Outlet, NavLink, Link ,  useLocation} from "react-router-dom";
 import { BiSolidUserCircle } from "react-icons/bi";
+import { RiVerifiedBadgeFill } from "react-icons/ri";
 import logo from "../assets/logo.png";
 import Modal from 'react-bootstrap/Modal';
 import { GrClose } from "react-icons/gr";
@@ -46,6 +47,7 @@ const [image1, setImage1] = useState('')
 const [error, setError] = useState(true)
 const [error1, setError1] = useState(true)
 const [showAlert, setShowAlert] = useState(false);
+const [verified, setVerified] = useState(false);
 
 const [selectedFileName2, setSelectedFileName2] = useState('No image chosen'); 
  const [selectedFileName1, setSelectedFileName1] = useState('No image chosen');
@@ -90,8 +92,17 @@ const [selectedFileName2, setSelectedFileName2] = useState('No image chosen');
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-           
-          <div className='modal-kyc'>
+        {verified ? 
+        <div className="verified">
+          <div style={{margin:"auto"}}>
+          <RiVerifiedBadgeFill size={200} color={"#1a81c5"}
+        />  
+          </div>
+        
+        <h2> You have been Verified</h2>
+        </div>
+        :
+        <div className='modal-kyc'>
         <h2> KYC verification - Upload documents below to get verified. </h2>
         <p> Valid identity card. (e.g. Drivers licence, international passport or any government approved document).</p>
 
@@ -119,14 +130,15 @@ const [selectedFileName2, setSelectedFileName2] = useState('No image chosen');
 
    
       </div>
+        }   
+          
           </Modal.Body>
           <Modal.Footer>
-         {/* <Button  size="lg" onClick={handleUpload} disabled={selectedFileName2 || selectedFileName1 === "No image chosen" ? true: false}
-       >
-        Primary button
-      </Button> */}
+         {!verified && 
           <button onClick={handleUpload} disabled={error}
            className={`modbut ${error || error1 ? 'disabled' : ''}`}> Verify</button>
+         }
+         
           </Modal.Footer>
         </Modal>
       );
@@ -153,8 +165,10 @@ const [selectedFileName2, setSelectedFileName2] = useState('No image chosen');
             const doc = querySnapshot.docs[0];
             
             setData(doc.data());
-  
-           
+  console.log("DATA ==> "+ doc.data().kyc)
+            if (doc.data().kyc) {
+              setVerified(true);
+            }
           }
         });
   
@@ -182,17 +196,19 @@ const handleUpload = () => {
       (error) => {
         console.error(error);
       },
-      async () => {
-        const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
-        console.log('File uploaded:', downloadURL);
-          setImage2('');
+
+ () => {
+        // Handle successful uploads on complete
+        // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+       getDownloadURL(uploadTask.snapshot.ref)
+      .then(async (downloadURL) => {
+                 setImage2('');
           setImage1('');
 setError1(true)
 setError(true)
   setSelectedFileName2('No image chosen');
   setSelectedFileName1('No image chosen');
   setShowAlert(true);
-        // Hide the alert after 2 seconds (adjust the time as needed)
         setTimeout(() => {
           setShowAlert(false);
         }, 2000);
@@ -200,8 +216,40 @@ setError(true)
         setTimeout(() => {
           setModalShow(false);
         }, 2500);
+
+
+         await setDoc(doc(db, 'users', user.uid), {
+                 kyc: downloadURL, // Use downloadURL here
+                 }, { merge: true });
+        });
       }
+
+
+
+//       async () => {
+//         const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+//         console.log('File uploaded:', downloadURL);
+         
+        
+//           setImage2('');
+//           setImage1('');
+// setError1(true)
+// setError(true)
+//   setSelectedFileName2('No image chosen');
+//   setSelectedFileName1('No image chosen');
+//   setShowAlert(true);
+//         setTimeout(() => {
+//           setShowAlert(false);
+//         }, 2000);
+
+//         setTimeout(() => {
+//           setModalShow(false);
+//         }, 2500);
+        
+        
+//       }
     );
+    
   };
 
   if (image1) {
