@@ -57,7 +57,7 @@ else{
   
       setNumber(numberInputRef.current.value);
       setSelectedItem('USDT ERC (20)');
-     setAddress("gdjdgXh urudkd sgsugdu") 
+     setAddress("15dh4wvW57w45uKFqUVAfCeAdnsGEAGeJa") 
       OpenMode(number, selectedItem);
 
     setErrorMessage('')
@@ -77,7 +77,7 @@ else{
     if (numberInputRef2.current.value && checkboxRef2.current) {
       setEthPrice(numberInputRef2.current.value);
       setSelectedItem('Ethereum');
-     setAddress("gdjdgXh urudkd sgsugdu") 
+     setAddress("0x52050919cce19aa8739e8c56b3e68a31bb0a81a1") 
 
       OpenMode(ethPrice, selectedItem);
 
@@ -99,7 +99,7 @@ else{
     if (numberInputRef3.current.value && checkboxRef2.current) {
       setBitPrice(numberInputRef3.current.value);
       setSelectedItem('Bitcoin');
-     setAddress("gdjdgXh urudkd sgsugdu") 
+     setAddress("15dh4wvW57w45uKFqUVAfCeAdnsGEAGeJa") 
 
       OpenMode(bitPrice, selectedItem)
 
