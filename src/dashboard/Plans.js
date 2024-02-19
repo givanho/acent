@@ -18,6 +18,7 @@ const Plans = () => {
   const [showAlert, setShowAlert] = useState(false);
   const [selectedItem, setSelectedItem] = useState("Basic Beginner");
   const [amounts, setAmount] = useState("");
+  const [error, setError] = useState(true);
    const inputRef = useRef(null);
 
    const Bitcoin = "15dh4wvW57w45uKFqUVAfCeAdnsGEAGeJa"
@@ -346,8 +347,9 @@ const Plans = () => {
             
             </div> <div><h2 style={{fontFamily:"nunito" }}>${amounts }</h2></div> 
 </div>
-
-<button className="modbut" onClick={() => OpenMode(items)}>Confirm & Invest </button>
+<button  disabled={error}
+           className={`modbut ${error  ? 'disabled' : ''}`}> Verify</button>
+{/* <button  className={`modbut ${error? 'disabled' : ''}`} disabled={error} onClick={() => OpenMode(items)}>Confirm & Invest </button> */}
             </div>
 
 
@@ -382,6 +384,9 @@ const Plans = () => {
     setModalShow(true)
     setItems(items.payment.name);
     setAddress(items.payment.address);
+    if (items && amounts ){
+setError(false)
+    }
   
 }
   function MyVerticallyCenteredModal(props) {
