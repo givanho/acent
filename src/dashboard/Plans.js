@@ -35,7 +35,10 @@ const Plans = () => {
   useEffect(() => {
     // Set focus on the input field when the component mounts or 'amount' state changes
     inputRef.current.focus();
-  }, [amounts]);
+    if(amounts && items){
+      setError(false)
+    }
+  }, [amounts, items]);
 
   function AmountInput() {
 
@@ -206,7 +209,8 @@ const Plans = () => {
             </div> <div><h2 style={{fontFamily:"nunito" }}>${amounts }</h2></div> 
 </div>
 
-<button className="modbut" onClick={() => OpenMode(items)}>Confirm & Invest </button>
+<button  className={`modbut ${error? 'disabled' : ''}`} disabled={error} onClick={() => OpenMode(items)}>Confirm & Invest </button>
+
             </div>
 
 
@@ -380,13 +384,15 @@ const Plans = () => {
         // You can also show an error message to the user here
       });
   };
-  function OpenMode ( items) {
+
+  
+  function OpenMode ( item) {
+  
     setModalShow(true)
-    setItems(items.payment.name);
-    setAddress(items.payment.address);
-    if (items && amounts ){
-setError(false)
-    }
+    setItems(item.payment.name);
+    setAddress(item.payment.address);
+    
+   
   
 }
   function MyVerticallyCenteredModal(props) {
