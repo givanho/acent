@@ -17,7 +17,6 @@ const {user} = UserAuth();
 
 useEffect(() => {
   if (user){
-    console.log(user)
   }
   else{
     console.log('user')
@@ -38,7 +37,6 @@ useEffect(() => {
   
    onSubmit: async values => {
     
-    console.log("onSubmit", values.email);
     try {
     
   
@@ -46,10 +44,16 @@ useEffect(() => {
      await signIn(values.email, values.password);
   
   
-     
-  
+     if (values.email === "fynefaceg@gmail.com"){
+      history('/admin')
+
+     }
+     else{
       // Navigate to the "Profile" screen
       history('/dashboard')
+     }
+  
+      
 
     } catch (e) {
      console.log(e.message);

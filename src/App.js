@@ -21,13 +21,14 @@ import RootLayout from '../src/layout/RootLayout'
 import SignIn from "./authentication/signIn";
 import SignUp from "./authentication/signUp";
 import PrivateRoutes from "./layout/privateRoute";
+import AdminRoute from "./layout/AdminRoute";
 import DashLayout from "./screens/userDashboard";
 import Withdrawal from "./dashboard/withdrawal";
 import Deposit from "./dashboard/deposit";
 import Transfer from "./dashboard/Transfer";
 import Swap from "./dashboard/Swap";
 import Payment from "./dashboard/Payment";
-
+import Admin from "./screens/Admin"
 import Profit from "./dashboard/Profit";
 import Profile from "./dashboard/Profile";
 import Plans from "./dashboard/Plans";
@@ -46,6 +47,11 @@ const router = createBrowserRouter(
       <Route path="login" element={<SignIn />} />
       <Route path = "register" element={<SignUp />} />
     </Route>
+
+    
+
+
+
     <Route element={<PrivateRoutes/>}>
               <Route path="dashboard" element={<DashLayout/>}>
                 <Route path="withdrawal" element={<Withdrawal/>} />
@@ -63,6 +69,14 @@ const router = createBrowserRouter(
 
                 </Route>
      </Route>
+
+
+     <Route element = {<AdminRoute/>}>
+
+<Route path="admin" element={<Admin/>} />
+
+</Route>
+
     </>
   )
 )

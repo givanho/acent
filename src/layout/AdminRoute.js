@@ -2,11 +2,13 @@ import { Outlet, Navigate } from 'react-router-dom'
 import { UserAuth } from '../context/context';
 
 
-const AdminRoutes = () => {
+const AdminRoute = () => {
 const { user} = UserAuth();
 
 
-    return user ? <Outlet/> : <Navigate to="/login"/>
+  // return user.email === "fynefaceg@gmail.com" ? <Outlet/>  : <Navigate to="/login"/>
+  return user?.email === "fynefaceg@gmail.com" ? <Outlet /> : user?.email !== "fynefaceg@gmail.com" ? <Navigate to="/dashboard" /> : <Navigate to="/login" />;
+
 }
 
-export default AdminRoutes
+export default AdminRoute
