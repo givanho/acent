@@ -7,6 +7,13 @@ import { SiBitcoinsv } from "react-icons/si";
 import Modal from 'react-bootstrap/Modal';
 import { GrClose } from "react-icons/gr";
 import Alert from 'react-bootstrap/Alert';
+import { UserAuth } from '../context/context'
+import moment from 'moment';
+
+import { collection, query, where ,doc, setDoc, onSnapshot,getDocs , getDoc,serverTimestamp} from "firebase/firestore";
+import { db, storage } from '../context/firebase';
+import { ref , uploadBytesResumable, getDownloadURL,} from 'firebase/storage';
+import { RiVerifiedBadgeFill } from "react-icons/ri";
 
 import { FaRegCopy } from "react-icons/fa";
 import './plans.css'
@@ -19,7 +26,17 @@ const Plans = () => {
   const [selectedItem, setSelectedItem] = useState("Basic Beginner");
   const [amounts, setAmount] = useState("");
   const [error, setError] = useState(true);
+  const [error1, setError1] = useState(true);
+  const [image1, setImage1] = useState('')
+  const [uploading, setUploading] = useState(false);
+  const [uploaded, setUploaded] = useState(false);
+
+
    const inputRef = useRef(null);
+const [data, setData] = useState(null)
+const [selectedFileName1, setSelectedFileName1] = useState('No image chosen');
+
+   const { user, logout} = UserAuth();
 
    const Bitcoin = "15dh4wvW57w45uKFqUVAfCeAdnsGEAGeJa"
    const Ethereum = "0x52050919cce19aa8739e8c56b3e68a31bb0a81a1"
@@ -54,6 +71,24 @@ const Plans = () => {
     );
   }
 
+
+  function FileSelect() {
+    
+    
+
+    return (
+      <form >
+         <input type="file" 
+        accept="image/*"
+      id="img"
+      style={{display:'none'}}
+      onChange={handleFileChange1}
+    />
+      <label className="imge" for="img"> <p>Choose Image</p>  <span>{selectedFileName1} </span></label>
+      </form>
+    );
+  }
+
   function RenderSelectedItems() {
     return (
       <div className="basic">
@@ -61,12 +96,12 @@ const Plans = () => {
           <>
          <h2>Choose Quick Amount to Invest</h2>
          <div className="rowbu">
-         <button className="pp colbu" onClick={()=> setAmount(100)}>$100</button>
-         <button className="pp colbu" onClick={()=> setAmount(250)}>$250</button>
-         <button className="pp colbu" onClick={()=> setAmount(500)}>$500</button>
-         <button className="pp colbu" onClick={()=> setAmount(1000)}>$1,000</button>
-         <button className="pp colbu" onClick={()=> setAmount(1500)}>$1,500</button>
-         <button className="pp colbu" onClick={()=> setAmount(2000)}>$2,000</button>
+         <button className={`pp ${amounts === 100 ? "activeg" : ""}`} onClick={()=> setAmount(100)}>$100</button>
+         <button className={`pp ${amounts === 250 ? "activeg" : ""}`} onClick={()=> setAmount(250)}>$250</button>
+         <button className={`pp ${amounts === 500 ? "activeg" : ""}`} onClick={()=> setAmount(500)}>$500</button>
+         <button className={`pp ${amounts === 1000 ? "activeg" : ""}`} onClick={()=> setAmount(1000)}>$1,000</button>
+         <button className={`pp ${amounts === 1500 ? "activeg" : ""}`} onClick={()=> setAmount(1500)}>$1,500</button>
+         <button className={`pp ${amounts === 2000 ? "activeg" : ""}`} onClick={()=> setAmount(2000)}>$2,000</button>
        </div>
      
        </>
@@ -75,12 +110,12 @@ const Plans = () => {
            <>
            <h2>Choose Quick Amount to Invest</h2>
            <Stack direction="horizontal" gap={3}>
-           <button className="pp" onClick={()=> setAmount(100)}>$100</button>
-           <button className="pp" onClick={()=> setAmount(250)}>$250</button>
-           <button className="pp" onClick={()=> setAmount(500)}>$500</button>
-           <button className="pp" onClick={()=> setAmount(1000)}>$1,000</button>
-           <button className="pp" onClick={()=> setAmount(1500)}>$1,500</button>
-           <button className="pp" onClick={()=> setAmount(2000)}>$2,000</button>
+           <button className={`pp ${amounts === 100 ? "activeg" : ""}`} onClick={()=> setAmount(100)}>$100</button>
+           <button className={`pp ${amounts === 250 ? "activeg" : ""}`} onClick={()=> setAmount(250)}>$250</button>
+           <button className={`pp ${amounts === 500 ? "activeg" : ""}`} onClick={()=> setAmount(500)}>$500</button>
+           <button className={`pp ${amounts === 1000 ? "activeg" : ""}`} onClick={()=> setAmount(1000)}>$1,000</button>
+           <button className={`pp ${amounts === 1500 ? "activeg" : ""}`} onClick={()=> setAmount(1500)}>$1,500</button>
+           <button className={`pp ${amounts === 2000 ? "activeg" : ""}`} onClick={()=> setAmount(2000)}>$2,000</button>
          </Stack>
        
          </>
@@ -89,12 +124,12 @@ const Plans = () => {
        <>
        <h2>Choose Quick Amount to Invest</h2>
        <Stack direction="horizontal" gap={3}>
-       <button className="pp" onClick={()=> setAmount(100)}>$100</button>
-       <button className="pp" onClick={()=> setAmount(250)}>$250</button>
-       <button className="pp" onClick={()=> setAmount(500)}>$500</button>
-       <button className="pp" onClick={()=> setAmount(1000)}>$1,000</button>
-       <button className="pp" onClick={()=> setAmount(1500)}>$1,500</button>
-       <button className="pp" onClick={()=> setAmount(2000)}>$2,000</button>
+       <button className={`pp ${amounts === 100 ? "activeg" : ""}`} onClick={()=> setAmount(100)}>$100</button>
+       <button className={`pp ${amounts === 250 ? "activeg" : ""}`} onClick={()=> setAmount(250)}>$250</button>
+       <button className={`pp ${amounts === 500 ? "activeg" : ""}`} onClick={()=> setAmount(500)}>$500</button>
+       <button className={`pp ${amounts === 1000 ? "activeg" : ""}`} onClick={()=> setAmount(1000)}>$1,000</button>
+       <button className={`pp ${amounts === 1500 ? "activeg" : ""}`} onClick={()=> setAmount(1500)}>$1,500</button>
+       <button className={`pp ${amounts === 2000 ? "activeg" : ""}`} onClick={()=> setAmount(2000)}>$2,000</button>
      </Stack>
    
      </>
@@ -107,8 +142,8 @@ const Plans = () => {
       
       <h2>Choose Payment Method</h2>
       <div className="rowbut">
-  <div className="colmd">
-    <button className="pl" onClick={() => setItems({payment:{name:"USDT", address:USDT}})}> 
+  <div >
+    <button className={`pl ${items?.payment?.name === "USDT" ? "activef" : ""}`} onClick={() => setItems({payment:{name:"USDT", address:USDT}})}> 
       <div className="paycoin">
         <div>
           <SiTether size={25} color="#29302D" />
@@ -117,8 +152,8 @@ const Plans = () => {
       </div>
     </button>
   </div>
-  <div className="colmd">
-    <button className="pl" onClick={() => setItems({payment:{name:"Ethereum", address:Ethereum}})}>
+  <div >
+    <button className={`pl ${items?.payment?.name === "Ethereum" ? "activef" : ""}`} onClick={() => setItems({payment:{name:"Ethereum", address:Ethereum}})}>
       <div className="paycoin">
         <div>
           <FaEthereum size={25} color="#29302D" />
@@ -127,8 +162,9 @@ const Plans = () => {
       </div>
     </button>
   </div>
-  <div className="colmd">
-    <button className="pl" onClick={() => setItems({payment:{name:"Bitcoin", address:Bitcoin}})}>
+  <div >
+    
+    <button className={`pl ${items?.payment?.name === "Bitcoin" ? "activef" : ""}`} onClick={() => setItems({payment:{name:"Bitcoin", address:Bitcoin}})}>
       <div className="paycoin">
         <div>
           <SiBitcoinsv size={25} color="#29302D" />
@@ -199,7 +235,10 @@ const Plans = () => {
 
 
             <hr></hr>
+            <div style={{display:"flex", justifyContent:'space-between', alignItems:'end'}}>
             <div> <h3>Payment Method:  </h3></div>
+            <div> <p>{items?.payment?.name}  </p></div>
+            </div>
             <hr></hr>
 
 
@@ -367,6 +406,113 @@ const Plans = () => {
     );
   }
 
+  const handleUpload = () => {
+setError(true)
+    const storageRef = ref(storage);
+    const userRef = doc(db, 'users', user.uid);
+    const timestamp = moment().valueOf();
+
+
+    const uploadImage = (image) => {
+      const imageRef = ref(storageRef, 'payments/' + data.firstname +data.lastname+ '/payment'+timestamp)
+      const uploadTask = uploadBytesResumable(imageRef, image);
+  
+      uploadTask.on('state_changed',
+        (snapshot) => {
+         
+          const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+          if(progress < 100){
+          setUploading(true)
+          setUploaded(false)
+
+        
+          }
+          else{
+          setUploaded(true)
+          setUploading(false)
+
+          }
+        },
+        (error) => {
+          console.error(error);
+        },
+  
+   () => {
+          // Handle successful uploads on complete
+          // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+         getDownloadURL(uploadTask.snapshot.ref)
+        .then(async (downloadURL) => {
+                   
+            setImage1('');
+  setError1(true)
+    setShowAlert(true);
+  setSelectedFileName1('No image chosen');
+
+          
+  
+          
+  
+  
+        await  getDoc(userRef).then((docSnapshot) => {
+            if (docSnapshot.exists()) {
+                const userData = docSnapshot.data();
+                let paymentProofs = userData.payment || []; // Get existing payment URLs or initialize as an empty array
+                paymentProofs.push(downloadURL); // Add the new download URL to the array
+        
+                // Update the 'payment' field with the updated array of download URLs
+                 setDoc(userRef, { payment: paymentProofs }, { merge: true });
+            }
+        });
+          });
+        }
+  
+  
+      );
+      
+    };
+    if (image1) {
+      uploadImage(image1);
+    }
+   
+  };
+
+  
+
+  
+  const handleFileChange1 = (e) => {
+    const file = e.target.files[0];
+    setImage1(file);
+    setError1(false)
+    setSelectedFileName1(file ? file.name : 'No image chosen');
+    
+  };
+
+  
+
+
+
+  useEffect(() => {
+    if (user) {
+      
+
+      const q = query(collection(db, 'users'), where('userID', '==', user.uid));
+
+      const unsubscribe = onSnapshot(q, (querySnapshot) => {
+        if (!querySnapshot.empty) {
+          const doc = querySnapshot.docs[0];
+          
+          setData(doc.data());
+          
+        }
+      });
+
+      return () => {
+        unsubscribe();
+      };
+    }
+  }, []);
+
+
   const handleCopy = () => {
     
     navigator.clipboard.writeText(address)
@@ -385,12 +531,18 @@ const Plans = () => {
       });
   };
 
-  
+function ModalHide () {
+    setError(true);
+    setUploaded(false);
+    setUploading(false);
+     setModalShow(false);
+}  
   function OpenMode ( item) {
   
     setModalShow(true)
     setItems(item.payment.name);
     setAddress(item.payment.address);
+
     
    
   
@@ -405,12 +557,24 @@ const Plans = () => {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-    <button onClick={() => setModalShow(false)}><GrClose size={32} color="black"/></button>
+    <button onClick={ModalHide}><GrClose size={32} color="black"/></button>
   
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-         
+        {
+          uploaded ? 
+          <div className="verified">
+          <div style={{margin:"auto"}}>
+          <RiVerifiedBadgeFill size={200} color={"#1a81c5"}
+        />  
+          </div>
+        
+        <h2> Payment proof uploaded</h2>
+        </div>
+        :
+        
+        
         <div className='modal-content'>
    
   <>
@@ -448,10 +612,9 @@ const Plans = () => {
         <h2>Upload Payment proof after payment. </h2>
         
         
-        <input type="file" 
-        placeholder='No file Chosen' />
-       
-        
+        <FileSelect/>
+
+
         
   
       </div>
@@ -462,10 +625,12 @@ const Plans = () => {
      
 
     </div>
+        
+  }
         </Modal.Body>
         <Modal.Footer>
-        {/* {!errorMessage &&   
-        <button className='modbut'> Submit Payment</button>} */}
+<button  className={`modbut ${uploaded || uploading? 'disabled' : ''}`} disabled={uploaded || uploading} onClick={handleUpload}>Submit Payment </button>
+
         </Modal.Footer>
       </Modal>
     );
@@ -475,7 +640,7 @@ const Plans = () => {
     <>
       <MyVerticallyCenteredModal
         show={modalShow}
-        onHide={() => setModalShow(false)}
+        onHide={ModalHide}
       />
     
     <Dropdown onSelect={handleSelect}>

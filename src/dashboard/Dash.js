@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { TbCoins } from "react-icons/tb";
 import { FaChartLine } from "react-icons/fa6";
 import { FiGift } from "react-icons/fi";
@@ -6,15 +6,24 @@ import { FaArrowDownShortWide } from "react-icons/fa6";
 import { FaArrowUpWideShort } from "react-icons/fa6";
 import { AdvancedRealTimeChart } from "react-ts-tradingview-widgets";
 import { CryptoCurrencyMarket } from "react-ts-tradingview-widgets";
+import { Outlet, NavLink, Link ,  useLocation} from "react-router-dom";
+import Plans from '../dashboard/Plans';
+
 
 
 import './dash.css'
 const Dash = () => {
+  const [showPlans, setShowPlans] = useState(false);
+
     const data = [
       { id: "GyFpl", name: '$280', age: "4 feb 2024" },
       { id: "LoBBD", name: '$496', age: "4 feb 2024"  },
       { id: "OHtse", name: '$125', age: "3 feb 2024"  }
       ];
+
+      function HandlePlan(){
+      setShowPlans(true)
+      }
   return (
     <> 
     <div className='dash-container'>
@@ -96,8 +105,14 @@ const Dash = () => {
         <h1 className='nunito'>Active Plan(s) (0)</h1>
         <div className='dash-out-flex'>
 <div className='dash-in-single' >
- <p className='nunito'>You do not have an active investment plan at the moment.</p>
- <button className='but nunito'>Buy a Plan</button>
+{showPlans ? <Plans/> :
+<div> <p className='nunito'>You do not have an active investment plan at the moment.</p>
+ <button className='but nunito' onClick={HandlePlan}>Buy a Plan</button>
+ </div>
+}
+
+
+
 </div>
 
         </div>

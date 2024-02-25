@@ -107,6 +107,15 @@
     justify-content:space-between;
     margin-bottom:32px
   }
+  .activef{
+    background-color:#1a81c5;
+    color:#fff
+  }
+  .activeg{
+    background-color:#1a81c5;
+    color:#fff
+
+  }
   .selected{
     width:70%
   }

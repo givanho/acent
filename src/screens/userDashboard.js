@@ -151,9 +151,7 @@ const [selectedFileName2, setSelectedFileName2] = useState('No image chosen');
     //fetch data
     useEffect(() => {
       if (user) {
-        //When the query snapshot changes (new data is added), 
-       // the onSnapshot callback function is called. If the query snapshot is not empty, 
-       // we update the state with the data from the first document in the snapshot.
+        
   
         const q = query(collection(db, 'users'), where('userID', '==', user.uid));
   
@@ -165,7 +163,6 @@ const [selectedFileName2, setSelectedFileName2] = useState('No image chosen');
             const doc = querySnapshot.docs[0];
             
             setData(doc.data());
-  console.log("DATA ==> "+ doc.data().kyc)
             if (doc.data().kyc) {
               setVerified(true);
             }
@@ -225,29 +222,6 @@ setError(true)
       }
 
 
-
-//       async () => {
-//         const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
-//         console.log('File uploaded:', downloadURL);
-         
-        
-//           setImage2('');
-//           setImage1('');
-// setError1(true)
-// setError(true)
-//   setSelectedFileName2('No image chosen');
-//   setSelectedFileName1('No image chosen');
-//   setShowAlert(true);
-//         setTimeout(() => {
-//           setShowAlert(false);
-//         }, 2000);
-
-//         setTimeout(() => {
-//           setModalShow(false);
-//         }, 2500);
-        
-        
-//       }
     );
     
   };
