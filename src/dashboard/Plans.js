@@ -109,28 +109,28 @@ const [selectedFileName1, setSelectedFileName1] = useState('No image chosen');
         {selectedItem === "Premium" && (
            <>
            <h2>Choose Quick Amount to Invest</h2>
-           <Stack direction="horizontal" gap={3}>
-           <button className={`pp ${amounts === 100 ? "activeg" : ""}`} onClick={()=> setAmount(100)}>$100</button>
-           <button className={`pp ${amounts === 250 ? "activeg" : ""}`} onClick={()=> setAmount(250)}>$250</button>
-           <button className={`pp ${amounts === 500 ? "activeg" : ""}`} onClick={()=> setAmount(500)}>$500</button>
-           <button className={`pp ${amounts === 1000 ? "activeg" : ""}`} onClick={()=> setAmount(1000)}>$1,000</button>
-           <button className={`pp ${amounts === 1500 ? "activeg" : ""}`} onClick={()=> setAmount(1500)}>$1,500</button>
-           <button className={`pp ${amounts === 2000 ? "activeg" : ""}`} onClick={()=> setAmount(2000)}>$2,000</button>
-         </Stack>
+           <div className="rowbu">
+         <button className={`pp ${amounts === 100 ? "activeg" : ""}`} onClick={()=> setAmount(100)}>$100</button>
+         <button className={`pp ${amounts === 250 ? "activeg" : ""}`} onClick={()=> setAmount(250)}>$250</button>
+         <button className={`pp ${amounts === 500 ? "activeg" : ""}`} onClick={()=> setAmount(500)}>$500</button>
+         <button className={`pp ${amounts === 1000 ? "activeg" : ""}`} onClick={()=> setAmount(1000)}>$1,000</button>
+         <button className={`pp ${amounts === 1500 ? "activeg" : ""}`} onClick={()=> setAmount(1500)}>$1,500</button>
+         <button className={`pp ${amounts === 2000 ? "activeg" : ""}`} onClick={()=> setAmount(2000)}>$2,000</button>
+       </div>
        
          </>
         )}
         {selectedItem === "Pro" && (
        <>
        <h2>Choose Quick Amount to Invest</h2>
-       <Stack direction="horizontal" gap={3}>
-       <button className={`pp ${amounts === 100 ? "activeg" : ""}`} onClick={()=> setAmount(100)}>$100</button>
-       <button className={`pp ${amounts === 250 ? "activeg" : ""}`} onClick={()=> setAmount(250)}>$250</button>
-       <button className={`pp ${amounts === 500 ? "activeg" : ""}`} onClick={()=> setAmount(500)}>$500</button>
-       <button className={`pp ${amounts === 1000 ? "activeg" : ""}`} onClick={()=> setAmount(1000)}>$1,000</button>
-       <button className={`pp ${amounts === 1500 ? "activeg" : ""}`} onClick={()=> setAmount(1500)}>$1,500</button>
-       <button className={`pp ${amounts === 2000 ? "activeg" : ""}`} onClick={()=> setAmount(2000)}>$2,000</button>
-     </Stack>
+       <div className="rowbu">
+         <button className={`pp ${amounts === 100 ? "activeg" : ""}`} onClick={()=> setAmount(100)}>$100</button>
+         <button className={`pp ${amounts === 250 ? "activeg" : ""}`} onClick={()=> setAmount(250)}>$250</button>
+         <button className={`pp ${amounts === 500 ? "activeg" : ""}`} onClick={()=> setAmount(500)}>$500</button>
+         <button className={`pp ${amounts === 1000 ? "activeg" : ""}`} onClick={()=> setAmount(1000)}>$1,000</button>
+         <button className={`pp ${amounts === 1500 ? "activeg" : ""}`} onClick={()=> setAmount(1500)}>$1,500</button>
+         <button className={`pp ${amounts === 2000 ? "activeg" : ""}`} onClick={()=> setAmount(2000)}>$2,000</button>
+       </div>
    
      </>
         )}
@@ -309,6 +309,7 @@ const [selectedFileName1, setSelectedFileName1] = useState('No image chosen');
       
                   <hr></hr>
                   <div> <h3>Payment Method:  </h3></div>
+            <div> <p>{items?.payment?.name}  </p></div>
                   <hr></hr>
       
       
@@ -381,7 +382,8 @@ const [selectedFileName1, setSelectedFileName1] = useState('No image chosen');
 
 
             <hr></hr>
-            <div> <h3>Payment Method:  {items}</h3></div>
+            <div> <h3>Payment Method:  </h3></div>
+            <div> <p>{items?.payment?.name}  </p></div>
             <hr></hr>
 
 
@@ -390,9 +392,8 @@ const [selectedFileName1, setSelectedFileName1] = useState('No image chosen');
             
             </div> <div><h2 style={{fontFamily:"nunito" }}>${amounts }</h2></div> 
 </div>
-<button  disabled={error}
-           className={`modbut ${error  ? 'disabled' : ''}`}> Verify</button>
-{/* <button  className={`modbut ${error? 'disabled' : ''}`} disabled={error} onClick={() => OpenMode(items)}>Confirm & Invest </button> */}
+<button className="modbut" onClick={() => OpenMode(items)}>Confirm & Invest </button>
+
             </div>
 
 
@@ -447,12 +448,9 @@ setError(true)
   setError1(true)
     setShowAlert(true);
   setSelectedFileName1('No image chosen');
-
-          
-  
-          
-  
-  
+  if (setSelectedFileName1 !=='No image chosen' ){
+    setError1(false)
+  }
         await  getDoc(userRef).then((docSnapshot) => {
             if (docSnapshot.exists()) {
                 const userData = docSnapshot.data();
@@ -629,7 +627,7 @@ function ModalHide () {
   }
         </Modal.Body>
         <Modal.Footer>
-<button  className={`modbut ${uploaded || uploading? 'disabled' : ''}`} disabled={uploaded || uploading} onClick={handleUpload}>Submit Payment </button>
+<button  className={`modbut ${uploaded || uploading || error1? 'disabled' : ''}`} disabled={uploaded || uploading ||error1} onClick={handleUpload}>Submit Payment </button>
 
         </Modal.Footer>
       </Modal>
@@ -642,7 +640,7 @@ function ModalHide () {
         show={modalShow}
         onHide={ModalHide}
       />
-    
+    <div className="dropd">
     <Dropdown onSelect={handleSelect}>
       <Dropdown.Toggle id="dropdown-basic">
         {selectedItem}
@@ -654,7 +652,7 @@ function ModalHide () {
         <Dropdown.Item eventKey="Pro">Pro</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
-
+</div>
 
 <div className='plans-flex'>
 <div className="selected">

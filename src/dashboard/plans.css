@@ -94,6 +94,13 @@
     opacity: 0;
     
   }
+  .dropd{
+    padding-inline:20px
+
+  }
+  .basic{
+    padding-inline:20px
+  }
   .basic h2{
     font-family:'nunito';
     color:#8492a6;
@@ -144,3 +151,22 @@
     -o-transition: box-shadow 0.3s ease-in-out;
 }
   
+
+@media screen and (max-width: 600px) {
+  .selected-side{
+    width: 100%;
+  }
+  .selected{
+    width:100%
+  }
+}
+
+@media screen and (min-width: 601px) and (max-width: 768px) {
+  .selected{
+    width:90%
+  }
+  .selected-side{
+    width: 90%;
+    margin-inline:auto
+  }
+}
