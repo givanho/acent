@@ -8,7 +8,17 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import { GrClose } from "react-icons/gr";
 import './admin.css'
+
+
 import { BiPlusCircle } from "react-icons/bi";
+import moment from 'moment';
+import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
+import Row from 'react-bootstrap/Row';
+import * as formik from 'formik';
+import * as yup from 'yup';
 import {
     orderBy,
     collection,
@@ -20,8 +30,13 @@ import {
     arrayUnion,
     query,
     deleteDoc ,
+    where ,
+    setDoc, 
+    getDoc,
+    serverTimestamp
     
   } from "firebase/firestore";
+
 const Admin = () => {
  
 
@@ -35,11 +50,7 @@ const Admin = () => {
 
     const [inputValues, setInputValues] = useState(Array(data.length).fill(''));
     const [number, setNumber] = useState('');
-    const [selectedItem, setSelectedItem] = useState("Basic Beginner");
-
-    const handleSelect = (eventKey) => {
-        setSelectedItem(eventKey)
-      };
+   
     const handleInputChange = (index, value) => {
         const newInputValues = [...inputValues];
         newInputValues[index] = value;
@@ -111,24 +122,128 @@ const Admin = () => {
       setModalShow(false);
  }  
  
+ function FormExample() {
+  const { Formik } = formik;
 
- 
-// useEffect(() => {
-//   if (inputRef.current) {
-//     inputRef.current.focus(); 
-//   }
-// }, [amounts]);
+  const schema = yup.object().shape({
+    amount: yup.number().required(),
+    selectedItem: yup.string().required('select Plan'),
+    selectedItem1: yup.string().required('select Currency')
+    // selectedItem1:yup.required("select a currency"),
+   
+  });
 
-// function AmountInput() {
+  return (
+    <Formik
+      validationSchema={schema}
+      onSubmit={console.log}
+      initialValues={{
+        amount: '',
+        selectedItem: '',
+        selectedItem1: ''
+      }}
+    >
+      {({ handleSubmit, handleChange, values, touched, errors, setFieldValue }) => (
+        <Form noValidate onSubmit={handleSubmit}>
+          <Row className="mb-3">
+            <Form.Group controlId="validationFormik01">
+              <Form.Label>Enter Amount</Form.Label>
+              <Form.Control
+                type="number"
+                name="amount"
+                value={values.amount}
+                onChange={handleChange}
+                isValid={touched.amount && !errors.amount}
+              />
+              
+            </Form.Group>
+           
+            
+          </Row>
+          <Row className="mb-3">
+            <Form.Group  controlId="validationFormik03">
+            
+             
 
- 
-// }
+<div className="dropd">
+    <Dropdown onSelect={(eventKey) => setFieldValue('selectedItem', eventKey)} isInvalid={!!errors.city}>
+      <Dropdown.Toggle id="dropdown-basic">
+      {values.selectedItem || 'Select an option'}
+      </Dropdown.Toggle>
+
+      <Dropdown.Menu>
+        <Dropdown.Item eventKey="Basic Beginner">Basic Beginner</Dropdown.Item>
+        <Dropdown.Item eventKey="Premium">Premium</Dropdown.Item>
+        <Dropdown.Item eventKey="Pro">Pro</Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
+
+</div>
+
+
+              <Form.Control.Feedback type="invalid">
+                {errors.selectedItem1}
+              </Form.Control.Feedback>
+            </Form.Group>
+          
+            
+          </Row>
+         
+          <Button type="submit">Fund user</Button>
+        </Form>
+      )}
+    </Formik>
+  );
+}
+
 
  function MyVerticallyCenteredModal(props) {
-  const [amounts, setAmount] = useState("");
-  const handleChange = (e) => {
-    setAmount(e.target.value);
-  };
+  const [success, setSuccess] = useState("");
+  const userRef = doc(db, 'users', user.uid);
+    const timestamp = moment().valueOf();
+//   const formik = useFormik({
+//     initialValues : {
+//     amount: "",
+//     plan: "",
+//     currency: "",
+   
+//   },
+  
+//    onSubmit: async values => {
+//     try {
+    
+  
+//     await  getDoc(userRef).then((docSnapshot) => {
+//       if (docSnapshot.exists()) {
+//           const userData = docSnapshot.data();
+//           let confirmedPayment = userData.payment || []; 
+//           confirmedPayment.push({ plan: values.plan, currency: values.currency, amount: values.amount });
+  
+//            setDoc(userRef, { funded: confirmedPayment }, { merge: true });
+//       }
+//   });
+  
+//      setSuccess("Account successfully funded")
+    
+  
+      
+
+//     } catch (e) {
+//      console.log(e.message);
+//     }
+  
+//   },
+//   validationSchema :Yup.object({
+//     currency: Yup.string()
+//       .required("Select the payment method"),
+//     amount: Yup.string().required("Enter funding amount"),
+//     plan: Yup.string()
+//     .required("Select client's plan"),
+//   })
+// }) 
+
+
+ 
      return (
        <Modal
          {...props}
@@ -143,31 +258,23 @@ const Admin = () => {
            </Modal.Title>
          </Modal.Header>
          <Modal.Body>
-         <form className="amountins">
+         <FormExample/>
+
+         {/* <form className="amountins" onSubmit={formik.handleSubmit}>
        <input   
          
           type="number"
           placeholder="Enter an amount"
-          value={amounts}
-          onChange={handleChange}/>
+          value={formik.amount}
+          onChange={formik.handleChange}/>
+              <span className='errors nunito'>{formik.errors.amount && formik.touched.amount && formik.errors.amount}</span>
 
-<div className="dropdo">
-<Dropdown onSelect={handleSelect}>
-<Dropdown.Toggle  className='dropt' >
-{selectedItem}
-</Dropdown.Toggle>
 
-<Dropdown.Menu>
-<Dropdown.Item   className='dropt' eventKey="Basic Beginner">Basic Beginner</Dropdown.Item>
-<Dropdown.Item  className='dropt' eventKey="Premium">Premium</Dropdown.Item>
-<Dropdown.Item  className='dropt' eventKey="Pro">Pro</Dropdown.Item>
-</Dropdown.Menu>
-</Dropdown>
-</div>
-    </form>
+<button type='submit'  >Fund Account </button>
+
+    </form> */}
          </Modal.Body>
          <Modal.Footer>
- <button  className={`modbut ${ error1? 'disabled' : ''}`} disabled={error1} >Submit Payment </button>
  
          </Modal.Footer>
        </Modal>
@@ -222,19 +329,7 @@ const Admin = () => {
         <p>premium</p>
         <p>Beginner</p>
     </div>
-<div className="dropdo">
-    <Dropdown onSelect={handleSelect}>
-      <Dropdown.Toggle  className='dropt' >
-        {selectedItem}
-      </Dropdown.Toggle>
-
-      <Dropdown.Menu>
-        <Dropdown.Item   className='dropt' eventKey="Basic Beginner">Basic Beginner</Dropdown.Item>
-        <Dropdown.Item  className='dropt' eventKey="Premium">Premium</Dropdown.Item>
-        <Dropdown.Item  className='dropt' eventKey="Pro">Pro</Dropdown.Item>
-      </Dropdown.Menu>
-    </Dropdown>
-</div>
+<p>he</p>
 </>
     : ""}
  
