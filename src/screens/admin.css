@@ -1,0 +1,50 @@
+.amountinputed p{
+    font-size: 16px;
+    color:#8492A6;
+    line-height: 21.2px;
+    font-family: 'nunito';
+}
+.amountinputed{
+    font-size: 19px;
+    color:#010914;
+    line-height: 21.2px;
+    font-family: 'nunito';
+    display:flex;
+
+}
+.amountinputed input[type=number]::-webkit-inner-spin-button {
+    opacity: 0;
+    
+  }
+.dropdown-toggle{
+    color:#010914;
+    font-family:'nunito'
+}
+.dropdown-menu{
+max-height:150px;
+overflow-y: auto 
+}
+.table-head{
+    text-align:center
+}
+.tbod td{
+    text-align:center
+
+}
+
+.dropt{
+    font-size:13px
+}
+.amountinputed input{
+    border: 1px solid #1a81c5;
+    padding: 5px;
+    width:90px;
+    border-radius: 10px 10px 10px 0;
+    -webkit-border-radius: 10px 10px 10px 0;
+    -moz-border-radius: 10px 10px 10px 0;
+    -ms-border-radius: 10px 10px 10px 0;
+    -o-border-radius: 10px 10px 10px 0;
+}
+.amountinput input::placeholder{
+   font-size:13px
+}

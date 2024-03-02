@@ -4,7 +4,7 @@ import { getStorage } from "firebase/storage";
 import {
   
   initializeAuth, 
- 
+  
 } from 'firebase/auth';
  const   FIRE_API = process.env.REACT_APP_FIRE_API;
    const  FIRE_AUTH = process.env.REACT_APP_FIRE_AUTH;
@@ -23,18 +23,11 @@ const firebaseConfig = {
    
 };
 
-// const firebaseConfig = {
-//     apiKey: "AIzaSyAsVjFS3GVJUOS98av0e_lEe8Oiq0zakBo",
-//     authDomain: "ascent-investments.firebaseapp.com",
-//     projectId: "ascent-investments",
-//     storageBucket: "ascent-investments.appspot.com",
-//     messagingSenderId: "622433531247",
-//     appId: "1:622433531247:web:d713fc5057fe71e03ba49a"
-//   };
 
 // Initialize Firebase
 
 export const app = initializeApp(firebaseConfig);
 export const auth = initializeAuth(app);
+
 export const db = getFirestore(app)
 export const storage = getStorage(app);
