@@ -27,9 +27,7 @@ const Admin = () => {
 
     const { user} = UserAuth();
     const [data, setData] = useState([]);
-    const numberInputRef = useRef(null);
-   const inputRef = useRef(null);
-  const [amounts, setAmount] = useState("");
+
   const [modalShow, setModalShow] = React.useState(false);
   const [error1, setError1] = useState(true);
 
@@ -114,28 +112,44 @@ const Admin = () => {
  }  
  
 
- useEffect(() => {
-  // Set focus on the input field when the component mounts or 'amount' state changes
-  inputRef?.current?.focus();
-  
-  
-}, [amounts]);
+ 
+// useEffect(() => {
+//   if (inputRef.current) {
+//     inputRef.current.focus(); 
+//   }
+// }, [amounts]);
 
-const handleChange = (e) => {
-  setAmount(e.target.value);
-};
+// function AmountInput() {
 
+ 
+// }
 
-function AmountInput() {
-
-  return (
-    <form className="amountins">
-      <input   
-        ref={inputRef}
-        type="number"
-        placeholder="Enter an amount"
-        value={amounts}
-        onChange={handleChange}/>
+ function MyVerticallyCenteredModal(props) {
+  const [amounts, setAmount] = useState("");
+  const handleChange = (e) => {
+    setAmount(e.target.value);
+  };
+     return (
+       <Modal
+         {...props}
+         size="lg"
+         aria-labelledby="contained-modal-title-vcenter"
+         centered
+       >
+         <Modal.Header closeButton>
+           <Modal.Title id="contained-modal-title-vcenter">
+     <button onClick={ModalHide}><GrClose size={32} color="black"/></button>
+   
+           </Modal.Title>
+         </Modal.Header>
+         <Modal.Body>
+         <form className="amountins">
+       <input   
+         
+          type="number"
+          placeholder="Enter an amount"
+          value={amounts}
+          onChange={handleChange}/>
 
 <div className="dropdo">
 <Dropdown onSelect={handleSelect}>
@@ -151,25 +165,6 @@ function AmountInput() {
 </Dropdown>
 </div>
     </form>
-  );
-}
-
- function MyVerticallyCenteredModal(props) {
-     return (
-       <Modal
-         {...props}
-         size="lg"
-         aria-labelledby="contained-modal-title-vcenter"
-         centered
-       >
-         <Modal.Header closeButton>
-           <Modal.Title id="contained-modal-title-vcenter">
-     <button onClick={ModalHide}><GrClose size={32} color="black"/></button>
-   
-           </Modal.Title>
-         </Modal.Header>
-         <Modal.Body>
-        <AmountInput/>
          </Modal.Body>
          <Modal.Footer>
  <button  className={`modbut ${ error1? 'disabled' : ''}`} disabled={error1} >Submit Payment </button>
@@ -178,6 +173,8 @@ function AmountInput() {
        </Modal>
      );
    }
+
+
     return(
         <div>
 <MyVerticallyCenteredModal
@@ -270,22 +267,13 @@ function AmountInput() {
 
             <td colSpan="3"></td> 
       <td>
-         <div className='amountinputed'>
-            <div>
-             <input
-                type="number"
-                value={inputValues[index]}  // Use input value for current index
-                onChange={(event) => handleInputChange(index, event.target.value)}
-                step="0.00001"
-                min="0"
-                placeholder="$"
-              />   
-            </div>
-              <div style={{marginLeft:"5px"}}>
+        
+          
+              <button onClick ={() => setModalShow(true)} >
               <BiPlusCircle size={24} color="green"/>
 
-              </div>
-            </div>
+              </button>
+            
       </td>
         {/* Render other user attributes in corresponding columns */}
       </tr>
