@@ -8,6 +8,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import { GrClose } from "react-icons/gr";
 import './admin.css'
+import { RiVerifiedBadgeFill } from "react-icons/ri";
 
 
 import { BiPlusCircle } from "react-icons/bi";
@@ -39,12 +40,14 @@ import {
 
 const Admin = () => {
  
-
+  const [thisUsers, setThisUsers] = useState("")
     const { user} = UserAuth();
     const [data, setData] = useState([]);
-
+    const defaultUtcTime = moment.utc();
+    const futureDate = moment(defaultUtcTime).add(1, 'months');
   const [modalShow, setModalShow] = React.useState(false);
   const [error1, setError1] = useState(true);
+  const [success, setSuccess] = useState(false)
 
 
 
@@ -115,14 +118,22 @@ const Admin = () => {
         }
     }
     fetchData()
-    },[])
+    },[success])
+    function OpenMode (users) {
+      setModalShow(true);
+      setThisUsers(users);
+      
+    }
 
     function ModalHide () {
-            
+            setSuccess(false);
       setModalShow(false);
  }  
  
- function FormExample() {
+
+
+ function PaymentForm() {
+
   const { Formik } = formik;
 
   const schema = yup.object().shape({
@@ -133,9 +144,50 @@ const Admin = () => {
   });
 
   return (
-    <Formik
+<div>
+  {
+    success ? 
+    <div className="verified">
+    <div style={{margin:"auto"}}>
+    <RiVerifiedBadgeFill size={200} color={"#1a81c5"}
+  />  
+    </div>
+  
+  <h2> Acount Funded</h2>
+  </div>
+    
+    :
+
+  <Formik
       validationSchema={schema}
-      onSubmit={console.log}
+      onSubmit={async (values, { setSubmitting, setErrors }) => {
+        const userRef = doc(db, 'users', thisUsers);
+        const timestamp = moment().valueOf();
+        try {
+          const docSnapshot = await getDoc(userRef);
+          if (docSnapshot.exists()) {
+            const userData = docSnapshot.data();
+            let confirmedPayment = userData.funded || [];
+            confirmedPayment.push({
+              plan: values.selectedItem,
+              currency: values.selectedItem1,
+              amount: values.amount,
+              createdAt: defaultUtcTime.format(),
+              expiry: futureDate.format()
+            });
+
+            await setDoc(userRef, { funded: confirmedPayment }, { merge: true });
+            setSubmitting(false); // Set submitting to false once the form is successfully submitted
+            setSuccess(true);
+        
+
+          }
+        } catch (error) {
+          
+          setErrors({ submit: 'Failed to fund account. Please try again.' });
+         
+        }
+      }}
       initialValues={{
         selectedItem: '',
         selectedItem1: '',
@@ -149,8 +201,9 @@ const Admin = () => {
            
             <Form.Group  controlId="validationFormikUsername">
               <Form.Label>Enter an Amount</Form.Label>
+              
+              <InputGroup hasValidation style={{width:"95%", marginInline:'auto'}}>
               <InputGroup.Text id="inputGroupPrepend">$</InputGroup.Text>
-              <InputGroup hasValidation>
                 <Form.Control
                   type="number"
                   placeholder="Amount"
@@ -171,8 +224,8 @@ const Admin = () => {
               
              
 
-   <div className="dropd">
-    <Dropdown onSelect={(eventKey) => setFieldValue('selectedItem', eventKey)} isInvalid={!!errors.selectedItem}
+   <div className="dropd" style={{width:'100%'}}>
+    <Dropdown onSelect={(eventKey) => setFieldValue('selectedItem', eventKey)} isInvalid={!!errors.selectedItem} 
     style={{marginBottom:"30px"}}>
       <Dropdown.Toggle id="dropdown-basic">
       {values.selectedItem || 'Select a Plan'}
@@ -195,7 +248,7 @@ const Admin = () => {
               
              
 
-   <div className="dropd">
+   <div className="dropd" style={{width:'100%'}}>
     <Dropdown onSelect={(eventKey) => setFieldValue('selectedItem1', eventKey)} isInvalid={!!errors.selectedItem1}>
       <Dropdown.Toggle id="dropdown-basic">
       {values.selectedItem1 || 'Select Currency'}
@@ -218,59 +271,23 @@ const Admin = () => {
             
           </Row>
           
-          <Button type="submit">Submit form</Button>
+          <Button className="modbut" type="submit">Fund User</Button>
         </Form>
       )}
-    </Formik>
+    </Formik>  
+  }
+</div>
+    
+    
   );
 }
 
 
  function MyVerticallyCenteredModal(props) {
-  const [success, setSuccess] = useState("");
-  const userRef = doc(db, 'users', user.uid);
+ 
     const timestamp = moment().valueOf();
-//   const formik = useFormik({
-//     initialValues : {
-//     amount: "",
-//     plan: "",
-//     currency: "",
-   
-//   },
-  
-//    onSubmit: async values => {
-//     try {
-    
-  
-//     await  getDoc(userRef).then((docSnapshot) => {
-//       if (docSnapshot.exists()) {
-//           const userData = docSnapshot.data();
-//           let confirmedPayment = userData.payment || []; 
-//           confirmedPayment.push({ plan: values.plan, currency: values.currency, amount: values.amount });
-  
-//            setDoc(userRef, { funded: confirmedPayment }, { merge: true });
-//       }
-//   });
-  
-//      setSuccess("Account successfully funded")
-    
-  
-      
 
-//     } catch (e) {
-//      console.log(e.message);
-//     }
-  
-//   },
-//   validationSchema :Yup.object({
-//     currency: Yup.string()
-//       .required("Select the payment method"),
-//     amount: Yup.string().required("Enter funding amount"),
-//     plan: Yup.string()
-//     .required("Select client's plan"),
-//   })
-// }) 
-
+    
 
  
      return (
@@ -287,21 +304,12 @@ const Admin = () => {
            </Modal.Title>
          </Modal.Header>
          <Modal.Body>
-         <FormExample/>
+          
+        <PaymentForm/>
+        
+        
 
-         {/* <form className="amountins" onSubmit={formik.handleSubmit}>
-       <input   
-         
-          type="number"
-          placeholder="Enter an amount"
-          value={formik.amount}
-          onChange={formik.handleChange}/>
-              <span className='errors nunito'>{formik.errors.amount && formik.touched.amount && formik.errors.amount}</span>
-
-
-<button type='submit'  >Fund Account </button>
-
-    </form> */}
+     
          </Modal.Body>
          <Modal.Footer>
  
@@ -351,23 +359,34 @@ const Admin = () => {
             
             </td>
 <td>
-    {user.payment ? 
-    <>
-       <div>
-        <p>pro</p>
-        <p>premium</p>
-        <p>Beginner</p>
-    </div>
-<p>he</p>
-</>
-    : ""}
+{user.funded ?<div >
+      {user?.funded?.map((item, index) => (
+        <div key={index}>
+          {/* Render each item in the array */}
+          <p style={{ fontSize: '13px', fontFamily: "nunito",marginBottom:'10px' }}> {item.plan} </p>
+        </div>
+      ))}
+    </div> : "" }
+            
  
 </td>
 
 <td>
-    <div>
-        <p> Bitcoin &emsp; $20</p>
+
+{user.funded ?<div >
+      {user?.funded?.map((item, index) => (
+      
+<div key={index} >
+     <p style={{ fontSize: '13px', fontFamily: "nunito",marginBottom:'10px' }}>
+       {item.currency} &emsp; $ {item.amount}
+     </p>
+  
         </div>
+     
+      ))}
+    </div> : "" }
+
+    
 </td>
 <td>
     <div>
@@ -389,11 +408,32 @@ const Admin = () => {
             
             </td>
 
-            <td colSpan="3"></td> 
+
+<td>
+{user.funded ?<div >
+      {user?.funded?.map((item, index) => (
+        <div key={index}>
+          {/* Render each item in the array */}
+          <p style={{ fontSize: '13px', fontFamily: "nunito",marginBottom:'10px' }}>  {item.createdAt} </p>
+        </div>
+      ))}
+    </div> : "" }
+</td>
+<td>
+{user.funded ?<div >
+      {user?.funded?.map((item, index) => (
+        <div key={index}>
+          {/* Render each item in the array */}
+          <p style={{ fontSize: '13px', fontFamily: "nunito",marginBottom:'10px' }}>  {item.expiry} </p>
+        </div>
+      ))}
+    </div> : "" }
+   </td>
+            <td colSpan="1"></td> 
       <td>
         
           
-              <button onClick ={() => setModalShow(true)} >
+              <button onClick ={() => OpenMode(user.userID)} >
               <BiPlusCircle size={24} color="green"/>
 
               </button>
