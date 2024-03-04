@@ -126,10 +126,9 @@ const Admin = () => {
   const { Formik } = formik;
 
   const schema = yup.object().shape({
-    amount: yup.number().required(),
-    selectedItem: yup.string().required('select Plan'),
-    selectedItem1: yup.string().required('select Currency')
-    // selectedItem1:yup.required("select a currency"),
+    selectedItem: yup.string().required(),
+    selectedItem1: yup.string().required(),
+    amount: yup.string().required(),
    
   });
 
@@ -138,37 +137,45 @@ const Admin = () => {
       validationSchema={schema}
       onSubmit={console.log}
       initialValues={{
-        amount: '',
         selectedItem: '',
-        selectedItem1: ''
+        selectedItem1: '',
+        amount: '',
+       
       }}
     >
-      {({ handleSubmit, handleChange, values, touched, errors, setFieldValue }) => (
+      {({ handleSubmit, handleChange, values, setFieldValue, errors }) => (
         <Form noValidate onSubmit={handleSubmit}>
           <Row className="mb-3">
-            <Form.Group controlId="validationFormik01">
-              <Form.Label>Enter Amount</Form.Label>
-              <Form.Control
-                type="number"
-                name="amount"
-                value={values.amount}
-                onChange={handleChange}
-                isValid={touched.amount && !errors.amount}
-              />
-              
-            </Form.Group>
            
-            
+            <Form.Group  controlId="validationFormikUsername">
+              <Form.Label>Enter an Amount</Form.Label>
+              <InputGroup.Text id="inputGroupPrepend">$</InputGroup.Text>
+              <InputGroup hasValidation>
+                <Form.Control
+                  type="number"
+                  placeholder="Amount"
+                  aria-describedby="inputGroupPrepend"
+                  name="amount"
+                  value={values.amount}
+                  onChange={handleChange}
+                  isInvalid={!!errors.amount}
+                />
+                <Form.Control.Feedback type="invalid">
+                  {errors.amount}
+                </Form.Control.Feedback>
+              </InputGroup>
+            </Form.Group>
           </Row>
-          <Row className="mb-3">
+          <Row >
             <Form.Group  controlId="validationFormik03">
-            
+              
              
 
-<div className="dropd">
-    <Dropdown onSelect={(eventKey) => setFieldValue('selectedItem', eventKey)} isInvalid={!!errors.city}>
+   <div className="dropd">
+    <Dropdown onSelect={(eventKey) => setFieldValue('selectedItem', eventKey)} isInvalid={!!errors.selectedItem}
+    style={{marginBottom:"30px"}}>
       <Dropdown.Toggle id="dropdown-basic">
-      {values.selectedItem || 'Select an option'}
+      {values.selectedItem || 'Select a Plan'}
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
@@ -176,20 +183,42 @@ const Admin = () => {
         <Dropdown.Item eventKey="Premium">Premium</Dropdown.Item>
         <Dropdown.Item eventKey="Pro">Pro</Dropdown.Item>
       </Dropdown.Menu>
-    </Dropdown>
+{errors.selectedItem && <p style={{color:"red", fontFamily:"nunito", fontSize:"12px", marginTop:"-50px"}}>select a plan</p>}
 
+    </Dropdown>
 </div>
 
-
-              <Form.Control.Feedback type="invalid">
-                {errors.selectedItem1}
-              </Form.Control.Feedback>
             </Form.Group>
-          
+
+
+ <Form.Group  controlId="validationFormik04">
+              
+             
+
+   <div className="dropd">
+    <Dropdown onSelect={(eventKey) => setFieldValue('selectedItem1', eventKey)} isInvalid={!!errors.selectedItem1}>
+      <Dropdown.Toggle id="dropdown-basic">
+      {values.selectedItem1 || 'Select Currency'}
+      </Dropdown.Toggle>
+
+      <Dropdown.Menu>
+        <Dropdown.Item eventKey="USDT">USDT</Dropdown.Item>
+        <Dropdown.Item eventKey="Bitcoin">Bitcoin</Dropdown.Item>
+        <Dropdown.Item eventKey="Ethereum">Ethereum</Dropdown.Item>
+      </Dropdown.Menu>
+{errors.selectedItem1 && <p style={{color:"red", fontFamily:"nunito", fontSize:"12px", marginTop:"-50px"}}>select a currency</p>}
+
+    </Dropdown>
+</div>
+
+            </Form.Group>
+
+
+           
             
           </Row>
-         
-          <Button type="submit">Fund user</Button>
+          
+          <Button type="submit">Submit form</Button>
         </Form>
       )}
     </Formik>
