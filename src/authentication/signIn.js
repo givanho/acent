@@ -44,7 +44,7 @@ useEffect(() => {
      await signIn(values.email, values.password);
   
   
-     if (values.email === "fynefaceg@gmail.com" || "hannaheaton124@gmail.com"){
+     if (values.email === "fynefaceg@gmail.com" || values.email === "hannaheaton124@gmail.com"){
       history('/admin')
 
      }

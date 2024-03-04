@@ -130,7 +130,10 @@ const Admin = () => {
       setModalShow(false);
  }  
  
-
+ const deleteData = (postID) =>{
+  const postDocRef = doc(db, 'users', thisUsers);
+  
+ }
 
  function PaymentForm() {
 
@@ -162,7 +165,7 @@ const Admin = () => {
       validationSchema={schema}
       onSubmit={async (values, { setSubmitting, setErrors }) => {
         const userRef = doc(db, 'users', thisUsers);
-        const timestamp = moment().valueOf();
+  
         try {
           const docSnapshot = await getDoc(userRef);
           if (docSnapshot.exists()) {

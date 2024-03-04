@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { TbCoins } from "react-icons/tb";
 import { FaChartLine } from "react-icons/fa6";
 import { FiGift } from "react-icons/fi";
@@ -8,12 +8,33 @@ import { AdvancedRealTimeChart } from "react-ts-tradingview-widgets";
 import { CryptoCurrencyMarket } from "react-ts-tradingview-widgets";
 import { Outlet, NavLink, Link ,  useLocation} from "react-router-dom";
 import Plans from '../dashboard/Plans';
+import { UserAuth } from '../context/context'
 
+import {
+  orderBy,
+  collection,
+  getDocs,
+  doc,
+  onSnapshot,
+  updateDoc,
+  arrayRemove,
+  arrayUnion,
+  query,
+  deleteDoc ,
+  where ,
+  setDoc, 
+  getDoc,
+  serverTimestamp
+  
+} from "firebase/firestore";
+import { db, storage } from '../context/firebase';
 
 
 import './dash.css'
 const Dash = () => {
   const [showPlans, setShowPlans] = useState(false);
+  const { user, logout} = UserAuth();
+  const [datas, setDatas] = useState(null)
 
     const data = [
       { id: "GyFpl", name: '$280', age: "4 feb 2024" },
@@ -24,8 +45,39 @@ const Dash = () => {
       function HandlePlan(){
       setShowPlans(true)
       }
+
+
+      useEffect(() => {
+        if (user) {
+          
+    
+          const q = query(collection(db, 'users'), where('userID', '==', user.uid));
+    
+          //The unsubscribe function returned by onSnapshot is used to 
+          //remove the listener when the component unmounts, preventing memory leaks.
+    
+          const unsubscribe = onSnapshot(q, (querySnapshot) => {
+            if (!querySnapshot.empty) {
+              const doc = querySnapshot.docs[0];
+              
+              setDatas(doc.data());
+              
+            }
+          });
+    
+          return () => {
+            unsubscribe();
+          };
+        }
+      }, []);
+
   return (
-    <> 
+    <>
+    
+    
+
+
+
     <div className='dash-container'>
         <h1 className='nunito'>Account Summary</h1>
         <div className='dash-out-flex'>
@@ -43,7 +95,12 @@ const Dash = () => {
 <div className='dash-in-flex' >
 <div >
     <p className='nunito'>Total Profit</p>
-    <h2 className='nunito'>$ 0.00</h2>
+    <h2 className='nunito'>$ {data?.funded?.map((item, index) => (
+        <div key={index}>
+          {/* Render each item in the array */}
+          <p style={{ fontSize: '13px', fontFamily: "nunito",marginBottom:'10px' }}>  {item.amount} </p>
+        </div>
+      ))}</h2>
 </div>
 <div className='dash-icon'>
 <FaChartLine color='#fff' size={32}/>
