@@ -209,39 +209,9 @@ const Dash = () => {
         <h1 className='nunito'>Your recent transactions (0)</h1>
         <div className='dash-out-flex'>
 <div className='dash-in-single' >
-<table className='table-head'>
-      <thead >
-        <tr>
-          <th>Date</th>
-          <th>Type</th>
-          <th>Amount</th>
-        </tr>
-      </thead>
-      <tbody className='tbod'>
-  
-      
-  <div>
-    {/* Map through each item in the funded array */}
-    {datas?.funded?.map((item, index) => (
-      <tr className='table-head' key={index}>
-<td> {item.createdAt}</td>
-<td> {item.plan}</td>
-<td> {item.amount}</td>
 
 
-      </tr>
-
-    ))}
-    
-  </div>
-
-{/* ) :       <span className='nunito' style={{fontSize:"12px", marginTop:"20px", textAlign:'center'}}>No record yet</span>
-} */}
-
-      </tbody>
-    </table>
-
-    <Table responsive style={{marginBottom:"32px"}}>
+    <Table  className='table-head'  style={{marginBottom:"32px", width:"100%"}} >
   <thead>
     <tr className='table-head'>
       <th>#</th>
@@ -254,11 +224,11 @@ const Dash = () => {
   </thead>
   <tbody className='tbod'>
     {datas?.funded?.map((user, index) => (
-      <tr key={index}>
+      <tr  className='table-head' key={index}>
       <td>{index}</td>
 <td>
-{user.funded ?<div >
-      {user?.funded?.map((item, index) => (
+{datas?.funded ?<div >
+      {datas?.funded?.map((item, index) => (
         <div key={index}>
           {/* Render each item in the array */}
           <p style={{ fontSize: '13px', fontFamily: "nunito",marginBottom:'10px' }}> {item.createdAt} </p>
@@ -271,8 +241,8 @@ const Dash = () => {
 
 <td>
 
-{user.funded ?<div >
-      {user?.funded?.map((item, index) => (
+{datas?.funded ?<div >
+      {datas?.funded?.map((item, index) => (
       
 <div key={index} >
      <p style={{ fontSize: '13px', fontFamily: "nunito",marginBottom:'10px' }}>
@@ -291,8 +261,8 @@ const Dash = () => {
 
 <td>
 
-{user.funded ?<div >
-      {user?.funded?.map((item, index) => (
+{datas?.funded ?<div >
+      {datas?.funded?.map((item, index) => (
       
 <div key={index} >
      <p style={{ fontSize: '13px', fontFamily: "nunito",marginBottom:'10px' }}>
