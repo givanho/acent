@@ -9,7 +9,7 @@ import { CryptoCurrencyMarket } from "react-ts-tradingview-widgets";
 import { Outlet, NavLink, Link ,  useLocation} from "react-router-dom";
 import Plans from '../dashboard/Plans';
 import { UserAuth } from '../context/context'
-
+import Table from 'react-bootstrap/Table';
 import {
   orderBy,
   collection,
@@ -35,6 +35,7 @@ const Dash = () => {
   const [showPlans, setShowPlans] = useState(false);
   const { user, logout} = UserAuth();
   const [datas, setDatas] = useState(null)
+  const [activePlans, setActivePlans] = useState(0)
 
     const data = [
       { id: "GyFpl", name: '$280', age: "4 feb 2024" },
@@ -95,12 +96,8 @@ const Dash = () => {
 <div className='dash-in-flex' >
 <div >
     <p className='nunito'>Total Profit</p>
-    <h2 className='nunito'>$ {data?.funded?.map((item, index) => (
-        <div key={index}>
-          {/* Render each item in the array */}
-          <p style={{ fontSize: '13px', fontFamily: "nunito",marginBottom:'10px' }}>  {item.amount} </p>
-        </div>
-      ))}</h2>
+    <h2 className='nunito'>$ 0.00</h2>
+
 </div>
 <div className='dash-icon'>
 <FaChartLine color='#fff' size={32}/>
@@ -132,7 +129,17 @@ const Dash = () => {
 <div className='dash-in-flex' >
 <div >
     <p className='nunito'>Total Deposits</p>
-    <h2 className='nunito'>$ 0.00</h2>
+    {datas?.funded ? (
+  <div>
+    {/* Map through each item in the funded array */}
+    
+    {/* Calculate the total profit */}
+    <h2 className="nunito">
+      $  {datas?.funded?.reduce((total, item) => total + parseFloat(item.amount), 0)}
+    </h2>
+  </div>
+) :     <h2 className='nunito'>$ 0.00</h2>
+}
 </div>
 <div className='dash-icon'>
 <FaArrowDownShortWide color='#fff' size={32}/>
@@ -159,14 +166,36 @@ const Dash = () => {
 
 
     <div className='dash-container'>
-        <h1 className='nunito'>Active Plan(s) (0)</h1>
+      {datas?.funded ? 
+      <h1 className='nunito'>Active Plan(s) ({[...new Set(datas?.funded?.map(item => item.plan))].length})</h1>
+      :
+      <h1 className='nunito'>Active Plan(s) (0)</h1>
+      }
         <div className='dash-out-flex'>
 <div className='dash-in-single' >
-{showPlans ? <Plans/> :
-<div> <p className='nunito'>You do not have an active investment plan at the moment.</p>
- <button className='but nunito' onClick={HandlePlan}>Buy a Plan</button>
- </div>
+
+{
+  datas?.funded ? (
+    [...new Set(datas?.funded?.map(item => item.plan))].map((plan, index) => (
+      
+      <div key={index}>
+        {/* Render each unique plan */}
+        <h2   className="nunito" style={{fontSize:'16px'}}> {index + 1} {plan}</h2>
+      </div>
+    ))
+  ) : (
+    showPlans ? (
+      <Plans />
+    ) : (
+      <div>
+        <p className='nunito'>You do not have an active investment plan at the moment.</p>
+        <button className='but nunito' onClick={HandlePlan}>Buy a Plan</button>
+      </div>
+    )
+  )
 }
+
+
 
 
 
@@ -180,7 +209,7 @@ const Dash = () => {
         <h1 className='nunito'>Your recent transactions (0)</h1>
         <div className='dash-out-flex'>
 <div className='dash-in-single' >
-<table>
+<table className='table-head'>
       <thead >
         <tr>
           <th>Date</th>
@@ -188,17 +217,122 @@ const Dash = () => {
           <th>Amount</th>
         </tr>
       </thead>
-      {/* <tbody>
-        {data.map(item => (
-          <tr key={item.id}>
-            <td>{item.id}</td>
-            <td>{item.name}</td>
-            <td>{item.age}</td>
-          </tr>
-        ))}
-      </tbody> */}
-      <span className='nunito' style={{fontSize:"12px", marginTop:"20px", textAlign:'center'}}>No record yet</span>
+      <tbody className='tbod'>
+  
+      
+  <div>
+    {/* Map through each item in the funded array */}
+    {datas?.funded?.map((item, index) => (
+      <tr className='table-head' key={index}>
+<td> {item.createdAt}</td>
+<td> {item.plan}</td>
+<td> {item.amount}</td>
+
+
+      </tr>
+
+    ))}
+    
+  </div>
+
+{/* ) :       <span className='nunito' style={{fontSize:"12px", marginTop:"20px", textAlign:'center'}}>No record yet</span>
+} */}
+
+      </tbody>
     </table>
+
+    <Table responsive style={{marginBottom:"32px"}}>
+  <thead>
+    <tr className='table-head'>
+      <th>#</th>
+      <th>Date</th>
+      <th>Type</th>
+      <th>Amount</th>
+     
+     
+    </tr>
+  </thead>
+  <tbody className='tbod'>
+    {datas?.funded?.map((user, index) => (
+      <tr key={index}>
+      <td>{index}</td>
+<td>
+{user.funded ?<div >
+      {user?.funded?.map((item, index) => (
+        <div key={index}>
+          {/* Render each item in the array */}
+          <p style={{ fontSize: '13px', fontFamily: "nunito",marginBottom:'10px' }}> {item.createdAt} </p>
+        </div>
+      ))}
+    </div> : "" }
+            
+ 
+</td>
+
+<td>
+
+{user.funded ?<div >
+      {user?.funded?.map((item, index) => (
+      
+<div key={index} >
+     <p style={{ fontSize: '13px', fontFamily: "nunito",marginBottom:'10px' }}>
+        $ {item.plan}
+     </p>
+  
+        </div>
+     
+      ))}
+    </div> : "" }
+
+    
+</td>
+
+
+
+<td>
+
+{user.funded ?<div >
+      {user?.funded?.map((item, index) => (
+      
+<div key={index} >
+     <p style={{ fontSize: '13px', fontFamily: "nunito",marginBottom:'10px' }}>
+        $ {item.amount}
+     </p>
+  
+        </div>
+     
+      ))}
+    </div> : "" }
+
+    
+</td>
+
+           
+
+
+            
+
+
+
+
+          
+        
+          
+              
+            
+      
+        {/* Render other user attributes in corresponding columns */}
+      </tr>
+    ))}
+  </tbody>
+    
+   
+</Table>
+
+
+
+
+
 </div>
 
         </div>
