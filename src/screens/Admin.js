@@ -45,6 +45,7 @@ const Admin = () => {
     const [data, setData] = useState([]);
     const defaultUtcTime = moment.utc();
     const futureDate = moment(defaultUtcTime).add(1, 'months');
+    const currentDate = new Date();
   const [modalShow, setModalShow] = React.useState(false);
   const [error1, setError1] = useState(true);
   const [success, setSuccess] = useState(false)
@@ -425,14 +426,18 @@ const Admin = () => {
 <td>
 {user.funded ?<div >
       {user?.funded?.map((item, index) => (
+        
         <div key={index}>
           {/* Render each item in the array */}
-          <p style={{ fontSize: '13px', fontFamily: "nunito",marginBottom:'10px' }}>  {item.expiry} </p>
+          <p style={{ fontSize: '13px', fontFamily: "nunito",marginBottom:'10px' }}>  {item.expiry}
+ </p>
         </div>
       ))}
     </div> : "" }
    </td>
-            <td colSpan="1"></td> 
+            <td colSpan="1">
+              <p>  </p>
+              </td> 
       <td>
         
           

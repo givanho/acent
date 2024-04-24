@@ -36,6 +36,9 @@ const Dash = () => {
   const { user, logout} = UserAuth();
   const [datas, setDatas] = useState(null)
   const [activePlans, setActivePlans] = useState(0)
+  const createdAtValues = [];
+  const [interest, setInterest] = useState("")
+  const currentDate = new Date();
 
     const data = [
       { id: "GyFpl", name: '$280', age: "4 feb 2024" },
@@ -64,8 +67,22 @@ const Dash = () => {
               setDatas(doc.data());
               
             }
+            
+      datas?.funded.forEach(item => {
+        if (item.hasOwnProperty('createdAt')) {
+          createdAtValues.push(item.createdAt);
+        }
+      });
+      createdAtValues.forEach(createdAt => {
+        setInterest( Math.ceil((new Date(currentDate) - new Date(createdAt)) / (1000 * 60 * 60 * 24)));
+        // Perform your action here with each 'createdAt' value
+        // For example, you could parse the date, format it, or perform other operations
+        // Example: const parsedDate = new Date(createdAt);
+        // Example: const formattedDate = parsedDate.toLocaleDateString();
+        // Example: console.log("Formatted date:", formattedDate);
+      });
           });
-    
+         
           return () => {
             unsubscribe();
           };
@@ -96,7 +113,8 @@ const Dash = () => {
 <div className='dash-in-flex' >
 <div >
     <p className='nunito'>Total Profit</p>
-    <h2 className='nunito'>$ 0.00</h2>
+    <h2 className='nunito'>$ {(datas?.funded?.reduce((total, item) => total + parseFloat(item.amount), 0) * (interest * 0.02)).toFixed(2)}</h2>
+    {/* {Math.ceil((new Date(item.expiry) - new Date(item.createdAt)) / (1000 * 60 * 60 * 24))} */}
 
 </div>
 <div className='dash-icon'>
@@ -135,7 +153,7 @@ const Dash = () => {
     
     {/* Calculate the total profit */}
     <h2 className="nunito">
-      $  {datas?.funded?.reduce((total, item) => total + parseFloat(item.amount), 0)}
+      $ {datas?.funded?.reduce((total, item) => total + parseFloat(item.amount), 0 )}
     </h2>
   </div>
 ) :     <h2 className='nunito'>$ 0.00</h2>

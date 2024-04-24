@@ -8,7 +8,7 @@ import * as Yup from "yup";
 
 
 import { UserAuth } from '../context/context'
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate, NavLink } from 'react-router-dom';
 
 const SignIn = () => {
   const { signIn} = UserAuth();
@@ -109,7 +109,7 @@ useEffect(() => {
     </div>
     <button type='submit' className='nunito signinbut'> Sign in</button>
     </form>
-<p className='dont nunito'>Don't have an account ?   <span style={{fontWeight:700, fontSize:"15px"}}> Sign Up </span></p>
+<p className='dont nunito'>Don't have an account ? <NavLink to="/register">  <span style={{fontWeight:700, fontSize:"15px"}}> Sign Up </span> </NavLink></p>
 <p className='copyright nunito'>© Copyright 2024   Ascent Investment Ltd.   All Rights Reserved.</p>
     </div>
     </div>
