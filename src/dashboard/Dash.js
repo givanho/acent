@@ -38,6 +38,7 @@ const Dash = () => {
   const [activePlans, setActivePlans] = useState(0)
   const createdAtValues = [];
   const [interest, setInterest] = useState("")
+  const [totalAmount, setTotalAmount] = useState("")
   const currentDate = new Date();
 
     const data = [
@@ -82,7 +83,8 @@ const Dash = () => {
         // Example: console.log("Formatted date:", formattedDate);
       });
           });
-         
+          setTotalAmount(datas?.funded?.reduce((total, item) => total + parseFloat(item.amount), 0))
+          console.log("total" +totalAmount)
           return () => {
             unsubscribe();
           };
@@ -102,7 +104,7 @@ const Dash = () => {
 <div className='dash-in-flex' >
 <div >
     <p className='nunito'>Account Ballance</p>
-    <h2 className='nunito'>$ 0.00</h2>
+    <h2 className='nunito'>$ {(totalAmount * (interest * 0.02) + totalAmount ).toFixed(2)}</h2>
 </div>
 <div className='dash-icon'>
 <TbCoins color='#fff' size={32}/>
