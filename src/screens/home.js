@@ -13,7 +13,7 @@ import thirdSlide from '../assets/carousel3.jpg'
 import surfer from '../assets/surfer.png'
 import negotiation from '../assets/negotiation.jpg'
 import product1 from '../assets/bitcoinn.png'
-import product2 from '../assets/product2.jpg'
+import product2 from '../assets/muskTE.jpg'
 import product3 from '../assets/product3.jpg'
 import product4 from '../assets/goldsi.png'
 import product5 from '../assets/platinum.JPG'
@@ -425,6 +425,26 @@ funds, assets and information are completely safe and fully secured.
 <div className='sixth-section-wrapper flex  flex-wrap items-center justify-center'>
 
 
+
+<div className='sixth-section-div'>
+
+<div className='sixth-section-image'>
+<img
+      src={product2} alt="key"
+    />
+</div>
+<h2 className='sixth-section-header nunito' > Tesla Stock Exchange Market</h2>
+<p className='sixth-section-text-content nunito'>
+(Elon Musk CEO of Tesla) he is the richest man in the world. American multinational 
+automative and clean energy company, which designs, manufactures and sells electric 
+vehicles, stationery battery energy storage devices from home to grid-scale 
+solar shingles, and related products and services. 
+</p>
+
+</div>
+
+
+
 <div className='sixth-section-div'>
 
 <div className='sixth-section-image'>
@@ -476,20 +496,7 @@ rental and/or sale of real estate for profit.
 
 </div>
 
-<div className='sixth-section-div'>
 
-<div className='sixth-section-image'>
-<img
-      src={product2} alt="key"
-    />
-</div>
-<h2 className='sixth-section-header nunito' > Forex</h2>
-<p className='sixth-section-text-content nunito'>
-Our Forex pairs are carefully selected in a way that balances an 
-active portfolio for steady profits and lower risks for our investors.
-</p>
-
-</div>
 
 <div className='sixth-section-div'>
 
