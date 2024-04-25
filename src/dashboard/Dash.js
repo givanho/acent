@@ -90,7 +90,7 @@ const Dash = () => {
             unsubscribe();
           };
         }
-      }, []);
+      }, [datas?.funded, user, totalAmount, interest, currentDate]);
 
   return (
     <>
