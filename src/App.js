@@ -35,6 +35,7 @@ import Plans from "./dashboard/Plans";
 import Managed from "./dashboard/Managed";
 import Transactions from "./dashboard/Transactions";
 import Reset from "./screens/reset";
+import ForgottenPassword from "./authentication/forgottenPassword";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -47,6 +48,8 @@ const router = createBrowserRouter(
       <Route path="contact" element={<Contact />} />
       <Route path="login" element={<SignIn />} />
       <Route path = "register" element={<SignUp />} />
+      <Route path = "forgottenPassword" element={<ForgottenPassword />} />
+
       <Route path = 'reset' element ={<Reset/>}/>
     </Route>
 

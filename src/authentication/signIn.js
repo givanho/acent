@@ -98,7 +98,7 @@ useEffect(() => {
     </div>
 
     <div className='flex justify-between pado'><p className='nunito input-header'> password <span style={{color:'red'}}>*</span></p>
-    <p className='nunito input-header forgot'>forgot password?</p></div>
+    <p className='nunito input-header forgot'> <NavLink to="/forgottenPassword">forgot password?</NavLink></p></div>
     <p className='errors nunito'>{formik.errors.password && formik.touched.password && formik.errors.password}</p>
     <div className="input-with-icon">
       <input type="password" placeholder="Password"
