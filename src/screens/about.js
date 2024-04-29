@@ -41,7 +41,7 @@ const About = () => {
   Choose Ascent Investments Limited.
   </p>
   <p  className='nunito about-par'>
- <h2 style={{color:"black"}}>PARTNERSHIP</h2>  
+ <h2 style={{color:"black"}}>PARTNERSHIP:</h2>  
   Ascent investments is in partnership with the (Tesla Motor's CEO Elon Musk)- the richest man in the 
   world, he has 60% shares in the company which made him the biggest shareholder of the company.
   </p>
