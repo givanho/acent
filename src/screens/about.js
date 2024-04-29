@@ -29,7 +29,7 @@ const About = () => {
   <h1 className='nunito about-heade'> Who we are</h1>
   <p  className='nunito about-par'>
   Ascent Investments Limited is a leading investment and trading platform 
-  specializing in non digital and digital assets, Gold and silver IRA, 
+  specializing in Tesla Stock Exchange Market, non digital and digital assets, Gold and silver IRA, 
   Real estate, stocks, crypto, and forex. With a research-driven approach and 
   advanced algorithms, Ascent Investment aims to deliver consistent results for 
   traders and investors. The user-friendly platform offers advanced tools and 
@@ -39,6 +39,11 @@ const About = () => {
   exceptional customer service and strives to be the trusted choice for optimizing 
   Investments and trading strategies in today's financial markets. Invest with confidence. 
   Choose Ascent Investments Limited.
+  </p>
+  <p  className='nunito about-par'>
+ <h2 style={{color:"black"}}>PARTNERSHIP</h2>  
+  Ascent investments is in partnership with the (Tesla Motor's CEO Elon Musk)- the richest man in the 
+  world, he has 60% shares in the company which made him the biggest shareholder of the company.
   </p>
 
 <button  className='nunito aboutbut'>
