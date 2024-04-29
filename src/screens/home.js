@@ -133,7 +133,7 @@ const Home = () => {
      Advanced Trading Strategies
      </h1>
      <h3 className='nunito carouselBody'>
-     Our algorithms are backed by extensive research and data analysis, offering advanced trading strategies for digital assets, stocks, crypto, and forex. Stay ahead of the markets with Ascent Investments Limited.
+     Our algorithms are backed by extensive research and data analysis, offering advanced trading strategies for Tesla Stock Exchange Market, digital assets, stocks, crypto, and forex. Stay ahead of the markets with Ascent Investments Limited.
 
      </h3>
      <Link to={user ? "/dashboard" : "/register"}>
@@ -221,7 +221,7 @@ const Home = () => {
 </h1>
 <p className='section-text-content nunito'>
 Gain valuable insights and stay ahead of the market 
-with our Gold and Silver IRA, Real estate and Algo Trade Limited.
+with our Tesla Stock Exchange Market, Gold and Silver IRA, Real estate and Algo Trade Limited.
  Our research-driven trading strategies for Non digital and digital 
  assets, Gold and Silver IRA, Real Estate, Stocks, Crypto and Forex. Stay informed 
  and make informed investment decisions with Gold and Silver, Real Estate and Algo 
@@ -259,7 +259,7 @@ Experience
 <p className='third-section-text-content nunito'>
 Ascent Investments Limited leverages cutting-edge AI technology to provide a 
 seamless investment and trading experience. Advanced algorithms analyze data in real-time, 
-optimizing trading strategies for non-digital and digital assets, Gold and Silver IRA, 
+optimizing trading strategies for Tesla Stock Exchange Market, non-digital and digital assets, Gold and Silver IRA, 
 Real Estate, Stocks, Crypto, and forex. 
 Invest with confidence with Ascent Investments' AI-powered platform.
 
@@ -752,7 +752,7 @@ Find Out More
   <h1 className='eleven-header nunito'>Research and Insight</h1>
 <p className='eleven-content nunito'>Gain valuable insights and stay ahead of the market with Algo Trade Limited.
  Our research-driven approach and advanced algorithms provide data-driven trading 
- strategies for digital assets, 
+ strategies for Tesla Stock Exchange Market, digital assets, 
 stocks, crypto, and forex. Stay informed and make informed investment decisions with Algo Trade Limited.</p>
   </div>
   <div className='eleven-section-button'>
