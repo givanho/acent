@@ -408,7 +408,7 @@ funds, assets and information are completely safe and fully secured.
 </div>
 <div className='fifth-section-image '>
 <img className='w-full'
-        src={trader} alt="trader"
+        src={trader} alt="trader1"
         
       />
 
