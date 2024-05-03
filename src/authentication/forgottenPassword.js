@@ -5,11 +5,15 @@ import { IoMailOutline } from "react-icons/io5";
 import { useFormik } from 'formik';
 import * as Yup from "yup";
 import { UserAuth } from '../context/context'
-
+import Lottie from "lottie-react";
+import loadingSquare from "../assets/loadingSquare.json"
+import '../context/context.css'
 
 const ForgottenPassword = () => {
     const {forgotPassword} = UserAuth()
     const [errors, setErrors] = useState(null)
+    const [pending, setIsPending] = useState(null)
+
     const [events, setEvents] = useState(null);
     const formik = useFormik({
         initialValues : {
@@ -20,7 +24,7 @@ const ForgottenPassword = () => {
        onSubmit: async values => {
         
         try {
-        
+        setIsPending(true)
           await forgotPassword(values.email)
           setEvents("Recovery Password sent to your Email")
           setErrors(null)
@@ -28,8 +32,11 @@ const ForgottenPassword = () => {
        
     
         } catch (e) {
+
             setErrors(e.message) 
             setEvents(null)
+        setIsPending(false)
+
         }
       
       },
@@ -52,8 +59,9 @@ const ForgottenPassword = () => {
             <div className='signform w-full'>
               <h1 className='nunito form-head'>Password Reset</h1>
               <form onSubmit={formik.handleSubmit}> 
-              <div ><p className='nunito input-header'>Enter your email to reset your password <span style={{color:'red'}}>*</span></p>
+              <div ><p className='nunito input-header'>Enter your email to reset password <span style={{color:'red'}}>*</span></p>
               <span className='errors nunito'>{formik.errors.email && formik.touched.email && formik.errors.email}</span>
+              <p>HELlllo </p>
               <div className="input-with-icon">
                 <input type="text" placeholder="mail@example.com" 
                 name='email' 
@@ -63,9 +71,16 @@ const ForgottenPassword = () => {
               </div>
     </div>
 
-   
+   {events? <p>{events}</p> : 
     <button type='submit' className='nunito signinbut'> Reset </button>
+  }
     </form>
+    {pending ? <div class="overlay">
+  <div class="centered-content">
+  <Lottie animationData={loadingSquare} loop={true} />
+
+  </div>
+</div> : ""}
 <p className='copyright nunito'>© Copyright 2024   Ascent Investment Ltd.   All Rights Reserved.</p>
     </div>
     </div>

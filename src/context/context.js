@@ -7,6 +7,9 @@ import {
   onAuthStateChanged,
   sendPasswordResetEmail,
 } from 'firebase/auth';
+import Lottie from "lottie-react";
+import loadingSquare from "../assets/loadingSquare.json"
+import './context.css'
 
 const UserContext = createContext();
 
@@ -42,7 +45,14 @@ export const AuthContextProvider = ({ children }) => {
     };
   }, []);
 if (isPending){
-  return <h2>loading...</h2>
+  return    <div class="overlay">
+  <div class="centered-content">
+  <Lottie animationData={loadingSquare} loop={true} />
+
+  </div>
+</div>
+  
+  
 }
   return (
     <UserContext.Provider value={{ createUser, user, logout, signIn,forgotPassword }}>

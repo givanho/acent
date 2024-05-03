@@ -6,9 +6,14 @@ import { SiBitcoinsv } from "react-icons/si";
 import './deposit.css'
 import { GrClose } from "react-icons/gr";
 import Alert from 'react-bootstrap/Alert';
-
+import { collection, query, where ,doc, setDoc, onSnapshot,getDocs , getDoc,serverTimestamp} from "firebase/firestore";
+import { db, storage } from '../context/firebase';
+import { ref , uploadBytesResumable, getDownloadURL,} from 'firebase/storage';
+import { RiVerifiedBadgeFill } from "react-icons/ri";
 import { FaRegCopy } from "react-icons/fa";
 import Modal from 'react-bootstrap/Modal';
+import { UserAuth } from '../context/context'
+import moment from 'moment';
 
 const Deposit = () => {
   const [selectedItem, setSelectedItem] = useState("");
@@ -23,7 +28,16 @@ const Deposit = () => {
  
   const [address, setAddress] = useState("")
   const [modalShow, setModalShow] = React.useState(false);
+  const [image1, setImage1] = useState('')
+  const [uploading, setUploading] = useState(false);
+  const [uploaded, setUploaded] = useState(false);
+  const [error, setError] = useState(true);
+  const [error1, setError1] = useState(true);
 
+  const inputRef = useRef(null);
+  const [data, setData] = useState(null)
+  const [selectedFileName1, setSelectedFileName1] = useState('No image chosen');
+  const { user, logout} = UserAuth();
 
   const handleCheckboxChange = (value) => {
     setSelectedItem(value);
@@ -137,8 +151,100 @@ else{
       });
   };
   
+  const handleUpload = () => {
+    setError(true)
+        const storageRef = ref(storage);
+        const userRef = doc(db, 'users', user.uid);
+        const timestamp = moment().valueOf();
+    
+    
+        const uploadImage = (image) => {
+          const imageRef = ref(storageRef, 'payments/' + data.firstname +data.lastname+ '/payment'+timestamp)
+          const uploadTask = uploadBytesResumable(imageRef, image);
+      
+          uploadTask.on('state_changed',
+            (snapshot) => {
+             
+              const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+              if(progress < 100){
+              setUploading(true)
+              setUploaded(false)
+    
+            
+              }
+              else{
+              setUploaded(true)
+              setUploading(false)
+    
+              }
+            },
+            (error) => {
+              console.error(error);
+            },
+      
+       () => {
+              // Handle successful uploads on complete
+              // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+             getDownloadURL(uploadTask.snapshot.ref)
+            .then(async (downloadURL) => {
+                       
+                setImage1('');
+      setError1(true)
+        setShowAlert(true);
+      setSelectedFileName1('No image chosen');
+      if (setSelectedFileName1 !=='No image chosen' ){
+        setError1(false)
+      }
+            await  getDoc(userRef).then((docSnapshot) => {
+                if (docSnapshot.exists()) {
+                    const userData = docSnapshot.data();
+                    let paymentProofs = userData.payment || []; // Get existing payment URLs or initialize as an empty array
+                    paymentProofs.push(downloadURL); // Add the new download URL to the array
+            
+                    // Update the 'payment' field with the updated array of download URLs
+                     setDoc(userRef, { payment: paymentProofs }, { merge: true });
+                }
+            });
+              });
+            }
+      
+      
+          );
+          
+        };
+        if (image1) {
+          uploadImage(image1);
+        }
+       
+      };
 
-
+      const handleFileChange1 = (e) => {
+        const file = e.target.files[0];
+        setImage1(file);
+        setError1(false)
+        setSelectedFileName1(file ? file.name : 'No image chosen');
+        
+      };
+      useEffect(() => {
+        if (user) {
+          
+    
+          const q = query(collection(db, 'users'), where('userID', '==', user.uid));
+    
+          const unsubscribe = onSnapshot(q, (querySnapshot) => {
+            if (!querySnapshot.empty) {
+              const doc = querySnapshot.docs[0];
+              
+              setData(doc.data());
+              
+            }
+          });
+    
+          return () => {
+            unsubscribe();
+          };
+        }
+      }, []);
 
 function OpenMode (numb, items, error) {
   setModalShow(true)
@@ -200,8 +306,15 @@ function MyVerticallyCenteredModal(props) {
       <h2>Upload Payment proof after payment. </h2>
       
       
-      <input type="file" 
-      placeholder='No file Chosen' />
+      <form >
+         <input type="file" 
+        accept="image/*"
+      id="img"
+      style={{display:'none'}}
+      onChange={handleFileChange1}
+    />
+      <label className="imge" for="img"> <p>Choose Image</p>  <span>{selectedFileName1} </span></label>
+      </form>
      
       
       
@@ -217,7 +330,8 @@ function MyVerticallyCenteredModal(props) {
       </Modal.Body>
       <Modal.Footer>
       {!errorMessage &&   
-      <button className='modbut'> Submit Payment</button>}
+      <button  className={`modbut ${uploaded || uploading || error1? 'disabled' : ''}`} disabled={uploaded || uploading ||error1} onClick={handleUpload}>Submit Payment </button>
+      }
       </Modal.Footer>
     </Modal>
   );

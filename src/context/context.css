@@ -1,0 +1,18 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Black background with 50% opacity */
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+/* Centered content within the overlay */
+.centered-content {
+    width: 80px; /* Width of the Lottie animation container */
+    height: 80px; /* Height of the Lottie animation container */
+    /* Add more styles as needed for the Lottie animation container */
+}
