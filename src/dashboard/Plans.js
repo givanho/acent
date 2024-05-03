@@ -408,6 +408,7 @@ const [selectedFileName1, setSelectedFileName1] = useState('No image chosen');
   }
 
   const handleUpload = () => {
+    setUploaded(false)
 setError(true)
     const storageRef = ref(storage);
     const userRef = doc(db, 'users', user.uid);

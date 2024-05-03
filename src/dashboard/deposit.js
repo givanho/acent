@@ -152,6 +152,7 @@ else{
   };
   
   const handleUpload = () => {
+
     setError(true)
         const storageRef = ref(storage);
         const userRef = doc(db, 'users', user.uid);
@@ -251,7 +252,12 @@ function OpenMode (numb, items, error) {
   setItems(items);
   setNumbe(numb);
 }
+function CloseMode (){
+  setUploaded(false)
+  setModalShow(false)
+  setShowAlert(false)
 
+}
 
 
 function MyVerticallyCenteredModal(props) {
@@ -264,12 +270,24 @@ function MyVerticallyCenteredModal(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-  <button onClick={() => setModalShow(false)}><GrClose size={32} color="black"/></button>
+  <button onClick={CloseMode}><GrClose size={32} color="black"/></button>
 
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
        
+
+      {
+          uploaded ? 
+          <div className="verified">
+          <div style={{margin:"auto"}}>
+          <RiVerifiedBadgeFill size={200} color={"#1a81c5"}
+        />  
+          </div>
+        
+        <h2> Payment proof uploaded</h2>
+        </div>
+        :
       <div className='modal-content'>
 {!errorMessage &&   
 <>
@@ -326,7 +344,7 @@ function MyVerticallyCenteredModal(props) {
     }
    
 {errorMessage && <p>{errorMessage}</p>}
-  </div>
+  </div> }
       </Modal.Body>
       <Modal.Footer>
       {!errorMessage &&   
@@ -346,7 +364,7 @@ function MyVerticallyCenteredModal(props) {
     <>
      <MyVerticallyCenteredModal
         show={modalShow}
-        onHide={() => setModalShow(false)}
+        onHide={CloseMode}
       />
     <div className="makepay">
       

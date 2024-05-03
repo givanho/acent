@@ -232,6 +232,22 @@ margin-top:25px
 
 
 @media screen and (max-width: 600px) {
+    .copyaddress h3{
+        font-family: 'nunito';
+        font-size: 14px;
+        font-weight: 500;
+        text-align: center;
+        background-color: #EFF2F7;
+        padding-inline: 8px;
+        padding-block:8px;
+        border-radius: 8px;
+        -webkit-border-radius: 8px;
+        -moz-border-radius: 8px;
+        -ms-border-radius: 8px;
+        -o-border-radius: 8px;
+    }
+
+
     .labeldiv{
         display: flex;
         flex-direction: column;
@@ -249,7 +265,7 @@ margin-top:25px
 
 
 @media screen and (min-width: 601px) and (max-width: 768px){
-
+  
     .labeldiv{
         display: flex;
         flex-direction: row;
