@@ -206,7 +206,9 @@ const Dash = () => {
     ))
   ) : (
     showPlans ? (
+      <div>
       <Plans />
+      </div>
     ) : (
       <div>
         <p className='nunito'>You do not have an active investment plan at the moment.</p>

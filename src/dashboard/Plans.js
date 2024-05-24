@@ -110,12 +110,12 @@ const [selectedFileName1, setSelectedFileName1] = useState('No image chosen');
            <>
            <h2>Choose Quick Amount to Invest</h2>
            <div className="rowbu">
-         <button className={`pp ${amounts === 100 ? "activeg" : ""}`} onClick={()=> setAmount(100)}>$100</button>
-         <button className={`pp ${amounts === 250 ? "activeg" : ""}`} onClick={()=> setAmount(250)}>$250</button>
-         <button className={`pp ${amounts === 500 ? "activeg" : ""}`} onClick={()=> setAmount(500)}>$500</button>
-         <button className={`pp ${amounts === 1000 ? "activeg" : ""}`} onClick={()=> setAmount(1000)}>$1,000</button>
-         <button className={`pp ${amounts === 1500 ? "activeg" : ""}`} onClick={()=> setAmount(1500)}>$1,500</button>
-         <button className={`pp ${amounts === 2000 ? "activeg" : ""}`} onClick={()=> setAmount(2000)}>$2,000</button>
+         <button className={`pp ${amounts === 10000 ? "activeg" : ""}`} onClick={()=> setAmount(10000)}>$10,000</button>
+         <button className={`pp ${amounts === 12000 ? "activeg" : ""}`} onClick={()=> setAmount(12000)}>$12,000</button>
+         <button className={`pp ${amounts === 14000 ? "activeg" : ""}`} onClick={()=> setAmount(14000)}>$14,000</button>
+         <button className={`pp ${amounts === 15000 ? "activeg" : ""}`} onClick={()=> setAmount(15000)}>$15,000</button>
+         <button className={`pp ${amounts === 18000 ? "activeg" : ""}`} onClick={()=> setAmount(18000)}>$18,000</button>
+         <button className={`pp ${amounts === 20000 ? "activeg" : ""}`} onClick={()=> setAmount(20000)}>$20,000</button>
        </div>
        
          </>
@@ -124,12 +124,12 @@ const [selectedFileName1, setSelectedFileName1] = useState('No image chosen');
        <>
        <h2>Choose Quick Amount to Invest</h2>
        <div className="rowbu">
-         <button className={`pp ${amounts === 100 ? "activeg" : ""}`} onClick={()=> setAmount(100)}>$100</button>
-         <button className={`pp ${amounts === 250 ? "activeg" : ""}`} onClick={()=> setAmount(250)}>$250</button>
-         <button className={`pp ${amounts === 500 ? "activeg" : ""}`} onClick={()=> setAmount(500)}>$500</button>
-         <button className={`pp ${amounts === 1000 ? "activeg" : ""}`} onClick={()=> setAmount(1000)}>$1,000</button>
-         <button className={`pp ${amounts === 1500 ? "activeg" : ""}`} onClick={()=> setAmount(1500)}>$1,500</button>
-         <button className={`pp ${amounts === 2000 ? "activeg" : ""}`} onClick={()=> setAmount(2000)}>$2,000</button>
+         <button className={`pp ${amounts === 5000 ? "activeg" : ""}`} onClick={()=> setAmount(5000)}>$5,000</button>
+         <button className={`pp ${amounts === 6000 ? "activeg" : ""}`} onClick={()=> setAmount(6000)}>$6,000</button>
+         <button className={`pp ${amounts === 7000 ? "activeg" : ""}`} onClick={()=> setAmount(7000)}>$7,000</button>
+         <button className={`pp ${amounts === 8000 ? "activeg" : ""}`} onClick={()=> setAmount(8000)}>$8,000</button>
+         <button className={`pp ${amounts === 9000 ? "activeg" : ""}`} onClick={()=> setAmount(9000)}>$9,000</button>
+         <button className={`pp ${amounts === 10000 ? "activeg" : ""}`} onClick={()=> setAmount(10000)}>$10,000</button>
        </div>
    
      </>
