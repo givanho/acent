@@ -38,7 +38,6 @@ const Dash = () => {
   const [activePlans, setActivePlans] = useState(0)
   const createdAtValues = [];
   const [interest, setInterest] = useState("")
-  const [interestRate, setInterestRate] = useState("")
   const [totalAmount, setTotalAmount] = useState("")
   const [accountBalance, setAccountBalance] = useState("")
   const currentDate = new Date();
@@ -86,19 +85,7 @@ const Dash = () => {
       });
           });
           setTotalAmount(datas?.funded?.reduce((total, item) => total + parseFloat(item.amount), 0))
-          setAccountBalance(datas?.funded?.reduce((total, item) => total + parseFloat(item.amount), 0 ))
-          setInterestRate(datas?.funded?.reduce((total, item) => {
-            const amount = parseFloat(item.amount);
-            let multiplier = 0.03; // Default multiplier for amounts less than 5
-        
-            if (amount >= 5000 && amount < 10000) {
-              multiplier = 0.1;
-            } else if (amount >= 10000) {
-              multiplier = 0.3;
-            }
-        
-            return total + (amount * (interest * multiplier));
-          }, 0).toFixed(2))
+          setAccountBalance(totalAmount * (interest * 0.02 ) + totalAmount)
           return () => {
             unsubscribe();
           };
@@ -118,7 +105,7 @@ const Dash = () => {
 <div className='dash-in-flex' >
 <div >
     <p className='nunito'>Account Ballance</p>
-   {accountBalance ? <h2 className='nunito'>$ {(Number(accountBalance) + Number(interestRate)).toFixed(2)}</h2>
+   {accountBalance ? <h2 className='nunito'>$ {Math.round(accountBalance * 100000) / 100000}</h2>
    :
    <h2 className='nunito'>$ 0.00</h2>
   } 
@@ -133,10 +120,8 @@ const Dash = () => {
 <div >
     <p className='nunito'>Total Profit</p>
    {
-    datas?.funded ? 
-    <h2 className='nunito'>
-  $ {interestRate}
-</h2>
+    datas.funded ? 
+    <h2 className='nunito'>$ {(datas?.funded?.reduce((total, item) => total + parseFloat(item.amount), 0) * (interest * 0.02)).toFixed(2)}</h2>
 :
 <h2 className='nunito'>$0.00 </h2>
    }
