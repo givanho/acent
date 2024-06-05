@@ -94,6 +94,7 @@ const Dash = () => {
               
               multiplier = 0.3;
               if (interest > 14){
+                
                 setInterest(14)
               }
 
