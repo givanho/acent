@@ -78,11 +78,8 @@ const Dash = () => {
       });
       createdAtValues.forEach(createdAt => {
         setInterest( Math.ceil((new Date(currentDate) - new Date(createdAt)) / (1000 * 60 * 60 * 24)));
-        // Perform your action here with each 'createdAt' value
-        // For example, you could parse the date, format it, or perform other operations
-        // Example: const parsedDate = new Date(createdAt);
-        // Example: const formattedDate = parsedDate.toLocaleDateString();
-        // Example: console.log("Formatted date:", formattedDate);
+        setActivePlans(Math.ceil((new Date(currentDate) - new Date(createdAt))/ (1000 * 60 * 60 * 24)) )
+       
       });
           });
           setTotalAmount(datas?.funded?.reduce((total, item) => total + parseFloat(item.amount), 0))
@@ -94,7 +91,12 @@ const Dash = () => {
             if (amount >= 5000 && amount < 10000) {
               multiplier = 0.1;
             } else if (amount >= 10000) {
+              
               multiplier = 0.3;
+              if (interest > 14){
+                setInterest(14)
+              }
+
             }
         
             return total + (amount * (interest * multiplier));
@@ -138,7 +140,7 @@ const Dash = () => {
   $ {interestRate}
 </h2>
 :
-<h2 className='nunito'>$0.00 </h2>
+<h2 className='nunito'>$ 0.00 </h2>
    }
 
 </div>
