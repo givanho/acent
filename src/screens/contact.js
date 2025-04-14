@@ -34,7 +34,7 @@ const Contact = () => {
     <div className='contact-all'>
 <div className="contact-us w-full">
 <h1 className='nunito contact-header'>
-Contact Us +1 862 399 0544
+Contact Us
  </h1>
 </div>
 <div className='contact-details w-full'>
@@ -45,8 +45,11 @@ Contact Us +1 862 399 0544
 </div>
 <div className='contact-text'>
   <h1 className='nunito contact-subject' > Phone Number</h1>
-  <p className='nunito contact-details-text'> +1 862 399 0544 </p>
-  <p className='nunito contact-details-text'> +1 773 657 9431 </p>
+  <p className='nunito contact-details-text'> +1 469 905 2399 </p>
+  <p className='nunito contact-details-text'> +1 323 917 2918 </p>
+  <h1 className='nunito contact-subject' style={{paddingTop: 12}} > Telegram</h1>
+  <p> <a className='nunito contact-details-text' href="https://t.me/ContactAscentinvestment">ContactAscentinvestment</a> </p> 
+
 
 </div>
 </div>
@@ -56,7 +59,7 @@ Contact Us +1 862 399 0544
 </div>
 <div className='contact-text'>
   <h1 className='nunito contact-subject'> Email</h1>
-  <p className='nunito contact-details-text'> support@ascentinvestmentltd.com </p>
+  <p className='nunito contact-details-text'> contact@ascentinvestmentsltd.com </p>
 
 </div>
 </div>

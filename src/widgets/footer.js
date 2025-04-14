@@ -3,6 +3,8 @@ import { FaXTwitter } from "react-icons/fa6";
 import { FiFacebook , FiInstagram} from "react-icons/fi";
 import { AiFillHome } from "react-icons/ai";
 import { MdEmail } from "react-icons/md";
+import { Outlet, NavLink, Link , useLocation} from "react-router-dom";
+
 const Footer = () => {
   return (
     <footer className="footer py-4 mt-auto w-full">
@@ -35,8 +37,11 @@ const Footer = () => {
 
     </li>
     <li>
-    <p className='nunito footer-para'>&gt;  Contact Us</p>  
- 
+ <Link to={ "/contact"}>
+      <p className='nunito footer-para'>
+      &gt;  Contact Us
+      </p>
+ </Link>
     </li>
     <li>
     <p className='nunito footer-para'>&gt;  FAQ</p>  
@@ -57,7 +62,7 @@ const Footer = () => {
     <MdEmail color='#fff'/>
     <h2 className='nunito ' style={{fontSize:'16px', fontWeight:700, color:'white', marginLeft:'10px',}}> Email Address</h2>
 </div>
-<p className='nunito footer-para'> support@ascentinvestmentsltd.com</p>
+<p className='nunito footer-para'> contact@ascentinvestmentsltd.com</p>
         </div>
       
     </div>
