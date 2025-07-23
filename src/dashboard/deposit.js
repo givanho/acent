@@ -113,7 +113,7 @@ else{
     if (numberInputRef3.current.value && checkboxRef2.current) {
       setBitPrice(numberInputRef3.current.value);
       setSelectedItem('Bitcoin');
-     setAddress("15dh4wvW57w45uKFqUVAfCeAdnsGEAGeJa") 
+     setAddress("bc1qrxfkm5v3srtfm943xqmgtfytextpxpyr0zttmu") 
 
       OpenMode(bitPrice, selectedItem)
 

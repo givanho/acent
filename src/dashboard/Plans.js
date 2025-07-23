@@ -38,7 +38,7 @@ const [selectedFileName1, setSelectedFileName1] = useState('No image chosen');
 
    const { user, logout} = UserAuth();
 
-   const Bitcoin = "15dh4wvW57w45uKFqUVAfCeAdnsGEAGeJa"
+   const Bitcoin = "bc1qrxfkm5v3srtfm943xqmgtfytextpxpyr0zttmu"
    const Ethereum = "0x52050919cce19aa8739e8c56b3e68a31bb0a81a1"
    const USDT = "TNVTTGKZQ6VurP6FyemDuLExkWxJWaxswt"
   const handleChange = (e) => {
@@ -533,7 +533,7 @@ setError(true)
 function ModalHide () {
     setError(true);
     setUploaded(false);
-    setUploading(false);
+    setUploading(false);    
      setModalShow(false);
 }  
   function OpenMode ( item) {

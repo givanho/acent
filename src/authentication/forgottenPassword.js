@@ -61,7 +61,7 @@ const ForgottenPassword = () => {
               <form onSubmit={formik.handleSubmit}> 
               <div ><p className='nunito input-header'>Enter your email to reset password <span style={{color:'red'}}>*</span></p>
               <span className='errors nunito'>{formik.errors.email && formik.touched.email && formik.errors.email}</span>
-              <p>HELlllo </p>
+              {/* <p>HELlllo </p> */}
               <div className="input-with-icon">
                 <input type="text" placeholder="mail@example.com" 
                 name='email' 
