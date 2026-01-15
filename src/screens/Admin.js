@@ -455,6 +455,8 @@ const Admin = () => {
     
    
 </Table>
+
+{/* delete button */}
 <DeleteAccount/>
         </div>
     )
