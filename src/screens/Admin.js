@@ -9,6 +9,7 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import { GrClose } from "react-icons/gr";
 import './admin.css'
 import { RiVerifiedBadgeFill } from "react-icons/ri";
+import DeleteAccount from "../authentication/deleteUser"
 
 
 import { BiPlusCircle } from "react-icons/bi";
@@ -454,7 +455,7 @@ const Admin = () => {
     
    
 </Table>
-
+<DeleteAccount/>
         </div>
     )
 }
