@@ -444,6 +444,8 @@ const Admin = () => {
           
               <button onClick ={() => OpenMode(user.userID)} >
               <BiPlusCircle size={24} color="green"/>
+              {/* delete button */}
+  <AdminSoftDelete/>
 
               </button>
             
@@ -456,8 +458,7 @@ const Admin = () => {
    
 </Table>
 
-{/* delete button */}
-<AdminSoftDelete/>
+
         </div>
     )
 }
