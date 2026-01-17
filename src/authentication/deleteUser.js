@@ -1,106 +1,137 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import {
-  EmailAuthProvider,
-  reauthenticateWithCredential,
-  deleteUser,
-  getAuth
-} from "firebase/auth";
-import { deleteDoc, doc } from "firebase/firestore";
-import { db } from "../context/firebase";
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  updateDoc,
+  serverTimestamp,
+  query,
+  where
+} from "firebase/firestore";
+import { signOut } from "firebase/auth";
+import { db, auth } from "../context/firebase";
 
-const DeleteAccount = () => {
-  const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
-  const auth = getAuth();
+/**
+ * ADMIN SOFT DELETE COMPONENT
+ * - Lists users
+ * - Allows admin to disable users
+ * - Blocks disabled users from accessing app
+ */
+const AdminSoftDelete = () => {
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const currentUser = auth.currentUser;
 
-  const handleDeleteAccount = async () => {
-    const user = auth.currentUser;
+  // 🔐 Check admin role
+  useEffect(() => {
+    const checkAdmin = async () => {
+      if (!currentUser) return;
 
-    if (!user) {
-      alert("No authenticated user found.");
-      return;
-    }
-
-    if (!password) {
-      alert("Please enter your password.");
-      return;
-    }
-
-    const confirmDelete = window.confirm(
-      "This will permanently delete your account. Continue?"
-    );
-
-    if (!confirmDelete) return;
-
-    try {
-      setLoading(true);
-
-      // 1️⃣ Re-authenticate user
-      const credential = EmailAuthProvider.credential(
-        user.email,
-        password
-      );
-
-      await reauthenticateWithCredential(user, credential);
-
-      // 2️⃣ Delete Firestore user document
-      await deleteDoc(doc(db, "users", user.uid));
-
-      // 3️⃣ Delete Auth user
-      await deleteUser(user);
-
-      // 4️⃣ Redirect
-      navigate("/signin");
-
-    } catch (error) {
-      console.error("Delete error:", error);
-
-      if (error.code === "auth/wrong-password") {
-        alert("Incorrect password.");
-      } else if (error.code === "auth/requires-recent-login") {
-        alert("Please log in again and try.");
-      } else {
-        alert("Failed to delete account.");
+      const snap = await getDoc(doc(db, "users", currentUser.uid));
+      if (snap.exists() && snap.data().role === "admin") {
+        setIsAdmin(true);
       }
-
-    } finally {
       setLoading(false);
-    }
+    };
+
+    checkAdmin();
+  }, [currentUser]);
+
+  // 📥 Fetch active users
+  useEffect(() => {
+    if (!isAdmin) return;
+
+    const fetchUsers = async () => {
+      const q = query(
+        collection(db, "users"),
+        where("disabled", "!=", true)
+      );
+      const snapshot = await getDocs(q);
+      const list = snapshot.docs.map(d => ({
+        id: d.id,
+        ...d.data()
+      }));
+      setUsers(list);
+    };
+
+    fetchUsers();
+  }, [isAdmin]);
+
+  // ❌ Soft delete user
+  const softDeleteUser = async (uid) => {
+    if (!window.confirm("Are you sure you want to delete this user?")) return;
+
+    await updateDoc(doc(db, "users", uid), {
+      disabled: true,
+      deletedAt: serverTimestamp(),
+      deletedBy: currentUser.uid
+    });
+
+    setUsers(prev => prev.filter(u => u.id !== uid));
   };
 
+  // 🚪 Block disabled users on login
+  useEffect(() => {
+    const blockDisabledUser = async () => {
+      if (!currentUser) return;
+
+      const snap = await getDoc(doc(db, "users", currentUser.uid));
+      if (snap.exists() && snap.data().disabled === true) {
+        await signOut(auth);
+        alert("Your account has been disabled.");
+      }
+    };
+
+    blockDisabledUser();
+  }, [currentUser]);
+
+  if (loading) return <p>Loading...</p>;
+
+  if (!isAdmin) return <p>Access denied</p>;
+
   return (
-    <div style={{ maxWidth: "400px" }}>
-      <h3 style={{ color: "red" }}>Delete Account</h3>
+    <div style={{ padding: 20 }}>
+      <h2>Admin — User Management</h2>
 
-      <p>
-        This action is permanent and cannot be undone.
-      </p>
+      {users.length === 0 && <p>No active users</p>}
 
-      <input
-        type="password"
-        placeholder="Confirm your password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        style={{ width: "100%", marginBottom: "10px" }}
-      />
+      {users.map(user => (
+        <div
+          key={user.id}
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            padding: 10,
+            marginBottom: 8,
+            border: "1px solid #ccc"
+          }}
+        >
+          <div>
+            <strong>{user.firstname} {user.lastname}</strong>
+            <div>{user.email}</div>
+            <small>{user.country}</small>
+          </div>
 
-      <button
-        onClick={handleDeleteAccount}
-        disabled={loading}
-        style={{
-          background: "red",
-          color: "white",
-          padding: "10px",
-          width: "100%",
-          cursor: "pointer"
-        }}
-      >
-        {loading ? "Deleting..." : "Delete Account"}
-      </button>
+          {user.id !== currentUser.uid && (
+            <button
+              onClick={() => softDeleteUser(user.id)}
+              style={{
+                background: "red",
+                color: "#fff",
+                border: "none",
+                padding: "6px 12px",
+                cursor: "pointer"
+              }}
+            >
+              Delete
+            </button>
+          )}
+        </div>
+      ))}
     </div>
   );
 };
 
-export default DeleteAccount;
+export default AdminSoftDelete;
