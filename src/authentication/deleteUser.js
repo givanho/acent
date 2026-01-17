@@ -59,7 +59,7 @@ const AdminSoftDelete = () => {
     fetchUsers();
   }, [isAdmin]);
 
-  // ❌ Soft delete user
+  // ❌ Soft delete userjh
   const softDeleteUser = async (uid) => {
     if (!window.confirm("Are you sure you want to delete this user?")) return;
 
