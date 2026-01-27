@@ -67,7 +67,26 @@ const Admin = () => {
           setFullscreen(!fullscreen);
         };
        
-       
+       const deleteData = async (targetUid) => {
+  if (window.confirm("Are you sure you want to block/delete this user? They will lose all access immediately.")) {
+    const userDocRef = doc(db, 'users', targetUid);
+    try {
+      // We "Soft Delete" by setting a status. 
+      // This works with the Security Rules we discussed.
+      await updateDoc(userDocRef, {
+        status: 'disabled',
+        disabledAt: serverTimestamp()
+      });
+      
+      // Update local state so the UI reflects the change
+      setSuccess(true); 
+      alert("User has been disabled.");
+    } catch (err) {
+      // console.error("Error disabling user:", err);
+      alert("Permission denied. Check your security rules.");
+    }
+  }
+};
 
 
 
@@ -344,12 +363,14 @@ const Admin = () => {
       <th>Expiring At</th>
       <th>Status</th>
       <th>Fund</th>
+      <th>Delete</th>
      
     </tr>
   </thead>
   <tbody className='tbod'>
     {data.map((user, index) => (
-      <tr key={index}>
+      <tr key={index}
+      style={user.status === 'disabled' ? {opacity: 0.5, backgroundColor: '#f8d7da'} : {}}>
         <td>{user.email}</td>
         <td>{user.firstname} { " "+user.lastname} </td>
         <td> 
@@ -447,6 +468,25 @@ const Admin = () => {
               </button>
             
       </td>
+
+
+{/* <tr key={index} > */}
+    {/* ... your other <td> tags ... */}
+
+    <td>
+       <button 
+         onClick={() => deleteData(user.id)} 
+         style={{ border: 'none', background: 'none' }}
+         title="Disable User"
+       >
+         {/* <AiOutlineDelete size={24} color="red" /> */}
+              <BiPlusCircle size={24} color="green"/>
+
+       </button>
+    </td>
+  
+
+
         {/* Render other user attributes in corresponding columns */}
       </tr>
     ))}
