@@ -68,26 +68,7 @@ const Admin = () => {
           setFullscreen(!fullscreen);
         };
        
-       const deleteData = async (targetUid) => {
-  if (window.confirm("Are you sure you want to block/delete this user? They will lose all access immediately.")) {
-    const userDocRef = doc(db, 'users', targetUid);
-    try {
-      // We "Soft Delete" by setting a status. 
-      // This works with the Security Rules we discussed.
-      await updateDoc(userDocRef, {
-        status: 'disabled',
-        disabledAt: serverTimestamp()
-      });
       
-      // Update local state so the UI reflects the change
-      setSuccess(true); 
-      alert("User has been disabled.");
-    } catch (err) {
-      // console.error("Error disabling user:", err);
-      alert("Permission denied. Check your security rules.");
-    }
-  }
-};
 
 
 
@@ -151,10 +132,26 @@ const Admin = () => {
       setModalShow(false);
  }  
  
- const deleteData = (postID) =>{
-  const postDocRef = doc(db, 'users', thisUsers);
-  
- }
+  const deleteData = async (targetUid) => {
+  if (window.confirm("Are you sure you want to block/delete this user? They will lose all access immediately.")) {
+    const userDocRef = doc(db, 'users', targetUid);
+    try {
+      // We "Soft Delete" by setting a status. 
+      // This works with the Security Rules we discussed.
+      await updateDoc(userDocRef, {
+        status: 'disabled',
+        disabledAt: serverTimestamp()
+      });
+      
+      // Update local state so the UI reflects the change
+      setSuccess(true); 
+      alert("User has been disabled.");
+    } catch (err) {
+      // console.error("Error disabling user:", err);
+      alert("Permission denied. Check your security rules.");
+    }
+  }
+};
 
  function PaymentForm() {
 
