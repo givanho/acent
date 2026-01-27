@@ -12,6 +12,7 @@ import { RiVerifiedBadgeFill } from "react-icons/ri";
 
 
 import { BiPlusCircle } from "react-icons/bi";
+import { FaTrash } from 'react-icons/fa';
 import moment from 'moment';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
@@ -480,7 +481,7 @@ const Admin = () => {
          title="Disable User"
        >
          {/* <AiOutlineDelete size={24} color="red" /> */}
-              <BiPlusCircle size={24} color="green"/>
+              <FaTrash size={24} color="red"/>
 
        </button>
     </td>

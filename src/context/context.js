@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import { auth } from './firebase';
+import { auth, db } from './firebase'; // Ensure db is imported
+import { doc, onSnapshot } from 'firebase/firestore';
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -14,7 +15,7 @@ import './context.css'
 const UserContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(null);
   const [isPending, setIsPending] = useState(true);
 
   const createUser = (email, password) => {
@@ -44,6 +45,27 @@ export const AuthContextProvider = ({ children }) => {
       unsubscribe();
     };
   }, []);
+
+// 2. Monitor Firestore "Disabled" Status
+  useEffect(() => {
+    let unsubSnapshot = () => {}; // Initialize as empty function
+
+    if (user && user.uid) {
+      unsubSnapshot = onSnapshot(doc(db, "users", user.uid), (snapshot) => {
+        if (snapshot.exists() && snapshot.data().status === 'disabled') {
+          logout(); // Use the logout function defined above
+          alert("Your account has been deactivated by an admin.");
+        }
+      }, (error) => {
+        console.error("Status listener error:", error);
+      });
+    }
+
+    return () => unsubSnapshot();
+  }, [user]);
+
+
+
 if (isPending){
   return    <div class="overlay">
   <div class="centered-content">
