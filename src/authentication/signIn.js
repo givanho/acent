@@ -35,33 +35,29 @@ useEffect(() => {
    
   },
   
-   onSubmit: async values => {
-    setLoginError("");
-    try {
+   onSubmit: async (values, { setSubmitting }) => {
+      setLoginError(""); 
+      try {
+        await signIn(values.email, values.password);
+        
+        // Only navigate IF sign-in was successful and NOT disabled
+        if (values.email === "fynefaceg@gmail.com" || values.email === "hannaheaton124@gmail.com") {
+          history('/admin');
+        } else {
+          history('/dashboard');
+        }
+      } catch (e) {
+        // Firebase error codes are sometimes in e.code, 
+        // but our custom error is in e.message
+        const errorMessage = e.message.includes("auth/") 
+          ? "Invalid email or password." 
+          : e.message;
+          
+        setLoginError(errorMessage);
+        setSubmitting(false); // Allows the button to be clickable again
+      }
+    },
     
-  
-      // Assuming signIn is a function that returns a user object upon successful authentication
-     await signIn(values.email, values.password);
-  
-  
-     if (values.email === "fynefaceg@gmail.com" || values.email === "hannaheaton124@gmail.com"){
-      history('/admin')
-
-     }
-     else{
-      // Navigate to the "Profile" screen
-      history('/dashboard')
-     }
-  
-      
-
-    } catch (e) {
-      setLoginError(e.message);
-      console.log("Login Error:", e.message);
-     
-    }
-  
-  },
   validationSchema :Yup.object({
     email: Yup.string()
       .required("Email is required")

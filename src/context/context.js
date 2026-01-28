@@ -22,35 +22,30 @@ export const AuthContextProvider = ({ children }) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
-   const signIn = async(email, password) =>  {
-    setIsPending(true); // Set isPending to true before the operation
-    try {
-    // 1. Attempt the standard Firebase Auth sign-in
+  const signIn = async (email, password) => {
+  setIsPending(true);
+  try {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
     const uid = userCredential.user.uid;
 
-    // 2. Immediately check their status in Firestore
     const userDoc = await getDoc(doc(db, "users", uid));
     
     if (userDoc.exists() && userDoc.data().status === 'disabled') {
-      // 3. If disabled, log them out immediately and throw an error
       await signOut(auth);
-      // We throw a specific error message so the UI can show it
+      // We throw a specific string here
       throw new Error("This account has been deactivated by an admin.");
     }
 
-    return userCredential;
+    return userCredential; // Success!
   } catch (error) {
-    // If it's a "User not found" or "Wrong password" error, Firebase handles it.
-    // If it's our "deactivated" error, it passes through here.
+    // If it's a Firebase error (like wrong password), we pass the Firebase message
+    // If it's our custom Error, we pass that.
     throw error; 
   } finally {
     setIsPending(false);
   }
 };
-  //   return signInWithEmailAndPassword(auth, email, password)
-  //     .finally(() => setIsPending(false)); 
-  //  }
+  
 
 
    const forgotPassword = (email) =>{
