@@ -478,7 +478,7 @@ const Admin = () => {
          title="Disable User"
        >
          {/* <AiOutlineDelete size={24} color="red" /> */}
-              <FaTrash size={24} color="red"/>
+              <FaTrash size={20} color="red"/>
 
        </button>
     </td>

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import './signin.css'
 import logo from '../assets/logo.png'
 import { PiPasswordBold } from "react-icons/pi";
@@ -14,7 +14,7 @@ const SignIn = () => {
   const { signIn} = UserAuth();
   const history = useNavigate()
 const {user} = UserAuth();
-
+const [loginError, setLoginError] = useState("");
 useEffect(() => {
   if (user){
   }
@@ -36,7 +36,7 @@ useEffect(() => {
   },
   
    onSubmit: async values => {
-    
+    setLoginError("");
     try {
     
   
@@ -56,7 +56,9 @@ useEffect(() => {
       
 
     } catch (e) {
-     console.log(e.message);
+      setLoginError(e.message);
+      console.log("Login Error:", e.message);
+     
     }
   
   },
@@ -85,6 +87,18 @@ useEffect(() => {
                   />
             <div className='signform w-full'>
               <h1 className='nunito form-head'>User Login</h1>
+            {loginError && (
+    <p style={{ 
+      color: 'red', 
+      textAlign: 'center', 
+      backgroundColor: '#ffdada', 
+      padding: '10px', 
+      borderRadius: '5px' 
+    }}>
+      {loginError}
+    </p>
+  )}
+
               <form onSubmit={formik.handleSubmit}> 
               <div ><p className='nunito input-header'>email <span style={{color:'red'}}>*</span></p>
               <span className='errors nunito'>{formik.errors.email && formik.touched.email && formik.errors.email}</span>

@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { auth, db } from './firebase'; // Ensure db is imported
-import { doc, onSnapshot } from 'firebase/firestore';
+import { doc, onSnapshot,getDoc } from 'firebase/firestore';
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -22,11 +22,37 @@ export const AuthContextProvider = ({ children }) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
-   const signIn = (email, password) =>  {
+   const signIn = async(email, password) =>  {
     setIsPending(true); // Set isPending to true before the operation
-    return signInWithEmailAndPassword(auth, email, password)
-      .finally(() => setIsPending(false)); 
-   }
+    try {
+    // 1. Attempt the standard Firebase Auth sign-in
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    const uid = userCredential.user.uid;
+
+    // 2. Immediately check their status in Firestore
+    const userDoc = await getDoc(doc(db, "users", uid));
+    
+    if (userDoc.exists() && userDoc.data().status === 'disabled') {
+      // 3. If disabled, log them out immediately and throw an error
+      await signOut(auth);
+      // We throw a specific error message so the UI can show it
+      throw new Error("This account has been deactivated by an admin.");
+    }
+
+    return userCredential;
+  } catch (error) {
+    // If it's a "User not found" or "Wrong password" error, Firebase handles it.
+    // If it's our "deactivated" error, it passes through here.
+    throw error; 
+  } finally {
+    setIsPending(false);
+  }
+};
+  //   return signInWithEmailAndPassword(auth, email, password)
+  //     .finally(() => setIsPending(false)); 
+  //  }
+
+
    const forgotPassword = (email) =>{
     return sendPasswordResetEmail(auth, email);
   }
