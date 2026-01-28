@@ -15,17 +15,17 @@ const SignIn = () => {
   const history = useNavigate()
 const {user} = UserAuth();
 const [loginError, setLoginError] = useState("");
-useEffect(() => {
-  if (user){
-  }
-  else{
-    console.log('user')
+// useEffect(() => {
+//   if (user){
+//   }
+//   else{
+//     console.log('user')
 
-  }
+//   }
  
 
  
-}, [user])
+// }, [user])
 
 
   const formik = useFormik({
@@ -57,7 +57,7 @@ useEffect(() => {
         setSubmitting(false); // Allows the button to be clickable again
       }
     },
-    
+
   validationSchema :Yup.object({
     email: Yup.string()
       .required("Email is required")

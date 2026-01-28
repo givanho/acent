@@ -368,7 +368,7 @@ const Admin = () => {
   <tbody className='tbod'>
     {data.map((user, index) => (
       <tr key={index}
-      style={user.status === 'disabled' ? {opacity: 0.5, backgroundColor: '#f8d7da'} : {}}>
+      style={user.status === 'disabled' ? {display: 'none'} : {}}>
         <td>{user.email}</td>
         <td>{user.firstname} { " "+user.lastname} </td>
         <td> 
